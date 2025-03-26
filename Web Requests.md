@@ -16,7 +16,8 @@
 7. Command used to set request headers : `curl http://www.inlanefreight.com -H "Content-Type: application/json'`
 8. Command used to set User-Agent would be : `curl https://www.inlanefreight.com -A 'Mozilla/5.0`
 9. Command used to provide credentials : `curl -u admin:admin http://<SERVER_IP>:<PORT>/` or `curl http://admin:admin@<SERVER_IP>:<PORT>/`
-10. Command used to initiate a POST Request with Body : `curl `
+10. Command used to initiate a POST Request with Body : `curl -X POST -d 'username=admin&password=admin' https://<SERVER_IP>:<PORT>/`
+11. Command used to make a POST Request along with Cookie, Content-Type and Body: `curl -X POST -b "PHPSESSID=n95r8o8nihq3o5qghinihduq5d" -H "Content-Type: application/json" -d '{"search":"flag"}'  http://94.237.54.176:44683/search.php?search=flag `
 
 ### HTTPS Flow
 ![[InternalJPEGS/Pasted image 20250326143830.png]]
@@ -27,3 +28,9 @@
 ![[InternalJPEGS/Pasted image 20250326144036.png]]
 ![[InternalJPEGS/Pasted image 20250326144313.png]]
 
+### APIs
+There are several types of APIs. Many APIs are used to interact with a database, such that we would be able to specify the requested table and the requested row within our API query, and then use an HTTP method to perform the operation needed. For example, for the `api.php` endpoint in our example, if we wanted to update the `city` table in the database, and the row we will be updating has a city name of `london`, then the URL would look something like this:
+
+```bash
+curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london ...SNIP...
+```
