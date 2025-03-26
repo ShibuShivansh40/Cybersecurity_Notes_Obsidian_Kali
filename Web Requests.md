@@ -16,6 +16,7 @@
 7. Command used to set request headers : `curl http://www.inlanefreight.com -H "Content-Type: application/json'`
 8. Command used to set User-Agent would be : `curl https://www.inlanefreight.com -A 'Mozilla/5.0`
 9. Command used to provide credentials : `curl -u admin:admin http://<SERVER_IP>:<PORT>/` or `curl http://admin:admin@<SERVER_IP>:<PORT>/`
+10. Command used to initiate a POST Request with Body : `curl `
 
 ### HTTPS Flow
 ![[InternalJPEGS/Pasted image 20250326143830.png]]
