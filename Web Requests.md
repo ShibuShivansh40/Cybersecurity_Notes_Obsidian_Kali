@@ -30,7 +30,31 @@
 
 ### APIs
 There are several types of APIs. Many APIs are used to interact with a database, such that we would be able to specify the requested table and the requested row within our API query, and then use an HTTP method to perform the operation needed. For example, for the `api.php` endpoint in our example, if we wanted to update the `city` table in the database, and the row we will be updating has a city name of `london`, then the URL would look something like this:
-
 ```bash
-curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london ...SNIP...
+curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london
 ```
+
+To properly format JSON in the response, we can pip the command with `jq` :
+```bash
+curl -s http://<SERVER_IP>:<PORT>/api.php/city/london | jq
+
+[
+  {
+    "city_name": "London",
+    "country_name": "(UK)"
+  }
+]
+```
+
+>Note : **Note:** The HTTP `PATCH` method may also be used to update API entries instead of `PUT`. To be precise, `PATCH` is used to partially update an entry (only modify some of its data "e.g. only city_name"), while `PUT` is used to update the entire entry. We may also use the HTTP `OPTIONS` method to see which of the two is accepted by the server, and then use the appropriate method accordingly. In this section, we will be focusing on the `PUT` method, though their usage is quite similar.
+
+Updating the data :
+```bash
+curl -X PUT http://<SERVER_IP>:<PORT>/api.php/city/london -d '{"city_name":"New_HTB_City", "country_name":"HTB"}' -H 'Content-Type: application/json'
+```
+
+Deleting the data : 
+```bash
+curl -X DELETE http://<SERVER_IP>:<PORT>/api.php/city/New_HTB_City
+```
+
