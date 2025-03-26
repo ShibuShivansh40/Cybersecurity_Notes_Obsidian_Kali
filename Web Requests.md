@@ -11,7 +11,11 @@
 2. Command used to download content of a particular file : `curl -O inlanefreight.com/index.html`
 3. Command used to skip the SSL Certificate check and run cURL : `curl -k https://inlanefreight.com`
 4. Command to run cURL in the verbose mode : `curl inlanefreight.com -v`
-5. Command to view the Response Headers provided by the server : 
+5. Command to view the Response Headers provided by the server : `curl -I https//www.inlanefreight.com`
+6. Command to view both the Response Headers and body : `curl -i https://www.inlanefreight.com`
+7. Command used to set request headers : `curl http://www.inlanefreight.com -H "Content-Type: application/json'`
+8. Command used to set User-Agent would be : `curl https://www.inlanefreight.com -A 'Mozilla/5.0`
+9. Command used to provide credentials : `curl -u admin:admin http://<SERVER_IP>:<PORT>/` or `curl http://admin:admin@<SERVER_IP>:<PORT>/`
 
 ### HTTPS Flow
 ![[InternalJPEGS/Pasted image 20250326143830.png]]
@@ -21,4 +25,4 @@
 ### HTTP Request & Response
 ![[InternalJPEGS/Pasted image 20250326144036.png]]
 ![[InternalJPEGS/Pasted image 20250326144313.png]]
-	
+
