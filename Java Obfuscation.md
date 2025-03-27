@@ -12,3 +12,4 @@ Links to website helping in obfuscation :
 `echo "" | xxd -p -r` : Command used to decode hex into text
 `echo "" | tr 'A-Za-z' 'N-ZA-Mn-za-m'` : Command used to encode or decode ROT13
 
+n3v3r_run_0bfu5c573d_c0d3!
