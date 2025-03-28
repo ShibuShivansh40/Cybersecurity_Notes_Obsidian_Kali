@@ -56,7 +56,9 @@ Additionally, various online databases and tools aggregate DNS data from multipl
 
 Each of these methods has its strengths and weaknesses. Active enumeration offers more control and potential for comprehensive discovery but can be more detectable. Passive enumeration is stealthier but might not uncover all existing subdomains. Combining both approaches provides a more thorough and effective subdomain enumeration strategy.
 
-
+Command used for Subdomain Enumeration, using DNSEnum :
 ```bash
 dnsenum --enum inlanefreight.com -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -r
 ```
+
+
