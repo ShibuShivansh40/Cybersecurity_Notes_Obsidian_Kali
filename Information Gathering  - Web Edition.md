@@ -33,3 +33,9 @@ Each WHOIS record typically contains the following information:
 - `Creation and Expiration Dates`: When the domain was registered and when it's set to expire.
 - `Name Servers`: Servers that translate the domain name into an IP address.
 
+### DNS Tools
+![[Pasted image 20250328131603.png]]
+
+## Dig Commands
+![[Pasted image 20250328131731.png]]
+
