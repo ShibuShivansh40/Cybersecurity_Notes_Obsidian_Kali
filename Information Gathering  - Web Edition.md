@@ -66,7 +66,7 @@ dnsenum --enum inlanefreight.com -f /usr/share/seclists/Discovery/DNS/subdomains
 
 Command to request a Zone Transfer : `dig axfr @nsztm1.digi.ninja zonetransfer.me
 
-## Vhost Fuzzing
+## Vhost Fuzzin
 ![[Pasted image 20250402123511.png]]
 
 Gobuster command to brute-force vhosts : `gobuster vhost -u http://<target_IP_address> -w <wordlist_file> --append-domain`
@@ -76,3 +76,18 @@ Gobuster command to brute-force vhosts : `gobuster vhost -u http://<target_IP_ad
 
 ## crt.sh Lookup
  Command to find a particular string of subdomain present on a website using cURL : `curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]  | select(.name_value | contains("dev")) | .name_value' | sort -u`
+
+
+## Fingerprinting Techniques
+![[Pasted image 20250402142713.png]]
+
+**Banner Grabbing** : Command used to perform Banner Grabbing is `curl -I domain.com`
+
+**Wafw00f** :
+- To install it, use this command : `pip3 install git+https://github.com/EnableSecurity/wafw00f`
+- To use it, use this command : `wafw00f inlanefreight.com`
+
+**Nikto** :
+- To install it, use this command : `sudo apt upgrade && sudo apt install -y perl` | `git clone https://ithub.com/sullo/nikto` | `cd nikto/program` | `chmod +x ./nikto.pl`
+- To run fingerprinting modules on it, use this command : `nikto -h inlanefreight.com -Tuning b`
+- 
