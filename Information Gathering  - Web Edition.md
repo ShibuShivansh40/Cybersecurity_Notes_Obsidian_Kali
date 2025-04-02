@@ -61,4 +61,6 @@ Command used for Subdomain Enumeration, using DNSEnum :
 dnsenum --enum inlanefreight.com -f /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -r
 ```
 
+## DNS Zone Transfer
+![[Pasted image 20250402105222.png]]
 
