@@ -64,3 +64,4 @@ dnsenum --enum inlanefreight.com -f /usr/share/seclists/Discovery/DNS/subdomains
 ## DNS Zone Transfer
 ![[Pasted image 20250402105222.png]]
 
+Command to request a Zone Transfer : `dig axfr @nsztm1.digi.ninja zonetransfer.me
