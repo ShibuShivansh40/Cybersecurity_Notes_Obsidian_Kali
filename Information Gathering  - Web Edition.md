@@ -65,3 +65,14 @@ dnsenum --enum inlanefreight.com -f /usr/share/seclists/Discovery/DNS/subdomains
 ![[Pasted image 20250402105222.png]]
 
 Command to request a Zone Transfer : `dig axfr @nsztm1.digi.ninja zonetransfer.me
+
+## Vhost Fuzzing
+![[Pasted image 20250402123511.png]]
+
+Gobuster command to brute-force vhosts : `gobuster vhost -u http://<target_IP_address> -w <wordlist_file> --append-domain`
+
+## CT Logs
+![[Pasted image 20250402131425.png]]
+
+## crt.sh Lookup
+ Command to find a particular string of subdomain present on a website using cURL : `curl -s "https://crt.sh/?q=facebook.com&output=json" | jq -r '.[]  | select(.name_value | contains("dev")) | .name_value' | sort -u`
