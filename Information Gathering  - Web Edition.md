@@ -90,4 +90,19 @@ Gobuster command to brute-force vhosts : `gobuster vhost -u http://<target_IP_ad
 **Nikto** :
 - To install it, use this command : `sudo apt upgrade && sudo apt install -y perl` | `git clone https://ithub.com/sullo/nikto` | `cd nikto/program` | `chmod +x ./nikto.pl`
 - To run fingerprinting modules on it, use this command : `nikto -h inlanefreight.com -Tuning b`
-- 
+
+## Web Crawlies
+
+**Scrapy** - To install : `pip3 install scrapy`
+**ReconSpider** 
+-  To install - `wget -O ReconSpider.zip https://academy.hackthebox.com/storage/modules/144/ReconSpider.v1.2.zip` | `unzip ReconSpider.zip`
+- To use - `python3 ReconSpider.py http://inlanefreight.com`
+
+
+![[Pasted image 20250402165147.png]]
+![[Pasted image 20250402165204.png]]
+![[Pasted image 20250402165220.png]]
+
+## Google Dorking
+![[Pasted image 20250402165307.png]]
+
