@@ -106,3 +106,33 @@ Gobuster command to brute-force vhosts : `gobuster vhost -u http://<target_IP_ad
 ## Google Dorking
 ![[Pasted image 20250402165307.png]]
 
+
+## Reconnaissance Frameworks
+![[Pasted image 20250402180108.png]]
+
+## FinalRecon
+To install it we need this script : 
+```
+git clone https://github.com/thewhiteh4t/FinalRecon.git
+cd FinalRecon
+pip3 install -r requirements.txt
+chmod +x ./finalrecon.py
+./finalrecon.py --help
+```
+
+|   |   |   |
+|---|---|---|
+|`-h`, `--help`||Show the help message and exit.|
+|`--url`|URL|Specify the target URL.|
+|`--headers`||Retrieve header information for the target URL.|
+|`--sslinfo`||Get SSL certificate information for the target URL.|
+|`--whois`||Perform a Whois lookup for the target domain.|
+|`--crawl`||Crawl the target website.|
+|`--dns`||Perform DNS enumeration on the target domain.|
+|`--sub`||Enumerate subdomains for the target domain.|
+|`--dir`||Search for directories on the target website.|
+|`--wayback`||Retrieve Wayback URLs for the target.|
+|`--ps`||Perform a fast port scan on the target.|
+|`--full`||Perform a full reconnaissance scan on the target.|
+To get Header Information and perform a Whois Lookup, the command we use is : `./finalrecon.py --headers --whois --url http://inlanefreight.com`
+
