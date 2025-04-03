@@ -1,4 +1,4 @@
-![[Pasted image 20250328130335.png]]
+ ![[Pasted image 20250328130335.png]]
 
 ## Active Reconnaissance
 ![[Screenshot From 2025-03-28 13-04-30.png]]
@@ -88,7 +88,7 @@ Gobuster command to brute-force vhosts : `gobuster vhost -u http://<target_IP_ad
 - To use it, use this command : `wafw00f inlanefreight.com`
 
 **Nikto** :
-- To install it, use this command : `sudo apt upgrade && sudo apt install -y perl` | `git clone https://ithub.com/sullo/nikto` | `cd nikto/program` | `chmod +x ./nikto.pl`
+- To install it, use this command : `sudo apt upgrade && sudo apt install -y perl` | `git clone https://github.com/sullo/nikto` | `cd nikto/program` | `chmod +x ./nikto.pl`
 - To run fingerprinting modules on it, use this command : `nikto -h inlanefreight.com -Tuning b`
 
 ## Web Crawlies
