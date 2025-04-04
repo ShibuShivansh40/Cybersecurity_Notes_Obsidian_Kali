@@ -15,3 +15,24 @@ In this module, we will only be focusing on introducing SQL injections through l
 
 ## SQLi Discovery
 ![[Pasted image 20250404164115.png]]
+
+## Detect number of columns
+
+Before going ahead and exploiting Union-based queries, we need to find the number of columns selected by the server. There are two methods of detecting the number of columns:
+
+- Using `ORDER BY`
+- Using `UNION`
+
+#### Using ORDER BY
+
+The first way of detecting the number of columns is through the `ORDER BY` function, which we discussed earlier. We have to inject a query that sorts the results by a column we specified, 'i.e., column 1, column 2, and so on', until we get an error saying the column specified does not exist.
+
+For example, we can start with `order by 1`, sort by the first column, and succeed, as the table must have at least one column. Then we will do `order by 2` and then `order by 3` until we reach a number that returns an error, or the page does not show any output, which means that this column number does not exist. The final successful column we successfully sorted by gives us the total number of columns.
+
+If we failed at `order by 4`, this means the table has three columns, which is the number of columns we were able to sort by successfully. Let us go back to our previous example and attempt the same, with the following payload:
+
+```sql
+' order by 1-- -
+```
+
+Reminder: We are adding an extra dash (-) at the end, to show you that there is a space after (--).
