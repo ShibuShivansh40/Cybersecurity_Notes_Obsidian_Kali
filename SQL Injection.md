@@ -36,3 +36,8 @@ If we failed at `order by 4`, this means the table has three columns, which is 
 ```
 
 Reminder: We are adding an extra dash (-) at the end, to show you that there is a space after (--).
+
+
+### SQLi Payloads
+**UNION & ORDER BY** : 
+- 
