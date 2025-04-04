@@ -64,4 +64,7 @@ Defacing Payloads :
 - `document.getElementById("todo").innerHTML = "New Text"`
 - jQuery : `$("#todo").html('New Text');`
 - `document.getElementsByTagName('body')[0].innerHTML = "New Text"`
-- 
+-
+
+
+Hi
