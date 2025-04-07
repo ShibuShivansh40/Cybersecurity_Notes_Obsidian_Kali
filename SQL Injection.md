@@ -72,3 +72,4 @@ If I need to have information about a particular user, then it becomes : `cn' UN
 Used to read data from files.
 Query : `SELECT LOAD_FILE('etc/passwd');`
 Payload : `value' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -`
+
