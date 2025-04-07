@@ -71,4 +71,4 @@ If I need to have information about a particular user, then it becomes : `cn' UN
 ## LOAD_FILE Function
 Used to read data from files.
 Query : `SELECT LOAD_FILE('etc/passwd');`
-Payload : ``
+Payload : `value' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -`
