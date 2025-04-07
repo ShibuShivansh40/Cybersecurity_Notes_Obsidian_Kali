@@ -73,3 +73,5 @@ Used to read data from files.
 Query : `SELECT LOAD_FILE('etc/passwd');`
 Payload : `value' UNION SELECT 1, LOAD_FILE("/etc/passwd"), 3, 4-- -`
 
+## Writing Files
+The [secure_file_priv](https://mariadb.com/kb/en/server-system-variables/#secure_file_priv) variable is used to determine where to read/write files from. An empty value lets us read files from the entire file system. Otherwise, if a certain directory is set, we can only read from the folder specified by the variable. On the other hand, `NULL` means we cannot read/write from any directory. MariaDB has this variable set to empty by default, which lets us read/write to any file if the user has the `FILE` privilege. However, `MySQL` uses `/var/lib/mysql-files` as the default folder. This means that reading files through a `MySQL` injection isn't possible with default settings. Even worse, some modern configurations default to `NULL`, meaning that we cannot read/write files anywhere within the system.
