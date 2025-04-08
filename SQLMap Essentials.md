@@ -43,4 +43,14 @@ When providing data for testing to SQLMap, there has to be either a parameter va
 For GET Request, we need to run the command : `sqlmap --url "https://domain.com"`
 
 For POST Request, we need to run the command : `sqlmap 'http://www.example.com/' --data 'uid=1&name=test`
-> Now here both the parameters `uid` and `name` will be tested, but if we need one of them to be tested then the 
+> Now here both the parameters `uid` and `name` will be tested, but if we need one of them to be tested then it should be like `uid1*&name=test`, so here UID must be tested.
+
+## Full HTTP Request
+Create a file named as `req.txt` and insert the HTTP Request Packet there. And then use the command : `sqlmap -r req.txt`
+
+## Specifying a Cookie 
+- Using a flag `--cookie`  : `sqlmap "http://www.example.com/" --cookie='PHPSESSID=ab4530f4a7d10448457fa8b0eadac29c`
+- Using a flag `-H/--header` : `sqlmap "http://www.example.com/" -H='Cookie:ab4530f4a7d10448457fa8b0eadac29c'`
+
+**Specifying alternative HTTP Method :** `sqlmap -u www.target.com --data='id=1' --method PUT`
+
