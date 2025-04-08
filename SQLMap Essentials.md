@@ -54,3 +54,5 @@ Create a file named as `req.txt` and insert the HTTP Request Packet there. And t
 
 **Specifying alternative HTTP Method :** `sqlmap -u www.target.com --data='id=1' --method PUT`
 
+
+We should also use two flags to extract information : `--batch --dump`
