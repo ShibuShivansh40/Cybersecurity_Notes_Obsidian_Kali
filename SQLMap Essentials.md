@@ -56,3 +56,6 @@ Create a file named as `req.txt` and insert the HTTP Request Packet there. And t
 
 
 We should also use two flags to extract information : `--batch --dump`
+
+`sqlmap -r Case3.txt -p cookie --threads 10 --dump -T flag3 --batch`: In this command , `-p` specifies parameter to be tested, `--dump -T flag2` instructs SQLmap to dump (extract) all data from the table named flag2.
+
