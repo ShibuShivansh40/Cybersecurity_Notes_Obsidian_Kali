@@ -196,3 +196,4 @@ sqlmap -u "http://www.example.com/?id=1&rp=29125" --randomize=rp --batch -v 5 | 
 ```shell-session
 sqlmap -u "http://www.example.com/?id=1&h=c4ca4238a0b923820dcc509a6f75849b" --eval="import hashlib; h=hashlib.md5(id).hexdigest()" --batch -v 5 | grep URI
 ```
+
