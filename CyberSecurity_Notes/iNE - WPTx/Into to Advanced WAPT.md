@@ -1,0 +1,11 @@
+# Web App Penetration Methodology
+![[Pasted image 20250226141813.png]]
+![[Pasted image 20250226142029.png]]
+![[Pasted image 20250226142246.png]]
+![[Pasted image 20250226142349.png]]
+![[Pasted image 20250226142654.png]]
+![[Pasted image 20250226142719.png]]
+![[Pasted image 20250226143025.png]]
+![[Pasted image 20250226143038.png]]
+![[Pasted image 20250226143141.png]]
+![[Pasted image 20250226143314.png]]
