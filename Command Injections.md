@@ -12,4 +12,4 @@
 - Use Tabs - `127.0.0.1%0a%09`
 - Use IFS - `127.0.0.1%0a${IFS}`
 - Using Brace Expansions - `127.0.0.1%0a{ls,-la}`
-- 
+- If `/` is blacklisted then we can use 
