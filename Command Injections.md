@@ -7,3 +7,9 @@
 
 **Check for Blacklisted Characters :**  A web application may have a list of blacklisted characters, and if the command contains them, it would deny the request. 
 
+## Bypassing Blacklisted Characters
+- Spaces - `127.0.0.1%0a whoami
+- Use Tabs - `127.0.0.1%0a%09`
+- Use IFS - `127.0.0.1%0a${IFS}`
+- Using Brace Expansions - `127.0.0.1%0a{ls,-la}`
+- 
