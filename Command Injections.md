@@ -6,3 +6,4 @@
 ![[Pasted image 20250416101227.png]]
 
 **Check for Blacklisted Characters :**  A web application may have a list of blacklisted characters, and if the command contains them, it would deny the request. 
+
