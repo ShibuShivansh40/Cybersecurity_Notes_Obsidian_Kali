@@ -18,3 +18,5 @@ Use Burp Suite, on the front end, add a PNG File and then intercept this request
 We can also remove the checkFile function present in the HTML, that would remove the Client Side Validation.
 
 ## Blacklisting Filters
+**Fuzzing Extensions :**  To know what all files extensions are allowed we can simply use the BurpSuite and put a wordlist for it provided by Seclist.
+![[Pasted image 20250416180959.png]]
