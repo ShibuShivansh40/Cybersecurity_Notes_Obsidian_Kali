@@ -96,12 +96,11 @@ This is usually done by inspecting the first few bytes of the file's content, wh
 **Tip:** Many other image types have non-printable bytes for their file signatures, while a `GIF` image starts with ASCII printable bytes (as shown above), so it is the easiest to imitate. Furthermore, as the string `GIF8` is common between both GIF signatures, it is usually enough to imitate a GIF image.
 
 Let's take a basic example to demonstrate this. The `file` command on Unix systems finds the file type through the MIME type. If we create a basic file with text in it, it would be considered as a text file, as follows:
-
-  Type Filters
-
 ```shell-session
 ShibuShivansh@htb[/htb]$ echo "this is a text file" > text.jpg 
 ShibuShivansh@htb[/htb]$ file text.jpg 
 text.jpg: ASCII text
 ```
+
+Now we just need to write that Magic Bytes according to our needs to make it look like a legit file type even if the extension is not actually whitelisted.
 
