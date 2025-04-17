@@ -134,3 +134,7 @@ To use XXE to read source code in PHP web applications, we can use the following
 
 And once this is uploaded we get the contents of the PHP File as Base64 encoded content and then we could decode that.
 
+
+## DoS
+Furthermore, we can utilize a `Decompression Bomb` with file types that use data compression, like `ZIP` archives. If a web application automatically unzips a ZIP archive, it is possible to upload a malicious archive containing nested ZIP archives within it, which can eventually lead to many Petabytes of data, resulting in a crash on the back-end server.
+
