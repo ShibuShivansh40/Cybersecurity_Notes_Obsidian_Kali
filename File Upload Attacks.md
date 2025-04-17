@@ -30,7 +30,6 @@ if (!preg_match('^.*\.(jpg|jpeg|png|gif)', $fileName)) {
 If a web-server is using Filters like this, then we know here it is using Regex to check for the file type and we can surely trick the server for the file type.
 
 ## Double Extensions
-
 The code only tests whether the file name contains an image extension; a straightforward method of passing the regex test is through `Double Extensions`. For example, if the `.jpg` extension was allowed, we can add it in our uploaded file name and still end our filename with `.php` (e.g. `shell.jpg.php`), in which case we should be able to pass the whitelist test, while still uploading a PHP script that can execute PHP code.
 ![[Pasted image 20250417125619.png]]
 
@@ -38,4 +37,35 @@ And if the Regex Pattern is something like this :
 ```php
 if (!preg_match('/^.*\.(jpg|jpeg|png|gif)$/', $fileName)) { ...SNIP... }
 ```
-Then we need to 
+Then we can't use the above method.
+
+## Character Injection
+We can inject several characters before or after the final extension to cause the web application to misinterpret the filename and execute the uploaded file as a PHP script.
+
+The following are some of the characters we may try injecting:
+
+- `%20`
+- `%0a`
+- `%00`
+- `%0d0a`
+- `/`
+- `.\`
+- `.`
+- `…`
+- `:`
+
+Each character has a specific use case that may trick the web application to misinterpret the file extension. For example, (`shell.php%00.jpg`) works with PHP servers with version `5.X` or earlier, as it causes the PHP web server to end the file name after the (`%00`), and store it as (`shell.php`), while still passing the whitelist. The same may be used with web applications hosted on a Windows server by injecting a colon (`:`) before the allowed file extension (e.g. `shell.aspx:.jpg`), which should also write the file as (`shell.aspx`). Similarly, each of the other characters has a use case that may allow us to upload a PHP script while bypassing the type validation test.
+
+**Custom Wordlist Bash Script**
+```bash
+for char in '%20' '%0a' '%00' '%0d0a' '/' '.\\' '.' '…' ':'; do
+    for ext in '.php' '.phps'; do
+        echo "shell$char$ext.jpg" >> wordlist.txt
+        echo "shell$ext$char.jpg" >> wordlist.txt
+        echo "shell.jpg$char$ext" >> wordlist.txt
+        echo "shell.jpg$ext$char" >> wordlist.txt
+    done
+done
+```
+This will create a custom wordlist and then we can add that into the BurpSuite.
+
