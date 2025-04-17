@@ -1,5 +1,3 @@
-
-
 PHP Reverse Shell Repository : https://github.com/pentestmonkey/php-reverse-shell
 
 > While running the above reverse shell, we need to start the Netcat Listener : `nc -lvnp OUR_PORT`
