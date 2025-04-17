@@ -67,4 +67,41 @@ done
 ```
 This will create a custom wordlist and then we can add that into the BurpSuite.
 
-Hi
+## Type Filters
+
+```php
+$type = $_FILES['uploadFile']['type'];
+
+if (!in_array($type, array('image/jpg', 'image/jpeg', 'image/png', 'image/gif'))) {
+    echo "Only images are allowed";
+    die();
+}
+```
+According to this PHP Code, we can understand that 3 types of Content_Types are allowed :
+- `image/jpg`
+- `image/jpeg`
+- `image/png`
+
+``` bash
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Discovery/Web-Content/web-all-content-types.txt
+cat web-all-content-types.txt | grep 'image/' > image-content-types.txt
+```
+By running these commands, we get a list of all Content-Types and we can brute-force them and check what types of files are actually getting filtered through.
+
+## MIME-Type
+`Multipurpose Internet Mail Extensions (MIME)` is an internet standard that determines the type of a file through its general format and bytes structure.
+
+This is usually done by inspecting the first few bytes of the file's content, which contain the [File Signature](https://en.wikipedia.org/wiki/List_of_file_signatures) or [Magic Bytes](https://web.archive.org/web/20240522030920/https://opensource.apple.com/source/file/file-23/file/magic/magic.mime). For example, if a file starts with (`GIF87a` or `GIF89a`), this indicates that it is a `GIF` image, while a file starting with plaintext is usually considered a `Text` file. If we change the first bytes of any file to the GIF magic bytes, its MIME type would be changed to a GIF image, regardless of its remaining content or extension.
+
+**Tip:** Many other image types have non-printable bytes for their file signatures, while a `GIF` image starts with ASCII printable bytes (as shown above), so it is the easiest to imitate. Furthermore, as the string `GIF8` is common between both GIF signatures, it is usually enough to imitate a GIF image.
+
+Let's take a basic example to demonstrate this. The `file` command on Unix systems finds the file type through the MIME type. If we create a basic file with text in it, it would be considered as a text file, as follows:
+
+  Type Filters
+
+```shell-session
+ShibuShivansh@htb[/htb]$ echo "this is a text file" > text.jpg 
+ShibuShivansh@htb[/htb]$ file text.jpg 
+text.jpg: ASCII text
+```
+
