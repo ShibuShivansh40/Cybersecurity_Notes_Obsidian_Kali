@@ -51,3 +51,9 @@ Check for Open Ports using this command : `ffuf -w ./ports.txt -u http://<given_
 A template engine is software that combines pre-defined templates with dynamically generated data and is often used by web applications to generate dynamic responses. An everyday use case for template engines is a website with shared headers and footers for all pages. A template can dynamically add content but keep the header and footer the same. This avoids duplicate instances of header and footer in different places, reducing complexity and thus enabling better code maintainability. Popular examples of template engines are [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) and [Twig](https://twig.symfony.com/).
 
 ## SSTI - Server Side Template Injection 
+the following test string is commonly used to provoke an error message in a web application vulnerable to SSTI, as it consists of all special characters that have a particular semantic purpose in popular template engines:
+
+`${{<%[%'"}}%\.`
+
+![[Pasted image 20250422180816.png]]
+Check using this Diagram given, if it works then follow Green Arrow else follow Red Arrow.
