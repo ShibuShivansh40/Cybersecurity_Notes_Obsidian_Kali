@@ -45,3 +45,9 @@ If we don't get actual response from the server on exploitation but we receive a
 
 To check for Blind SSRF, just simply start the listener and enter the IP address to the Request and check for error messages, if you see it handling different message differently to gather info regarding the open PORTS.
 
+Check for Open Ports using this command : `ffuf -w ./ports.txt -u http://<given_ip>/index.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "dateserver=http://<localhost_ip>:FUZZ/date=2024-01-01" -fr "Something went wrong"`
+
+## Template Engines
+A template engine is software that combines pre-defined templates with dynamically generated data and is often used by web applications to generate dynamic responses. An everyday use case for template engines is a website with shared headers and footers for all pages. A template can dynamically add content but keep the header and footer the same. This avoids duplicate instances of header and footer in different places, reducing complexity and thus enabling better code maintainability. Popular examples of template engines are [Jinja](https://jinja.palletsprojects.com/en/3.1.x/) and [Twig](https://twig.symfony.com/).
+
+## SSTI - Server Side Template Injection 
