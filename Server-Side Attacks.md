@@ -41,3 +41,7 @@ gopher://dateserver.htb:80/_POST%20/admin.php%20HTTP%2F1.1%0D%0AHost:%20dateserv
 We can use this tool to generate the Gopher URLs : `https://github.com/tarunkant/Gopherus`
 
 ## Blind SSRF
+If we don't get actual response from the server on exploitation but we receive a registered error. 
+
+To check for Blind SSRF, just simply start the listener and enter the IP address to the Request and check for error messages, if you see it handling different message differently to gather info regarding the open PORTS.
+
