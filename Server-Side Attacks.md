@@ -40,3 +40,4 @@ gopher://dateserver.htb:80/_POST%20/admin.php%20HTTP%2F1.1%0D%0AHost:%20dateserv
 
 We can use this tool to generate the Gopher URLs : `https://github.com/tarunkant/Gopherus`
 
+## Blind SSRF
