@@ -119,4 +119,76 @@ An SSI directive has the following syntax:
 	DATE_LOCAL: local server time
 - `<!--#exec cmd="whoami" -->` : Used to execute the given commands
 - `<!--#include virtual="index.html" -->` : Allows the inclusion of files present in the web root directory by specifying that in the `virtual` parameter.
-- 
+
+
+## eXtensible Stylesheet Language Transformation (XSLT) Injection
+- `<xsl:template>`: This element indicates an XSL template. It can contain a `match` attribute that contains a path in the XML document that the template applies to
+- `<xsl:value-of>`: This element extracts the value of the XML node specified in the `select` attribute
+- `<xsl:for-each>`: This element enables looping over all XML nodes specified in the `select` attribute
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<fruits>
+    <fruit>
+        <name>Apple</name>
+        <color>Red</color>
+        <size>Medium</size>
+    </fruit>
+    <fruit>
+        <name>Banana</name>
+        <color>Yellow</color>
+        <size>Medium</size>
+    </fruit>
+    <fruit>
+        <name>Strawberry</name>
+        <color>Red</color>
+        <size>Small</size>
+    </fruit>
+</fruits>
+```
+```xslt
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:template match="/fruits">
+		Here are all the fruits:
+		<xsl:for-each select="fruit">
+			<xsl:value-of select="name"/> (<xsl:value-of select="color"/>)
+		</xsl:for-each>
+	</xsl:template>
+</xsl:stylesheet>
+```
+```
+OUTPUT : 
+Here are all the fruits:
+    Apple (Red)
+    Banana (Yellow)
+    Strawberry (Red)
+```
+
+**Additional XSL Elements :**
+- `<xsl:sort>`: This element specifies how to sort elements in a for loop in the `select` argument. Additionally, a sort order may be specified in the `order` argument
+- `<xsl:if>`: This element can be used to test for conditions on a node. The condition is specified in the `test` argument.`
+```xslt
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	<xsl:template match="/fruits">
+		Here are all fruits of medium size ordered by their color:
+		<xsl:for-each select="fruit">
+			<xsl:sort select="color" order="descending" />
+			<xsl:if test="size = 'Medium'">
+				<xsl:value-of select="name"/> (<xsl:value-of select="color"/>)
+			</xsl:if>
+		</xsl:for-each>
+	</xsl:template>
+</xsl:stylesheet>
+```
+```
+OUTPUT:
+Here are all fruits of medium size ordered by their color:
+	Banana (Yellow)
+	Apple (Red)
+```
+
+
+## Identifying XLST Injection
+If anything provided in the text fields is reflected on the web page itself, we can simply check out XLST
