@@ -95,3 +95,28 @@ This command provides us with a Shell : `python3 sstimap.py -u http://172.17.0.2
 ## Server-Side Includes (SSI) Injection
 Server-Side Includes (SSI) is a technology web applications use to create dynamic content on HTML pages. SSI is supported by many popular web servers such as [Apache](https://httpd.apache.org/docs/current/howto/ssi.html) and [IIS](https://learn.microsoft.com/en-us/iis/configuration/system.webserver/serversideinclude). The use of SSI can often be inferred from the file extension. Typical file extensions include `.shtml`, `.shtm`, and `.stm`. However, web servers can be configured to support SSI directives in arbitrary file extensions. As such, we cannot conclusively conclude whether SSI is used only from the file extension.
 
+## SSI Directives
+
+SSI utilizes `directives` to add dynamically generated content to a static HTML page. These directives consist of the following components:
+
+- `name`: the directive's name
+- `parameter name`: one or more parameters
+- `value`: one or more parameter values
+
+An SSI directive has the following syntax:
+```ssi
+<!--#name param1="value1" param2="value" -->
+```
+
+
+
+- `<!--#printenv -->` : Prints the environment variable
+- `<!--#config errmsg="Error!" -->` : Used to change the SSI configuration of a parameter
+-  `<!--#echo var="DOCUMENT_NAME" var="DATE_LOCAL" -->`: This directive prints the value of any variable given in the var parameter. Multiple variables can be printed by specifying multiple var parameters. For instance, the following variables are supported:
+	DOCUMENT_NAME: the current file's name
+	DOCUMENT_URI: the current file's URI
+	LAST_MODIFIED: timestamp of the last modification of the current file
+	DATE_LOCAL: local server time
+- `<!--#exec cmd="whoami" -->` : Used to execute the given commands
+- `<!--#include virtual="index.html" -->` : Allows the inclusion of files present in the web root directory by specifying that in the `virtual` parameter.
+- 
