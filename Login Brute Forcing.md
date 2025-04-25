@@ -145,3 +145,4 @@ To install the tool : `sudo apt install cupp -y`
 To use this wordlist : `cupp -i`
 We can match the password policy to know what possible passwords could be : `grep -E '^.{6,}$' jane.txt | grep -E '[A-Z]' | grep -E '[a-z]' | grep -E '[0-9]' | grep -E '([!@#$%^&*].*){2,}' > jane-filtered.txt`
 
+	
