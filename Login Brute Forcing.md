@@ -141,3 +141,7 @@ Execute the tool with User's firstname and lastname : `./username-anarchy Jane S
 ## CUPP
 `CUPP` (Common User Passwords Profiler) steps in, a tool designed to create highly personalized password wordlists that leverage the gathered intelligence about your target.
 
+To install the tool : `sudo apt install cupp -y`
+To use this wordlist : `cupp -i`
+We can match the password policy to know what possible passwords could be : `grep -E '^.{6,}$' jane.txt | grep -E '[A-Z]' | grep -E '[a-z]' | grep -E '[0-9]' | grep -E '([!@#$%^&*].*){2,}' > jane-filtered.txt`
+
