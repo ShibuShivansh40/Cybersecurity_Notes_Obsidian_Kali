@@ -93,8 +93,8 @@ Command syntax to be used : `medusa [target_options] [credential_options] -M mod
 |`-f` or `-F`|Fast mode: Stop the attack after the first successful login is found, either on the current host (`-f`) or any host (`-F`).|`medusa -f ...` or `medusa -F ...`|
 |`-n PORT`|Port: Specify a non-default port for the target service.|`medusa -n 2222 ...`|
 |`-v LEVEL`|Verbose output: Display detailed information about the attack's progress. The higher the `LEVEL` (up to 6), the more verbose the output.|`medusa -v 4 ...`|
+## Medusa Module
 
-## Medusa Modules
 |Medusa Module|Service/Protocol|Description|Usage Example|
 |---|---|---|---|
 |FTP|File Transfer Protocol|Brute-forcing FTP login credentials, used for file transfers over a network.|`medusa -M ftp -h 192.168.1.100 -u admin -P passwords.txt`|
@@ -125,3 +125,19 @@ To download file from FTP Server use the command : `get flag.txt`
 ### Expanding the Attack Surface
 To list all services and and open ports : `ntestat -tulpn | grep LISTEN`
 For further recon, we can use : `nmap localhost`
+
+## Username Anarchy - Custom Wordlists
+`./username-anarchy -l` : List Username Anarchy
+
+To install Username Anarchy : 
+``` bash
+sudo apt install ruby -y
+git clone https://github.com/urbanadventurer/username-anarchy.git
+cd username-anarchy
+```
+
+Execute the tool with User's firstname and lastname : `./username-anarchy Jane Smith > jane_smith_usernames.txt`
+
+## CUPP
+`CUPP` (Common User Passwords Profiler) steps in, a tool designed to create highly personalized password wordlists that leverage the gathered intelligence about your target.
+
