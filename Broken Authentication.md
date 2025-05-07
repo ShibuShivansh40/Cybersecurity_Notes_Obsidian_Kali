@@ -72,3 +72,6 @@ ShibuShivansh@htb[/htb]$ ffuf -w ./custom_wordlist.txt -u http://172.17.0.2/inde
     * FUZZ: Buttercup1
 ```
 
+## Identifying Weak Reset Tokens
+![[Pasted image 20250507165405.png]]
+
