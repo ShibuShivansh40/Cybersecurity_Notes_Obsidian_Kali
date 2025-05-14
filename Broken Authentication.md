@@ -115,5 +115,4 @@ ffuf -w ./city_wordlist.txt -u http://pwreset.htb/security_question.php -X POST 
 ## Direct Access
 As we can see, the entire admin page is contained in the response body. However, if we attempt to access the page in our web browser, the browser follows the redirect and displays the login prompt instead of the protected admin page. We can easily trick the browser into displaying the admin page by intercepting the response and changing the status code from `302` to `200`. To do this, enable `Intercept` in Burp. Afterward, browse to the `/admin.php` endpoint in the web browser. Next, right-click on the request and select `Do intercept > Response to this request` to intercept the response.
 ![[Pasted image 20250514160146.png]]
-
-Intrude the Request Live and then use the above option to capture 
+Intrude the Request Live and then use the above option to capture the middle request.
