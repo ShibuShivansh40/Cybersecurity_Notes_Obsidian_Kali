@@ -124,3 +124,8 @@ Thus, we can assume that the parameter `user_id` is related to authentication.
 Based on the parameter name `user_id`, we can infer that the parameter specifies the ID of the user accessing the page. If we can guess or brute-force the user ID of an administrator, we might be able to access the page with administrative privileges, thus revealing the admin information. We can use the techniques discussed in the `Brute-Force Attacks` sections to obtain an administrator ID. Afterwards, we can obtain administrative privileges by specifying the admin's user ID in the `user_id` parameter.
 
 ## Attacking Session Tokens
+Decoding a Base64 Encoded Token : `echo -n dXNlcj1odGItc3RkbnQ7cm9sZT11c2Vy | base64 -d `
+Encoding as a Base 64 Token : `echo -n 'user=htb-stdnt;role=admin' | base64`
+
+To encode the string as a Hex String we can do : `echo -n 'string' | xxd -p`
+
