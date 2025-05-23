@@ -118,3 +118,9 @@ As we can see, the entire admin page is contained in the response body. However,
 Intrude the Request Live and then use the above option to capture the middle request.
 
 ## Authentication Bypass via Parameter Modification
+Let us take a look at our target web application. This time, we are provided with credentials for the user `htb-stdnt`. After logging in, we are redirected to `/admin.php?user_id=183`:![[Pasted image 20250523111013.png]]
+Thus, we can assume that the parameter `user_id` is related to authentication. We can bypass authentication entirely by accessing the URL `/admin.php?user_id=183` directly:
+![image](https://academy.hackthebox.com/storage/modules/269/bypass/bypass_param_4.png)
+Based on the parameter name `user_id`, we can infer that the parameter specifies the ID of the user accessing the page. If we can guess or brute-force the user ID of an administrator, we might be able to access the page with administrative privileges, thus revealing the admin information. We can use the techniques discussed in the `Brute-Force Attacks` sections to obtain an administrator ID. Afterwards, we can obtain administrative privileges by specifying the admin's user ID in the `user_id` parameter.
+
+## Attacking Session Tokens
