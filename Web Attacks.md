@@ -206,3 +206,52 @@ If this is the case, and we can calculate the API parameters for other users, th
 In IDORs, always check for the Requests and for the encoded values and try to get the feasible data out from it and then use that feasible data to gather more information by using IDOR vulnerability.
 
 
+## XXE - XML External Entity (XXE) Injection
+
+XML documents are formed of element trees, where each element is essentially denoted by a `tag`, and the first element is called the `root element`, while other elements are `child elements`.
+
+![[Pasted image 20250530115537.png]]
+
+## XML DTD
+
+`XML Document Type Definition (DTD)` allows the validation of an XML document against a pre-defined document structure. The pre-defined document structure can be defined in the document itself or in an external file. The following is an example DTD for the XML document we saw earlier:
+
+Code: xml
+
+```xml
+<!DOCTYPE email [
+  <!ELEMENT email (date, time, sender, recipients, body)>
+  <!ELEMENT recipients (to, cc?)>
+  <!ELEMENT cc (to*)>
+  <!ELEMENT date (#PCDATA)>
+  <!ELEMENT time (#PCDATA)>
+  <!ELEMENT sender (#PCDATA)>
+  <!ELEMENT to  (#PCDATA)>
+  <!ELEMENT body (#PCDATA)>
+]>
+```
+
+## XML Entities
+
+We may also define custom entities (i.e. XML variables) in XML DTDs, to allow refactoring of variables and reduce repetitive data. This can be done with the use of the `ENTITY` keyword, which is followed by the entity name and its value, as follows:
+
+Code: xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE email [
+  <!ENTITY company "Inlane Freight">
+]>
+```
+
+Once we define an entity, it can be referenced in an XML document between an ampersand `&` and a semi-colon `;` (e.g. `&company;`). Whenever an entity is referenced, it will be replaced with its value by the XML parser. Most interestingly, however, we can `reference External XML Entities` with the `SYSTEM` keyword, which is followed by the external entity's path, as follows:
+
+Code: xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE email [
+  <!ENTITY company SYSTEM "http://localhost/company.txt">
+  <!ENTITY signature SYSTEM "file:///var/www/html/signature.txt">
+]>
+```
