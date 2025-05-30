@@ -6,7 +6,7 @@
 ![[Screenshot 2025-03-05 182543.png]]
 ![[Screenshot 2025-03-05 182644.png]]
 
-First, we need to start capturing the packets that contain IVs : `airodump-ng --bssid <SSID> --channel <number> --write <filename> mono0`
+First, we need to start capturing the packets that contain IVs : `airodump-ng --bssid <SSID> --channel <number> --write <filename> mon0`
 Then we need to analyze them and crack the key : `aircrack-ng <filename>.cap`
 
 A key will be provided to us which will help us in connecting the WiFi.
