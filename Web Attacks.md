@@ -201,3 +201,8 @@ The second user may not have all of these API parameters to replicate the call a
 If this is the case, and we can calculate the API parameters for other users, this would be an IDOR vulnerability. Even if we could not calculate the API parameters for other users, we would still have identified a vulnerability in the back-end access control system and may start looking for other object references to exploit.
 
 
+## Bypassing Encoded References
+
+In IDORs, always check for the Requests and for the encoded values and try to get the feasible data out from it and then use that feasible data to gather more information by using IDOR vulnerability.
+
+
