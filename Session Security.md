@@ -52,3 +52,43 @@ If, for example, a session-related parameter is included in the URL (and not on 
 
 All the attacker has to do is craft a URL and lure the victim into visiting it. If the victim does so, the web application will then assign this session identifier to the victim.
 
+## PHP
+Let us look at where PHP session identifiers are usually stored.
+
+The entry `session.save_path` in `PHP.ini` specifies where session data will be stored.
+
+  Obtaining Session Identifiers without User Interaction
+
+```shell-session
+ShibuShivansh@htb[/htb]$ locate php.ini
+ShibuShivansh@htb[/htb]$ cat /etc/php/7.4/cli/php.ini | grep 'session.save_path'
+ShibuShivansh@htb[/htb]$ cat /etc/php/7.4/apache2/php.ini | grep 'session.save_path'
+ShibuShivansh@htb[/htb]$ ls /var/lib/php/sessions
+ShibuShivansh@htb[/htb]$ cat //var/lib/php/sessions/sess_s6kitq8d3071rmlvbfitpim9mm
+
+```
+
+### Java
+
+Now, let us look at where Java session identifiers are stored.
+
+According to the Apache Software Foundation:
+
+"The `Manager` element represents the _session manager_ that is used to create and maintain HTTP sessions of a web application.
+
+Tomcat provides two standard implementations of `Manager`. The default implementation stores active sessions, while the optional one stores active sessions that have been swapped out (in addition to saving sessions across a server restart) in a storage location that is selected via the use of an appropriate `Store` nested element. The filename of the default session data file is `SESSIONS.ser`."
+
+You can find more information [here](http://tomcat.apache.org/tomcat-6.0-doc/config/manager.html).
+
+### .NET
+
+Finally, let us look at where .NET session identifiers are stored.
+
+Session data can be found in:
+
+- The application worker process (aspnet_wp.exe) - This is the case in the _InProc Session mode_
+- StateServer (A Windows Service residing on IIS or a separate server) - This is the case in the _OutProc Session mode_
+- An SQL Server
+
+Please refer to the following resource for more in-depth details: [Introduction To ASP.NET Sessions](https://www.c-sharpcorner.com/UploadFile/225740/introduction-of-session-in-Asp-Net/)
+
