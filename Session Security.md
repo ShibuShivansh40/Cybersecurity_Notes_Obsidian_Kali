@@ -92,4 +92,12 @@ Session data can be found in:
 
 Please refer to the following resource for more in-depth details: [Introduction To ASP.NET Sessions](https://www.c-sharpcorner.com/UploadFile/225740/introduction-of-session-in-Asp-Net/)
 
+## XSS
+In this module, we'll be using some basic XSS Payloads to trigger functionalities in the Website like : 
+```
+"><img src=x onerror=prompt(document.domain)>
+"><img src=x onerror=confirm(1)>
+"><img src=x onerror=alert(1)>
+```
 
+Check these payloads by entering into the field directly, and if they get triggered, check within the Developer Tools, that if HTTPOnly if "off" or not.
