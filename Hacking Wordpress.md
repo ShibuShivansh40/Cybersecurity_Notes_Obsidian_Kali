@@ -25,3 +25,7 @@ Here html2text is the tool that converts HTML output to a nice readable format.
 2. The second method requires interaction with the `JSON` endpoint, which allows us to obtain a list of users. This was changed in WordPress core after version 4.7.1, and later versions only show whether a user is configured or not. Before this release, all users who had published a post were shown by default.
 	**JSON Endpoint** : `curl http://blog.inlanefreight.com/wp-json/wp/v2/users | jq`
 
+
+## Login
+Once we are armed with a list of valid users, we can mount a password brute-forcing attack to attempt to gain access to the WordPress backend. This attack can be performed via the login page or the `xmlrpc.php` page.
+
