@@ -36,3 +36,7 @@ The command to use the WPScan Enumeration : `wpscan --url http://ip:port --enume
 
 API Token for WpScan : 4c8SSanMPgBTRC2hU15g5yFYmQOtzeFqKJECshNg4OU
 
+## Attacking WP Users
+### Bruteforce - XMLRPC
+The command to use is : `wpscan --password-attack xmlrpc -t 20 -U admin, david -P passwords.txt --url http://blog.inlanefreight.com`
+
