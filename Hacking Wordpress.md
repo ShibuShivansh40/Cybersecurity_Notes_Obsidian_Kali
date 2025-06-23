@@ -29,3 +29,5 @@ Here html2text is the tool that converts HTML output to a nice readable format.
 ## Login
 Once we are armed with a list of valid users, we can mount a password brute-forcing attack to attempt to gain access to the WordPress backend. This attack can be performed via the login page or the `xmlrpc.php` page.
 
+To find Method Calls Available, we can use the command : `curl -X POST -d "<methodCall><methodName>system.listMethods</methodName><params></params></methodCall>" http://94.237.59.174:31080/xmlrpc.php`
+
