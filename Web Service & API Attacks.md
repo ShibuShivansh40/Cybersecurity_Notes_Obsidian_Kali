@@ -14,7 +14,27 @@ If  this file exists and if we can't directly cURL it, so we can try to fuzz par
 
 ## Information Disclosure
 ```shell-session
-ffuf -w "/home/htb-acxxxxx/Desktop/Useful Repos/SecLists/Discovery/Web-Content/burp-parameter-names.txt" -u 'http://<TARGET IP>:3003/?FUZZ=test_value'
+ffuf -w "/home/htb-acxxxxx/Desktop/Useful Repos/SecLists/Discovery/Web-Content/burp-parameter-names.txt" -u 'http://<TARGET IP>:3003/?FUZZ=test_value' -fs 19
 ```
 This is the command to search for the parameters used by the Website.
+
+Brute-forcing API Requests using the Python Code : 
+```python
+import requests, sys
+
+def brute():
+    try:
+        value = range(10000)
+        for val in value:
+            url = sys.argv[1]
+            r = requests.get(url + '/?id='+str(val))
+            if "position" in r.text:
+                print("Number found!", val)
+                print(r.text)
+    except IndexError:
+        print("Enter a URL E.g.: http://<TARGET IP>:3003/")
+
+brute()
+```
+
 
