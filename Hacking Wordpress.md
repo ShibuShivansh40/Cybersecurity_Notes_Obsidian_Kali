@@ -20,3 +20,8 @@ curl -s -X GET http://blog.inlanefreight.com/wp-content/plugins/mail-masta/ | ht
 Here html2text is the tool that converts HTML output to a nice readable format.
 
 ## User Enumeration
+1. Check for the blogs or posts, where we could get parameters like ID, Usernames etc, so that we could enumerate them and check for other users too. The website URL would look like this : `http://blog.inlanefreight.com/?author=1`
+
+2. The second method requires interaction with the `JSON` endpoint, which allows us to obtain a list of users. This was changed in WordPress core after version 4.7.1, and later versions only show whether a user is configured or not. Before this release, all users who had published a post were shown by default.
+	**JSON Endpoint** : `curl http://blog.inlanefreight.com/wp-json/wp/v2/users | jq`
+
