@@ -10,3 +10,11 @@ To search for the WSDL File we can take the help of Dirb using the command : `di
 If  this file exists and if we can't directly cURL it, so we can try to fuzz parameters into it using the command : `ffuf -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -u 'http://<TARGET IP>:3002/wsdl?FUZZ' -fs 0 -mc 200`
 
 > **Note**: WSDL files can be found in many forms, such as `/example.wsdl`, `?wsdl`, `/example.disco`, `?disco` etc. [DISCO](https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/february/xml-files-publishing-and-discovering-web-services-with-disco-and-uddi) is a Microsoft technology for publishing and discovering Web Services.
+
+
+## Information Disclosure
+```shell-session
+ffuf -w "/home/htb-acxxxxx/Desktop/Useful Repos/SecLists/Discovery/Web-Content/burp-parameter-names.txt" -u 'http://<TARGET IP>:3003/?FUZZ=test_value'
+```
+This is the command to search for the parameters used by the Website.
+
