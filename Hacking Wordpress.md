@@ -31,3 +31,8 @@ Once we are armed with a list of valid users, we can mount a password brute-forc
 
 To find Method Calls Available, we can use the command : `curl -X POST -d "<methodCall><methodName>system.listMethods</methodName><params></params></methodCall>" http://94.237.59.174:31080/xmlrpc.php`
 
+## WPScan Enumeration
+The command to use the WPScan Enumeration : `wpscan --url http://ip:port --enumerate --api-token <api-token>`
+
+API Token for WpScan : 4c8SSanMPgBTRC2hU15g5yFYmQOtzeFqKJECshNg4OU
+
