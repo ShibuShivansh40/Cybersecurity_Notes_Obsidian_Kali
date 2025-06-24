@@ -25,4 +25,5 @@
 
 ## MySQL
 1. `mysql -h <ip-address> -u root` - To connect as `root` to the MySQL Database 
-2. 
+2. `mysql -h 10.129.127.2 -u root --skip_ssl  ` - This skips the SSL Configuration which is used for old server versions.
+3. 
