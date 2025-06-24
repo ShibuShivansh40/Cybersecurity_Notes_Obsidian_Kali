@@ -37,3 +37,5 @@
 
 ## John The Ripper
 1. `john filename.txt` - To crack the Hash 
+
+# Evil-Enmr
