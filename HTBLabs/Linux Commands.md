@@ -38,4 +38,6 @@
 ## John The Ripper
 1. `john filename.txt` - To crack the Hash 
 
-# Evil-Enmr
+# WinRM
+1. `evil-winrm -i 10.129.136.91 -u administrator -p badminton` - To connect to WinRM
+2. 
