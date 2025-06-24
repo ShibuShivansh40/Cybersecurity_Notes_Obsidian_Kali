@@ -26,4 +26,8 @@
 ## MySQL
 1. `mysql -h <ip-address> -u root` - To connect as `root` to the MySQL Database 
 2. `mysql -h 10.129.127.2 -u root --skip_ssl  ` - This skips the SSL Configuration which is used for old server versions.
-3. 
+
+
+## Gobuster
+1. `gobuster dir -u 10.129.1.15 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -x php` - To perform Directory Brute-force with an extension `php`
+2. 
