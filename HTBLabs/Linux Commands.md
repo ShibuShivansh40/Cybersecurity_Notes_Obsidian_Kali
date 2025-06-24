@@ -30,4 +30,7 @@
 
 ## Gobuster
 1. `gobuster dir -u 10.129.1.15 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -x php` - To perform Directory Brute-force with an extension `php`
-2. 
+
+
+## Responder 
+1. `responder -I <ip-address> --interface eth0`
