@@ -34,3 +34,6 @@
 
 ## Responder 
 1. `responder -I <ip-address> --interface eth0`
+
+## John The Ripper
+1. `john filename.txt` - To crack the Hash 
