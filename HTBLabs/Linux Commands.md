@@ -18,4 +18,6 @@
 2. `ip-address> info server` - To get information regarding the connected Redis Server
 3. `ip-address> info keyspace` - To know about the number of keys present int he database.
 4. `ip-address> keys *` - To get all the keys present in the database.
+5. `ip-address> get <key-name>` - Prints the content of that Key
+
 
