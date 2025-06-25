@@ -40,4 +40,4 @@
 
 # WinRM
 1. `evil-winrm -i 10.129.136.91 -u administrator -p badminton` - To connect to WinRM
-2. 
+
