@@ -7,7 +7,8 @@
 4. `smb: \> help` - To know about the commands we can use
 	![[Pasted image 20250624160909.png]]
 5. `smb: \> cd dir` - To change the directory
-
+6. `smbclient -N -L` - To list SMB Shares. The shares must be printed after a `$`
+7. 
 
 ## NMAP
 1. `nmap -T5 -sV 10.129.235.9` - To perform Service Enumeration 
