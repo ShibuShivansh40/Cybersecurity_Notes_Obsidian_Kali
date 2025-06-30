@@ -196,7 +196,6 @@ Te: trailers
 - I just tried to check every packet coming and found that the last packet was having a `GET /api/product/1/price` header then I tried to make changes with Request Method and foud that only `GET` & `PATCH` were allowed. I then tried to manipulate the package and made several changes and hampered the price making it into `0$` and hence bought the jacket easily.
 	![[Screenshot 2025-02-14 164045.png]]
 
-
 ### Lab : Exploiting a Mass Assignment Vulnerability
 Objective : 
 - Just found out that there was a discount field present, tried to change the field to 100 and got the lab solved.
@@ -276,6 +275,8 @@ If you're able to override the original parameter, you may be able to conduct an
 Objective : To solve the lab, log in as the `administrator` and delete `carlos`.
 
 
+
+
 # InsiderPHD - Everything API Hacking
 
 ## Finding Your First Bug
@@ -343,5 +344,3 @@ Video Link : https://youtu.be/aQGbYfalRTA?si=nNWDipSGuNNT7jlM
 ![[Pasted image 20250225161427.png]]
 ![[Pasted image 20250225161459.png]]
 ![[Pasted image 20250225161511.png]]
-
-## Finding Your First Bug : Manual IDOR Hunting
