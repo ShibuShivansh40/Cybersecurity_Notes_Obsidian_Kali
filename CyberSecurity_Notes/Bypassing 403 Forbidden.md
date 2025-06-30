@@ -7,5 +7,8 @@ For example, if the server is using a blacklist technique to bypass the String w
 For example in the above image, there is a 403 Forbidden Error because of Access Permissions. Now here we can see that the endpoints becomes `/v2/users/<integer>`. Things we can try now :
 1. Try changing the Integer Value and try to bypass something if possible.
 2. Try to back in the directory like to `/v2/users/` only, and check for the Server's behaviour
-3. Try to Change the V
+3. Try to Change the Version Number from 2 to 1 or 1.1 or 1.112 like that. This can be checked using WayBackURLs or Github Source Codes, to know which version might the site be working for.
+
+![[Pasted image 20250630155608.png]]
+Now, here what we can see is that, we're getting Forbidden because we're unable to bypass the 403, then we'll try to URL Encode the last alphabet of the endpoint, add a `/` by adding `%2f` and we can also double encode it by doing : `%252f`
 
