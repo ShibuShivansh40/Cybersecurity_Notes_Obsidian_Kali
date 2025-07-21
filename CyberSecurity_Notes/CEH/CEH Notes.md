@@ -545,7 +545,7 @@ The next step is to perform SMTP enumeration. SMTP enumeration is performed to o
 
 The Simple Mail Transfer Protocol (SMTP) is an internet standard based communication protocol for electronic mail transmission. Mail systems commonly use SMTP with POP3 and IMAP, which enable users to save messages in the server mailbox and download them from the server when necessary. SMTP uses mail exchange (MX) servers to direct mail via DNS. It runs on TCP port 25, 2525, or 587.
 
-##### Perform STP Enumeration using Nmap
+##### Perform SMTP Enumeration using Nmap
 `nmap -p 25 --script=smtp-enum-users [Target_IP_Address]` : displays a list of all the possible mail users on the target machine. {**-p**: specifies the port, and **–script**: argument is used to run a given script (here, the script is **smtp-enum-users**)}
 ![[Pasted image 20241126210302.png]]
 
