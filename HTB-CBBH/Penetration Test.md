@@ -7,7 +7,7 @@ For Recon :
 	sort -u recon.txt > final-subs.txt
 	cat final-subs.txt | httpx -status-code -title -tech-detect -silent > live-subs.txt
 	```
-
+[ ] - Check for `robots.txt` and `sitemap.xml` for subdomains and directories
 [ ] - Checking for Secrets in JS FIles
 	1. Download all the JS Files present.
 	2. Use the command to grep the secrets, keys and tokens : 		```
@@ -24,4 +24,8 @@ For Recon :
 	[ ] - **Spoofing the Referer header** (`Referer: example.com/allowed-page`)
 
 [ ] - Check for the parameter named `redirect` that is used to redirect the site to the internal sites and then try to pollute it like : `https://app.target.com/login?redirect=dashboard&redirect=https://evil.com`
-
+[ ] - Required payloads to be tried once : 
+	```curl https://target.com/config/settings_dev.json
+	curl https://target.com/.env
+	curl https://target.com/.git/config```
+[ ] - 
