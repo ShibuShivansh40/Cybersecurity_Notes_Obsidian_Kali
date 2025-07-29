@@ -11,7 +11,7 @@ For Recon :
 	2. Use the command to grep the secrets, keys and tokens : 		```
 		cat js_files.txt | while read url; do curl -s $url >> all_javascript_dump.txt; done  
 		grep -iE "apikey|token|secret|authorization|bearer" all_javascript_dump.txt```
-[ ] - Bruteforce checking all JS Files : `ffuf -w common.txt -u https://target.com/assets/js/FUZZ`
+[ ] - Bruteforce checking all JiS Files : `ffuf -w common.txt -u https://target.com/assets/js/FUZZ`
 [ ] - Always check User Agent for for Logs, it may give RFi
 [ ] - Checking for 403 Forbidden : 
 	[ ] - **Adding headers** (like `X-Forwarded-For`, `X-Originating-IP`)
@@ -24,4 +24,7 @@ For Recon :
 	```curl https://target.com/config/settings_dev.json
 	curl https://target.com/.env
 	curl https://target.com/.git/config```
-[ ] - Check for the Technology used in the website. If
+[ ] - Check for the Technology used in the website. If it's Wordpress then : 
+	[ ]  -Try using a wp-scan with the API Key to get a full report.
+	[ ] - Check the notes in INE-WAPT -> CMS Security Testing
+	[ ] - 
