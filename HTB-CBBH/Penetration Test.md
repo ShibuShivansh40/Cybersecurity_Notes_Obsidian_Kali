@@ -23,3 +23,5 @@ For Recon :
 	[ ] - **Appending a dot (**`**.**`**) or a slash (**`**/**`**) at the end**
 	[ ] - **Spoofing the Referer header** (`Referer: example.com/allowed-page`)
 
+[ ] - Check for the parameter named `redirect` that is used to redirect the site to the internal sites and then try to pollute it like : `https://app.target.com/login?redirect=dashboard&redirect=https://evil.com`
+
