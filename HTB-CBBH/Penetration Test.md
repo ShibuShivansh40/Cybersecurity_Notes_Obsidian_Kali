@@ -17,8 +17,9 @@ For Recon :
 [ ] - Bruteforce checking all JS Files : `ffuf -w common.txt -u https://target.com/assets/js/FUZZ`
 [ ] - Always check User Agent for for Logs, it may give RFi
 [ ] - Checking for 403 Forbidden : 
-	- **Adding headers** (like `X-Forwarded-For`, `X-Originating-IP`)
-	- **Trying HTTP methods** (`GET`, `POST`, `HEAD`, `OPTIONS`)
-	- **Using URL encoding tricks** (`%2e`, `%2f`, etc.)
-	- **Appending a dot (**`**.**`**) or a slash (**`**/**`**) at the end**
-	- **Spoofing the Referer header** (`Referer: example.com/allowed-page`)
+	[ ] - **Adding headers** (like `X-Forwarded-For`, `X-Originating-IP`)
+	[ ] - **Trying HTTP methods** (`GET`, `POST`, `HEAD`, `OPTIONS`)
+	[ ] - **Using URL encoding tricks** (`%2e`, `%2f`, etc.)
+	[ ] - **Appending a dot (**`**.**`**) or a slash (**`**/**`**) at the end**
+	[ ] - **Spoofing the Referer header** (`Referer: example.com/allowed-page`)
+
