@@ -1,12 +1,10 @@
 For Recon : 
 [ ] - Use this command under a folder named as Target
-	```
-	assetfinder --subs-only target.com >> recon.txt  
+	```assetfinder --subs-only target.com >> recon.txt  
 	subfinder -d target.com -silent >> recon.txt  
 	amass enum -passive -d target.com >> recon.txt  
 	sort -u recon.txt > final-subs.txt
-	cat final-subs.txt | httpx -status-code -title -tech-detect -silent > live-subs.txt
-	```
+	cat final-subs.txt | httpx -status-code -title -tech-detect -silent > live-subs.txt```
 [ ] - Check for `robots.txt` and `sitemap.xml` for subdomains and directories
 [ ] - Checking for Secrets in JS FIles
 	1. Download all the JS Files present.
