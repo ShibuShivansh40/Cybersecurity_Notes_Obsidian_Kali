@@ -1,3 +1,4 @@
+✓ ✗ ✔ ✘ ✅
 For Recon : 
 [ ] - Use this command under a folder named as Target
 	```assetfinder --subs-only target.com >> recon.txt  
