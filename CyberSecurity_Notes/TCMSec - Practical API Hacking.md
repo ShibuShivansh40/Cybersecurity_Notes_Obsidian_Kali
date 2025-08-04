@@ -72,7 +72,7 @@ Now to get the Authorization Token as  a Response, in the video he used : `curl 
 
 Now to use Hashcat to get the Secret Key for the JWT Token, we can brute-force it : `hashcat -a 0 -m 16500 <JWT_Token> <wordlist> --show`  | `-a` : for dictionary attack | `-m` : for mode selection (for JWT it is 16500)
 
-hashcat -a 0 -m 16500 eyJraWQiOiI0NmEwOTM2My1kNjgzLTQyYTMtOWJlNy1mMTkyYmY3NjMxMzQiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc0MTM1NDgwNywic3ViIjoid2llbmVyIn0.6WUABGuPj6mmjCXbTt6QkcouH9teq1I-lmpFvJFKLzs --show
+`hashcat -a 0 -m 16500 eyJraWQiOiI0NmEwOTM2My1kNjgzLTQyYTMtOWJlNy1mMTkyYmY3NjMxMzQiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJwb3J0c3dpZ2dlciIsImV4cCI6MTc0MTM1NDgwNywic3ViIjoid2llbmVyIn0.6WUABGuPj6mmjCXbTt6QkcouH9teq1I-lmpFvJFKLzs --show`
 
 After getting the Secret Key as the result, we'll try to make changes in the Header/Payload of the Token and try to tamper the requests.
 
