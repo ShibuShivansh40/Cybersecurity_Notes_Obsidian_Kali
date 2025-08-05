@@ -12,3 +12,17 @@ Block common and previously breached passwords
 - Other top password lists are available but there is no guarantee as to how updated they are:
     - [Various password lists](https://github.com/danielmiessler/SecLists/tree/master/Passwords) hosted by SecLists from Daniel Miessler.
     - Static copy of the top 100,000 passwords from "Have I Been Pwned" hosted by NCSC in [text](https://www.ncsc.gov.uk/static-assets/documents/PwnedPasswordsTop100k.txt) and [JSON](https://www.ncsc.gov.uk/static-assets/documents/PwnedPasswordsTop100k.json) format.
+
+#### Authentication Responses[¶](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html#authentication-responses "Permanent link")
+Using any of the authentication mechanisms (login, password reset, or password recovery), an application must respond with a generic error message regardless of whether:
+
+- The user ID or password was incorrect.
+- The account does not exist.
+- The account is locked or disabled.
+
+The account registration feature should also be taken into consideration, and the same approach of a generic error message can be applied regarding the case in which the user exists.
+
+The objective is to prevent the creation of a [discrepancy factor](https://cwe.mitre.org/data/definitions/204.html), allowing an attacker to mount a user enumeration action against the application.
+
+It is interesting to note that the business logic itself can bring a discrepancy factor related to the processing time taken. Indeed, depending on the implementation, the processing time can be significantly different according to the case (success vs failure) allowing an attacker to mount a [time-based attack](https://en.wikipedia.org/wiki/Timing_attack) (delta of some seconds for example).
+
