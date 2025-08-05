@@ -137,17 +137,12 @@ Use OWASP Testing Guide:
 ## 📺 8. **Must-Watch Talks / Videos**
 
 - 🔑 **"OAuth 2.0 Security" by Aaron Parecki** (YouTube)
-    
-- 🧪 **Bug Bounty Reports with Auth Bypass: LiveOverflow / Stök / InsiderPhD**
-    
-- 💬 DEFCON / BlackHat Talks:
-    
-    - _Exploiting Authentication in OAuth_
-        
-    - _Hacking SSO & Identity Providers_
-        
 
----
+- 🧪 **Bug Bounty Reports with Auth Bypass: LiveOverflow / Stök / InsiderPhD**
+
+- 💬 DEFCON / BlackHat Talks:
+    - _Exploiting Authentication in OAuth_
+    - _Hacking SSO & Identity Providers_
 
 ## 🧠 9. **Advanced Topics (Optional but Worthwhile)**
 
@@ -155,8 +150,6 @@ Use OWASP Testing Guide:
 - Passwordless Auth (WebAuthn, Passkeys)
 - Hardware Token Attacks (Yubikey, OTP replays)
 - Cloud IAM Misconfigurations (AWS Cognito, Azure AD)
-
----
 
 ## 🚀 10. **Final Tips for Real-World Testing**
 
