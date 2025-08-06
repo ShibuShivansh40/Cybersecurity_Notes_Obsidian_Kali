@@ -1,0 +1,15 @@
+{
+	"nodes":[
+		{"id":"0be3e49c89ab0cde","type":"text","text":"RECON","x":20,"y":-240,"width":120,"height":50,"color":"1"},
+		{"id":"1a7d377f0aabb11c","type":"text","text":"```\nassetfinder --subs-only target.com >> recon.txt  \nsubfinder -d target.com -silent >> recon.txt  \namass enum -passive -d target.com >> recon.txt  \nsort -u recon.txt > final-subs.txt\ncat final-subs.txt | httpx -status-code -title -tech-detect -silent > live-subs.txt","x":-400,"y":-100,"width":960,"height":200},
+		{"id":"9c3b809fd4d14084","type":"text","text":"WEB-APPLICATION","x":420,"y":-600,"width":240,"height":60},
+		{"id":"284b8faa3044ecaf","type":"text","text":"Check for `robots.txt` and `sitemap.xml` for subdomains and directories","x":800,"y":-340,"width":480,"height":100},
+		{"id":"53ea1afd49059c02","x":695,"y":-14,"width":250,"height":60,"type":"text","text":""}
+	],
+	"edges":[
+		{"id":"71f36802204b6844","fromNode":"0be3e49c89ab0cde","fromSide":"bottom","toNode":"1a7d377f0aabb11c","toSide":"top"},
+		{"id":"1a2c3ec86edc5279","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"0be3e49c89ab0cde","toSide":"top"},
+		{"id":"b14ec4f6544a707e","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"284b8faa3044ecaf","toSide":"left"},
+		{"id":"18fd513cfb04afbe","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"53ea1afd49059c02","toSide":"top"}
+	]
+}
