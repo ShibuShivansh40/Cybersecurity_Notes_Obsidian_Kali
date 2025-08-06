@@ -38,3 +38,5 @@ While OpenId has taken most of the consumer market, SAML is often the choice for
 
 In the past few years, applications like SAP ERP and SharePoint (SharePoint by using Active Directory Federation Services 2.0) have decided to use SAML 2.0 authentication as an often preferred method for single sign-on implementations whenever enterprise federation is required for web services and web applications.
 
+
+
