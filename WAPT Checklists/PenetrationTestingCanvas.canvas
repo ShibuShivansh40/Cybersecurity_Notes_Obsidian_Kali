@@ -3,13 +3,21 @@
 		{"id":"0be3e49c89ab0cde","type":"text","text":"RECON","x":20,"y":-240,"width":120,"height":50,"color":"1"},
 		{"id":"1a7d377f0aabb11c","type":"text","text":"```\nassetfinder --subs-only target.com >> recon.txt  \nsubfinder -d target.com -silent >> recon.txt  \namass enum -passive -d target.com >> recon.txt  \nsort -u recon.txt > final-subs.txt\ncat final-subs.txt | httpx -status-code -title -tech-detect -silent > live-subs.txt","x":-400,"y":-100,"width":960,"height":200},
 		{"id":"9c3b809fd4d14084","type":"text","text":"WEB-APPLICATION","x":420,"y":-600,"width":240,"height":60},
-		{"id":"284b8faa3044ecaf","type":"text","text":"Check for `robots.txt` and `sitemap.xml` for subdomains and directories","x":800,"y":-340,"width":480,"height":100},
-		{"id":"53ea1afd49059c02","x":695,"y":-14,"width":250,"height":60,"type":"text","text":""}
+		{"id":"53ea1afd49059c02","type":"text","text":"\n```\n#!/bin/bash\n\n# Usage: ./find_secrets_in_js.sh https://example.com\n\nTARGET_URL=\"$1\"\n\nif [ -z \"$TARGET_URL\" ]; then\n    echo \"Usage: $0 <target_url>\"\n    exit 1\nfi\n\n# Create working directory\nWORKDIR=\"js_secrets_scan_$(date +%s)\"\nmkdir \"$WORKDIR\"\ncd \"$WORKDIR\" || exit 1\n\necho \"[*] Fetching JavaScript file URLs from $TARGET_URL\"\n\n# Extract JS file links\ncurl -s \"$TARGET_URL\" | \\\ngrep -oP '(?i)(src=[\"'\"'\"'].*?\\.js[\"'\"'\"'])' | \\\ngrep -oP '(?<=src=[\"'\"'\"']).*?\\.js(?=[\"'\"'\"'])' | \\\nsed \"s|^/|$TARGET_URL/|\" | \\\nsed \"s|^//|https://|\" | \\\nsort -u > js_files.txt\n\necho \"[*] Found $(wc -l < js_files.txt) JavaScript files\"\n\n# Download and combine JS contents\n> all_javascript_dump.txt\nwhile read -r js_url; do\n    echo \"[+] Downloading: $js_url\"\n    curl -s \"$js_url\" >> all_javascript_dump.txt\n    echo -e \"\\n\\n// --- End of $js_url ---\\n\\n\" >> all_javascript_dump.txt\ndone < js_files.txt\n\necho \"[*] Searching for potential secrets...\"\n\n# Grep for common secrets in all JS files\ngrep -iE \"apikey|api_key|token|secret|authorization|bearer|client[_-]?id|client[_-]?secret\" all_javascript_dump.txt > secrets_found.txt\n\necho \"[*] Found potential secrets (if any):\"\ncat secrets_found.txt\n\necho \"[*] All results saved in: $WORKDIR\"\n```\n\n","x":675,"y":-100,"width":1405,"height":1280},
+		{"id":"5230a99c8d101337","type":"text","text":"Download JS Files & Extract for APIKeys|Tokens|Bearer|Secret","x":997,"y":-240,"width":762,"height":50,"color":"1"},
+		{"id":"fddae37b2ef10c84","type":"text","text":"Check for the parameter named `redirect` that is used to redirect the site to the internal sites and then try to pollute it like : `https://app.target.com/login?redirect=dashboard&redirect=https://evil.com`","x":980,"y":-1240,"width":614,"height":155},
+		{"id":"284b8faa3044ecaf","type":"text","text":"Check for `robots.txt` and `sitemap.xml` for subdomains and directories","x":980,"y":-1022,"width":480,"height":100},
+		{"id":"a0c7a30418b32ee7","type":"text","text":"Bruteforce checking all JS Files : `ffuf -w common.txt -u https://target.com/assets/js/FUZZ`","x":980,"y":-860,"width":497,"height":91},
+		{"id":"0ed3ba2ff4db3202","x":471,"y":-945,"width":129,"height":60,"type":"text","text":"CHECKS"}
 	],
 	"edges":[
 		{"id":"71f36802204b6844","fromNode":"0be3e49c89ab0cde","fromSide":"bottom","toNode":"1a7d377f0aabb11c","toSide":"top"},
 		{"id":"1a2c3ec86edc5279","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"0be3e49c89ab0cde","toSide":"top"},
-		{"id":"b14ec4f6544a707e","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"284b8faa3044ecaf","toSide":"left"},
-		{"id":"18fd513cfb04afbe","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"53ea1afd49059c02","toSide":"top"}
+		{"id":"9bd30b354a66c0c6","fromNode":"9c3b809fd4d14084","fromSide":"bottom","toNode":"5230a99c8d101337","toSide":"top"},
+		{"id":"433b8d6074a1b0f0","fromNode":"5230a99c8d101337","fromSide":"bottom","toNode":"53ea1afd49059c02","toSide":"top"},
+		{"id":"16b21839c1ab1e29","fromNode":"9c3b809fd4d14084","fromSide":"top","toNode":"0ed3ba2ff4db3202","toSide":"bottom"},
+		{"id":"d2d6495b73ac58e6","fromNode":"0ed3ba2ff4db3202","fromSide":"right","toNode":"fddae37b2ef10c84","toSide":"left"},
+		{"id":"b47808662c4dc530","fromNode":"0ed3ba2ff4db3202","fromSide":"right","toNode":"a0c7a30418b32ee7","toSide":"left"},
+		{"id":"1a5454bf5358fd66","fromNode":"0ed3ba2ff4db3202","fromSide":"right","toNode":"284b8faa3044ecaf","toSide":"left"}
 	]
 }
