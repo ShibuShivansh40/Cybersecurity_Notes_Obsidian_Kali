@@ -80,4 +80,6 @@ HMACSHA256(
 The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is.
 
 # Authentication Attacks
-1. Brute-forcing the username 
+1. Brute-forcing the username to get a valid username by checking precisely over the response packets.
+2. If the Server blocks your IP, then try to use a Header in the Response Packet named as `X-Forarded-For:` and use a Pitchfork Attack and provide this with a random number set. Keep an eye on the response use the settings like : Grep-by Match, Response Timing Delays.
+3. 

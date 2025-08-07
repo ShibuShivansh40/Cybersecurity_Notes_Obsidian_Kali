@@ -45,36 +45,9 @@ For Recon :
 		[ ] - Check for Directions API : `curl "https://maps.googleapis.com/maps/api/directions/json?origin=Delhi&destination=Mumbai&key=<exposed-apikey>"`
 		 [ ] - Check for DistanceMatrix API : `curl "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Delhi&destinations=Bangalore&key=<exposed-apikey>"`
 		 [ ] - Check for Places API : `curl "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Goa&key=<exposed-apikey>"`
-		 [ ] - Create an HTML Page and try to use the key and get the services running : 
-			 ```
-			 <!DOCTYPE html>
-				<html>
-				  <head>
-				    <title>Google Maps API PoC</title>
-				    <style>
-				      #map {
-				        height: 500px;
-				        width: 100%;
-				        border: 2px solid red;
-				      }
-				    </style>
-				    <script>
-				      function initMap() {
-				        const map = new google.maps.Map(document.getElementById("map"), {
-				          center: { lat: 28.6139, lng: 77.2090 },
-				          zoom: 8,
-				        });
-				      }
-				    </script>
-				  </head>
-				  <body>
-				    <h2>Google Maps API PoC</h2>
-				    <p>This page demonstrates unauthorized use of a restricted API key.</p>
-				    <div id="map"></div>
-				
-				    <script async defer
-				      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGIbHRgermtM8qzUrn2YsGiOd6Vf5PJws&callback=initMap">
-				    </script>
-				  </body>
-				</html>
-			
+		 [ ] - Create an HTML Page and try to use the key and get the services running : Go check out the Google MAP API Key Exploitation Page
+[ ] - Authentication Attacks : 
+1. Brute-forcing the username to get a valid username by checking precisely over the response packets.
+2. If the Server blocks your IP, then try to use a Header in the Response Packet named as `X-Forarded-For:` and use a Pitchfork Attack and provide this with a random number set. Keep an eye on the response use the settings like : Grep-by Match, Response Timing Delays.
+[ ] - 
+
