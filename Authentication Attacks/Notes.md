@@ -83,4 +83,5 @@ The signature is used to verify the message wasn't changed along the way, and, i
 1. Brute-forcing the username to get a valid username by checking precisely over the response packets.
 2. If the Server blocks your IP, then try to use a Header in the Response Packet named as `X-Forarded-For:` and use a Pitchfork Attack and provide this with a random number set. Keep an eye on the response use the settings like : Grep-by Match, Response Timing Delays.
 3. We can try checking with multiple login attempts and see to it, if it blocks the IP after a particular failed attempts then we can try add the actual credentials after each attempt, so that it removes the block from the IP Address and we can try to access that using a Pitchfork Attack where word list has genuine credentials after each brute-forced ones.
-4. 
+4. Also, if there is an issue of Account Blocking then what we can do is, we can do User Enumeration by checking the amount of time taken by the User when it is pass for almost 5 times, using 2 payloads, one for Username and one just as Null Payload, that would help us in getting the user and then we can get the Password.
+5. 
