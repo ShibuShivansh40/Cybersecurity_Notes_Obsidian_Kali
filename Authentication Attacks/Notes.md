@@ -40,3 +40,18 @@ In the past few years, applications like SAP ERP and SharePoint (SharePoint by u
 
 
 
+# JWT Tokens
+### Header
+The header _typically_ consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA.
+```
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+```
+
+### Payload
+The second part of the token is the payload, which contains the claims. Claims are statements about an entity (typically, the user) and additional data. There are three types of claims: _registered_, _public_, and _private_ claims.
+
+- [**Registered claims**](https://tools.ietf.org/html/rfc7519#section-4.1): These are a set of predefined claims which are not mandatory but recommended, to provide a set of useful, interoperable claims. Some of them are: **iss** (issuer), **exp** (expiration time), **sub** (subject), **aud** (audience), and [others](https://tools.ietf.org/html/rfc7519#section-4.1).
+- 
