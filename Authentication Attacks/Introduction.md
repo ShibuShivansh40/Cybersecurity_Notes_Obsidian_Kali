@@ -12,7 +12,7 @@ Before jumping into attacks, ensure you're rock-solid on how authentication work
 
 - **Auth0 Blog:** [https://auth0.com/blog/](https://auth0.com/blog/)
 - ✅**OWASP Authentication Cheat Sheet:** [https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-- **JWT Handbook:** [https://jwt.io/introduction](https://jwt.io/introduction
+- ✅**JWT Handbook:** [https://jwt.io/introduction](https://jwt.io/introduction
 - **RFC 6749 (OAuth 2.0 Spec):** [https://datatracker.ietf.org/doc/html/rfc6749](https://datatracker.ietf.org/doc/html/rfc6749)
 - **OAuth 2.0 Simplified by Aaron Parecki (Book):** Great for practical understanding
 
