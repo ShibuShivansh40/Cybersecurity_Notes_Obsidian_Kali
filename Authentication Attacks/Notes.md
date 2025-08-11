@@ -84,4 +84,11 @@ The signature is used to verify the message wasn't changed along the way, and, i
 2. If the Server blocks your IP, then try to use a Header in the Response Packet named as `X-Forarded-For:` and use a Pitchfork Attack and provide this with a random number set. Keep an eye on the response use the settings like : Grep-by Match, Response Timing Delays.
 3. We can try checking with multiple login attempts and see to it, if it blocks the IP after a particular failed attempts then we can try add the actual credentials after each attempt, so that it removes the block from the IP Address and we can try to access that using a Pitchfork Attack where word list has genuine credentials after each brute-forced ones.
 4. Also, if there is an issue of Account Blocking then what we can do is, we can do User Enumeration by checking the amount of time taken by the User when it is pass for almost 5 times, using 2 payloads, one for Username and one just as Null Payload, that would help us in getting the user and then we can get the Password.
-5. 
+5. When doing brute-force attack, check for minute changes in the responses and errors. Even a . matters there, and that could lead to big vulnerabilities, if there is an account locking then we need to see that was there any response where we didn't receive any error while we saw errors in other passwords.
+6. When we see account locking and IP Blocking in an authentication attack, do look out for if there is a JSON going on then we can manipulate it by the following way : 
+	1. 1. With Burp running, investigate the login page. Notice that the `POST /login` request submits the login credentials in `JSON` format. Send this request to Burp Repeater.
+	2. In Burp Repeater, replace the single string value of the password with an array of strings containing all of the candidate passwords. For example: `"username" : "carlos", "password" : [ "123456", "password", "qwerty" ... ]`
+	3. Send the request. This will return a 302 response.
+	4. Right-click on this request and select **Show response in browser**. Copy the URL and load it in the browser. The page loads and you are logged in as `carlos`.
+	5. Click **My account** to access Carlos's account page and solve the lab.
+7. 
