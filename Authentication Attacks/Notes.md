@@ -94,4 +94,5 @@ The signature is used to verify the message wasn't changed along the way, and, i
 	5. Click **My account** to access Carlos's account page and solve the lab.
 
 ### Multi-factor Authentication
-1. 
+1. Just when we get onto a MFA Verification Page, try to switch to a User Profile Page simply.
+2. 
