@@ -80,6 +80,7 @@ HMACSHA256(
 The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is.
 
 # Authentication Attacks
+### Password Based Authentication
 1. Brute-forcing the username to get a valid username by checking precisely over the response packets.
 2. If the Server blocks your IP, then try to use a Header in the Response Packet named as `X-Forarded-For:` and use a Pitchfork Attack and provide this with a random number set. Keep an eye on the response use the settings like : Grep-by Match, Response Timing Delays.
 3. We can try checking with multiple login attempts and see to it, if it blocks the IP after a particular failed attempts then we can try add the actual credentials after each attempt, so that it removes the block from the IP Address and we can try to access that using a Pitchfork Attack where word list has genuine credentials after each brute-forced ones.
@@ -91,4 +92,6 @@ The signature is used to verify the message wasn't changed along the way, and, i
 	3. Send the request. This will return a 302 response.
 	4. Right-click on this request and select **Show response in browser**. Copy the URL and load it in the browser. The page loads and you are logged in as `carlos`.
 	5. Click **My account** to access Carlos's account page and solve the lab.
-7. 
+
+### Multi-factor Authentication
+1. 
