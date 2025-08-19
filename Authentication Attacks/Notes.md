@@ -95,4 +95,5 @@ The signature is used to verify the message wasn't changed along the way, and, i
 
 ### Multi-factor Authentication
 1. Just when we get onto a MFA Verification Page, try to switch to a User Profile Page simply.
-2. 
+2. We can also check for the Packet's cookie section and if we found any identity of the user then tampering it would help for sure. Tamper that detail so that the instead of legitimate user some other user gets sent the MFA Codes and then brute-force those MFA Codes with the tampered identity cookie.
+3. 
