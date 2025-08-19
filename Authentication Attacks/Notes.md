@@ -116,4 +116,5 @@ The signature is used to verify the message wasn't changed along the way, and, i
 ### Other Authentication Mechanisms
 1. basically check for the Logged-in Cookie and try to decode it and what if we get certain parameters being present in it which could be brute-forced using Intruder.
 2. While checking for Changing New Password, try putting incorrect password for two matching password fields. And you might find different ideas over that.
-3. 
+
+### OAuth 2.0 Authentication Vulnerabilities
