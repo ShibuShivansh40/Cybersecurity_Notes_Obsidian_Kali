@@ -112,3 +112,5 @@ The signature is used to verify the message wasn't changed along the way, and, i
 	11. Click on **Resource pool** to open the **Resource pool** side panel. Add the attack to a resource pool with the **Maximum concurrent requests** set to `1`.
 	12. Start the attack. Eventually, one of the requests will return a `302` status code. Right-click on this request and select **Show response in browser**. Copy the URL and load it in the browser.
 	13. Click **My account** to solve the lab.
+
+### Other Authentication Mechanisms
