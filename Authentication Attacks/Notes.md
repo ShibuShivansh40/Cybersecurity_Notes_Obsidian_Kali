@@ -114,3 +114,4 @@ The signature is used to verify the message wasn't changed along the way, and, i
 	13. Click **My account** to solve the lab.
 
 ### Other Authentication Mechanisms
+1. basically check for the Logged-in Cookie and try to decode it and what if we get certain parameters being present in it which could be brute-forced using Intruder.
