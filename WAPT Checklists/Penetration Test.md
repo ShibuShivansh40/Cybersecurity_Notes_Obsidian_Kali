@@ -52,6 +52,12 @@ For Recon :
 [ ] - Check for CORS
 	1. by just adding this in the Request Packet : `Origin: https://example.com` and then check for the response if we observe the same URL in Response in `Access-Control-Allow-Origin` then we can exploit it by displaying that onto our website.
 	2. Check by adding `null` if the above doesn't work out, and if the null works out then we can also generate Cross-origin requests.
-	3. 
+	3. Exploiting XSS using CORS : 
+		1. Even "correctly" configured CORS establishes a trust relationship between two origins. If a website trusts an origin that is vulnerable to cross-site scripting (XSS), then an attacker could exploit the XSS to inject some JavaScript that uses CORS to retrieve sensitive information from the site that trusts the vulnerable application.
+		2. Given the following request:
+		`GET /api/requestApiKey HTTP/1.1 Host: vulnerable-website.com Origin: https://subdomain.vulnerable-website.com Cookie: sessionid=...`
+		3. If the server responds with:
+		`HTTP/1.1 200 OK Access-Control-Allow-Origin: https://subdomain.vulnerable-website.com Access-Control-Allow-Credentials: true`
+		4. Then an attacker who finds an XSS vulnerability on `subdomain.vulnerable-website.com` could use that to retrieve the API key, using a URL like: `https://subdomain.vulnerable-website.com/?xss=<script>cors-stuff-here</script>`
 
-
+[ ] - 
