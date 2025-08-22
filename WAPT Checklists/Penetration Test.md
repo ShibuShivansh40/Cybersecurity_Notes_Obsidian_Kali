@@ -49,5 +49,9 @@ For Recon :
 [ ] - Authentication Attacks : 
 1. Brute-forcing the username to get a valid username by checking precisely over the response packets.
 2. If the Server blocks your IP, then try to use a Header in the Response Packet named as `X-Forarded-For:` and use a Pitchfork Attack and provide this with a random number set. Keep an eye on the response use the settings like : Grep-by Match, Response Timing Delays.
-[ ] - 
+[ ] - Check for CORS
+	1. by just adding this in the Request Packet : `Origin: https://example.com` and then check for the response if we observe the same URL in Response in `Access-Control-Allow-Origin` then we can exploit it by displaying that onto our website.
+	2. Check by adding `null` if the above doesn't work out, and if the null works out then we can also generate Cross-origin requests.
+	3. 
+
 
