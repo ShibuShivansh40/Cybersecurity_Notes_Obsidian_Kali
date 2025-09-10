@@ -32,7 +32,7 @@ APIs enable software systems and applications to communicate and share data.
 
 ### Using Machine Readable Documentation
 - Using Automated Tools like Burp Scanner to crawl and audit OpenAPI Documentation or any other doc in JSON or YAML format.
-- We can also pparse it using OpenAPI Parser BApp.
+- We can also parse it using OpenAPI Parser BApp.
 - We can also use Postman or SoapUI.
 
 ### Identifying API Endpoints
