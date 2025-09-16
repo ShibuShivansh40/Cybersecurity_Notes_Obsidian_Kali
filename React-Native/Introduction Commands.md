@@ -1,5 +1,6 @@
 `npx @react-native-community/cli@latest init NATE_App` ->  To start or initialise the react-native application
-Output must be like this after this command : 
+> Output must be like this after this command : 
+> 
 ```
 Need to install the following packages:
 @react-native-community/cli@20.0.2
@@ -49,4 +50,4 @@ Ok to proceed? (y) y
 ```
 
 
-
+`npx react-native run-android` -> To start the Application on Emulator
