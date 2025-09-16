@@ -49,5 +49,5 @@ Ok to proceed? (y) y
     • cd "/root/AndroidStudioProjects/react-native-projects/NATE_App" && npx react-native run-android
 ```
 
-
+`npx react-native start` -> Run this on another terminal and then another one on Android's Terminal
 `npx react-native run-android` -> To start the Application on Emulator
