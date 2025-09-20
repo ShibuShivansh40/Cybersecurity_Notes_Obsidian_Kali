@@ -51,3 +51,11 @@ Ok to proceed? (y) y
 
 `npx react-native start` -> Run this on another terminal and then another one on Android's Terminal
 `npx react-native run-android` -> To start the Application on Emulator
+
+
+**Generating an Application :** 
+In your react native project root, run:
+`cd android ./gradlew assembleRelease`
+
+This will generate an unsigned APK in:
+`android/app/build/outputs/apk/release/app-release-unsigned.apk`
