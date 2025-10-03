@@ -64,4 +64,5 @@ For Recon :
 		`HTTP/1.1 200 OK Access-Control-Allow-Origin: https://subdomain.vulnerable-website.com Access-Control-Allow-Credentials: true`
 		4. Then an attacker who finds an XSS vulnerability on `subdomain.vulnerable-website.com` could use that to retrieve the API key, using a URL like: `https://subdomain.vulnerable-website.com/?xss=<script>cors-stuff-here</script>`
 
-[ ] - 
+[ ] - NMAP XML Report Generation Command : `nmap -A -sS -p- -iL /home/shibushivansh/Findings/Dabur/final-subs.txt -oX /home/shibushivansh/Findings/Dabur/nmapoutput.xml`
+
