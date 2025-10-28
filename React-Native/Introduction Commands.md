@@ -59,3 +59,6 @@ In your react native project root, run:
 
 This will generate an unsigned APK in:
 `android/app/build/outputs/apk/release/app-release-unsigned.apk`
+
+Clean your build cache and node modules for a fresh start:
+`cd android ./gradlew clean cd .. rm -rf node_modules npm install`
