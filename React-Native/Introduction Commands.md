@@ -62,3 +62,10 @@ This will generate an unsigned APK in:
 
 Clean your build cache and node modules for a fresh start:
 `cd android ./gradlew clean cd .. rm -rf node_modules npm install`
+
+
+
+Sorting the Icons using this  : 
+For Android, add the following line in your `android/app/build.gradle` under `dependencies` section if fonts are not bundled properly:
+`apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"`
+Then rebuild the app using:
