@@ -1,4 +1,5 @@
 ```
+
 >> sudo netdiscover -r 10.0.2.1/24
  Currently scanning: Finished!   |   Screen View: Unique Hosts                                                                      
                                                                                                                                     
@@ -9,5 +10,25 @@
  10.233.56.106   08:00:27:bd:ad:d1      4     240  PCS Systemtechnik GmbH                                                           
  10.0.2.3        52:55:0a:00:02:03      1      64  Unknown vendor                                                                   
  10.0.2.3        08:00:27:fe:68:8c      1      60  PCS Systemtechnik GmbH       
+
+──(root㉿kali)-[/home/kali]
+└─# nmap -A -T4 -sV -sS 10.233.56.106 -p-
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-20 01:47 EST
+Nmap scan report for 10.233.56.106
+Host is up (0.015s latency).
+All 65535 scanned ports on 10.233.56.106 are in ignored states.
+Not shown: 62105 filtered tcp ports (net-unreach), 3430 filtered tcp ports (no-response)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: 3Com 4500G switch (92%), H3C Comware 5.20 (92%), Huawei VRP 8.100 (92%), Microsoft Windows Server 2003 SP1 (92%), Oracle Virtualbox Slirp NAT bridge (92%), QEMU user mode network gateway (92%), AXIS 2100 Network Camera (92%), D-Link DP-300U, DP-G310, or Hamlet HPS01UU print server (92%), HP Tru64 UNIX 5.1A (92%), Sanyo PLC-XU88 digital video projector (92%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT      ADDRESS
+1   19.73 ms 10.233.56.106
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 52.65 seconds
+
 
 ```
