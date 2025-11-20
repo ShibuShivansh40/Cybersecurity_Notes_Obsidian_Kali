@@ -32,3 +32,63 @@ Nmap done: 1 IP address (1 host up) scanned in 52.65 seconds
 
 
 ```
+
+Learnt a Lesson, machine comes in Bridged Adapter state, use it in that state only.
+
+```
+┌──(root㉿kali)-[/home/kali]
+└─# nmap -p- 10.233.56.60     
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-20 02:21 EST
+Nmap scan report for 10.233.56.60
+Host is up (0.0044s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT      STATE SERVICE
+53/tcp    open  domain
+44497/tcp open  unknown
+MAC Address: BE:88:08:70:F5:61 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 10.79 seconds
+                                                                                                                                                                      
+┌──(root㉿kali)-[/home/kali]
+└─# nmap -A -T4 -sV -sS 10.233.56.60 -p-
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-11-20 02:21 EST
+Nmap scan report for 10.233.56.60
+Host is up (0.0061s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT      STATE SERVICE    VERSION
+53/tcp    open  domain     dnsmasq 2.51
+| dns-nsid: 
+|_  bind.version: dnsmasq-2.51
+44497/tcp open  tcpwrapped
+MAC Address: BE:88:08:70:F5:61 (Unknown)
+Device type: phone
+Running: Google Android 10.X, Linux 4.X
+OS CPE: cpe:/o:google:android:10 cpe:/o:linux:linux_kernel:4
+OS details: Android 9 - 10 (Linux 4.9 - 4.14)
+Network Distance: 1 hop
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   6.07 ms 10.233.56.60
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 26.69 seconds
+
+
+┌──(root㉿kali)-[/home/kali]
+└─# searchsploit "dnsmasq 2.51"
+------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
+ Exploit Title                                                                                                                      |  Path
+------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
+Dnsmasq < 2.78 - 2-byte Heap Overflow                                                                                               | multiple/dos/42941.py
+Dnsmasq < 2.78 - Heap Overflow                                                                                                      | multiple/dos/42942.py
+Dnsmasq < 2.78 - Information Leak                                                                                                   | multiple/dos/42944.py
+Dnsmasq < 2.78 - Integer Underflow                                                                                                  | multiple/dos/42946.py
+Dnsmasq < 2.78 - Lack of free() Denial of Service                                                                                   | multiple/dos/42945.py
+Dnsmasq < 2.78 - Stack Overflow                                                                                                     | multiple/dos/42943.py
+------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
+Shellcodes: No Results
+                                                          
+```
+
+
