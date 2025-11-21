@@ -78,4 +78,6 @@ Nmap done: 1 IP address (1 host up) scanned in 44.42 seconds
     
 ```
 
+![[Screenshot From 2025-11-21 12-09-42.png]]
 
+![[Pasted image 20251121121002.png]]
