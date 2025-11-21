@@ -302,4 +302,20 @@ HOP RTT     ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 27.61 seconds
 
+
+                                                                                                                                                                                                                  
+┌──(root㉿kali)-[/home/kali]
+└─# searchsploit OpenSSH 6.0p1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                                                                  |  Path
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+OpenSSH 2.3 < 7.7 - Username Enumeration                                                                                                                                        | linux/remote/45233.py
+OpenSSH 2.3 < 7.7 - Username Enumeration (PoC)                                                                                                                                  | linux/remote/45210.py
+OpenSSH < 6.6 SFTP (x64) - Command Execution                                                                                                                                    | linux_x86-64/remote/45000.c
+OpenSSH < 6.6 SFTP - Command Execution                                                                                                                                          | linux/remote/45001.py
+OpenSSH < 7.4 - 'UsePrivilegeSeparation Disabled' Forwarded Unix Domain Sockets Privilege Escalation                                                                            | linux/local/40962.txt
+OpenSSH < 7.4 - agent Protocol Arbitrary Library Loading                                                                                                                        | linux/remote/40963.txt
+OpenSSH < 7.7 - User Enumeration (2)                                                                                                                                            | linux/remote/45939.py
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
 ```
+
