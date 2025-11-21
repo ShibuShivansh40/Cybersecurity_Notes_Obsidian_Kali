@@ -249,3 +249,7 @@ msf exploit(multi/http/cockpit_cms_rce) > exploit
 
 
 ```
+
+
+After trying any of these option, I saw somewhere that there are more services present on this current VM, so I used any other command for NMAP to get more information of the VM.
+
