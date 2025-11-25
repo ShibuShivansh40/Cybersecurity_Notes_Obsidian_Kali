@@ -1169,3 +1169,50 @@ Stopped: Tue Nov 25 10:52:55 2025
 
 ![[Pasted image 20251125105539.png]]
 
+Found something in the home directory : 
+```
+pwd
+/
+ls
+bin
+boot
+dev
+etc
+home
+initrd.img
+initrd.img.old
+lib
+lib64
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+selinux
+srv
+sys
+tmp
+usr
+var
+vmlinuz
+vmlinuz.old
+cd root
+/bin/sh: 16: cd: can't cd to root
+cd /home
+ls
+flag4
+cat flag4
+cat: flag4: Is a directory
+cd flag4
+ls
+flag4.txt
+cat flag4.txt   
+Can you use this same method to find or access the flag in root?
+
+Probably. But perhaps it's not that easy.  Or maybe it is?
+
+
+```
