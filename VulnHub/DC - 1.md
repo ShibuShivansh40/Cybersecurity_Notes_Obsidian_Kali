@@ -835,8 +835,7 @@ select * from users;
 
 ```
 
->>Note - **python -c ‘import pty; pty.spawn(“/bin/bash”)’** use this command on meterpreter session to gain bash access
->
+>>Note - **`python -c ‘import pty; pty.spawn(“/bin/bash”)’`** use this command on meterpreter session to gain bash access
 
 ```
 View the full module info with the info, or info -d command.
