@@ -1452,3 +1452,6 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-11-25 03:20:
 
 And here I found the credentials as `Elliot : ER28-0652`, then I was able to login into the dashboard of Wordpress.
 
+Now, to gain a shell over at the server, we could use a famous PHP Reverse Shell - by PentestMonkey by updating the style.css file.
+We just need to change the ip and port and then we are required to open a netcat listener to receive the shell and also we need to visit the actual file we are updating : /archives.php
+
