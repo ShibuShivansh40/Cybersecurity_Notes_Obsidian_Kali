@@ -1412,3 +1412,7 @@ Found a Portion of the key, I guess:
 The key found is : `073403c8a58a1f80d943455fb30724b9`
 
 ![[Pasted image 20251125114115.png]]
+And we've also downloaded the dictionary with usernames and passwords.
+![[Pasted image 20251125125631.png]]
+
+Now, we'll be brute-forcing usernames and passwords using Hydra.
