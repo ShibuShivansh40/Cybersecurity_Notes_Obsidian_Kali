@@ -1068,3 +1068,104 @@ SELECT * FROM users;
 ```
 
 Now, we are required to Crack this Hash to get the password of the Admin.
+
+```
+┌──(shibushivansh㉿shibu)-[~]
+└─$ hashcat -a 0 -m 7900 '$S$DvQI6Y600iNeXRIeEMF94Y6FvN8nujJcEDTCP9nS5.i38jnEKuDR' /usr/share/seclists/Passwords/Cracked-Hashes/milw0rm-dictionary.txt  
+hashcat (v7.1.2) starting
+
+OpenCL API (OpenCL 3.0 PoCL 6.0+debian  Linux, None+Asserts, RELOC, SPIR-V, LLVM 18.1.8, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================================
+* Device #01: cpu-skylake-avx512-11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz, 6823/13647 MB (2048 MB allocatable), 8MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+Minimum salt length supported by kernel: 0
+Maximum salt length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+* Uses-64-Bit
+* Register-Limit
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory allocated for this attack: 514 MB (9562 MB free)
+
+Dictionary cache built:
+* Filename..: /usr/share/seclists/Passwords/Cracked-Hashes/milw0rm-dictionary.txt
+* Passwords.: 84198
+* Bytes.....: 675101
+* Keyspace..: 84198
+* Runtime...: 0 secs
+
+Cracking performance lower than expected?                 
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit => s
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 7900 (Drupal7)
+Hash.Target......: $S$DvQI6Y600iNeXRIeEMF94Y6FvN8nujJcEDTCP9nS5.i38jnEKuDR
+Time.Started.....: Tue Nov 25 10:52:20 2025 (33 secs)
+Time.Estimated...: Tue Nov 25 10:55:28 2025 (2 mins, 35 secs)
+Kernel.Feature...: Pure Kernel (password length 0-256 bytes)
+Guess.Base.......: File (/usr/share/seclists/Passwords/Cracked-Hashes/milw0rm-dictionary.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#01........:      447 H/s (13.40ms) @ Accel:23 Loops:1024 Thr:1 Vec:8
+Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)
+Progress.........: 14720/84198 (17.48%)
+Rejected.........: 0/14720 (0.00%)
+Restore.Point....: 14720/84198 (17.48%)
+Restore.Sub.#01..: Salt:0 Amplifier:0-1 Iteration:22528-23552
+Candidate.Engine.: Device Generator
+Candidates.#01...: 53087200 -> 54474650
+Hardware.Mon.#01.: Temp: 89c Util: 97%
+
+$S$DvQI6Y600iNeXRIeEMF94Y6FvN8nujJcEDTCP9nS5.i38jnEKuDR:53cr3t
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 7900 (Drupal7)
+Hash.Target......: $S$DvQI6Y600iNeXRIeEMF94Y6FvN8nujJcEDTCP9nS5.i38jnEKuDR
+Time.Started.....: Tue Nov 25 10:52:20 2025 (34 secs)
+Time.Estimated...: Tue Nov 25 10:52:54 2025 (0 secs)
+Kernel.Feature...: Pure Kernel (password length 0-256 bytes)
+Guess.Base.......: File (/usr/share/seclists/Passwords/Cracked-Hashes/milw0rm-dictionary.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#01........:      446 H/s (13.42ms) @ Accel:23 Loops:1024 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 14904/84198 (17.70%)
+Rejected.........: 0/14904 (0.00%)
+Restore.Point....: 14720/84198 (17.48%)
+Restore.Sub.#01..: Salt:0 Amplifier:0-1 Iteration:31744-32768
+Candidate.Engine.: Device Generator
+Candidates.#01...: 53087200 -> 54474650
+Hardware.Mon.#01.: Temp: 89c Util: 92%
+
+Started: Tue Nov 25 10:52:19 2025
+Stopped: Tue Nov 25 10:52:55 2025
+
+```
+
+![[Pasted image 20251125105539.png]]
+
