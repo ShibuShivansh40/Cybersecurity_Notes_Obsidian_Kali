@@ -1066,3 +1066,5 @@ SELECT * FROM users;
 4 rows in set (0.00 sec)
 
 ```
+
+Now, we are required to Crack this Hash to get the password of the Admin.
