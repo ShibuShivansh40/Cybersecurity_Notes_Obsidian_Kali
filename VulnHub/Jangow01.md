@@ -65,3 +65,6 @@ Shellcodes: No Results
 ```
 
 
+I tried to use the exploit for both for DOS but they both didn't work out well, but then I used basic Web Exploitation and found that Code Execution is available at one of the page i.e. :
+
+"http://10.0.2.11/site/busque.php?buscar=" and then I visited around the whole web server and found that flag by visiting : `http://10.0.2.11/site/busque.php?buscar=pwd;%20cd%20/home/jangow01;%20ls;%20cat%20user.txt` and found that flag as : `d41d8cd98f00b204e9800998ecf8427e`
