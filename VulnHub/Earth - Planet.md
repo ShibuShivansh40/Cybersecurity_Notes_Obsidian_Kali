@@ -47,3 +47,6 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 165.87 seconds     
 
 ```
+
+NMAP got nothing directly attacking the VM. So I'm going for Password bruteforce for root.
+
