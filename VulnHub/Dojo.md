@@ -44,3 +44,33 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 39.88 seconds
 
 ```
+
+
+I found that it was using TomCat 6.x, so I tried searchploit and found something and then it didn't work : 
+```
+
+
+┌──(root㉿kali)-[~]
+└─# ./rce_jsp.py -u http://10.0.2.15:8080/   
+/root/./rce_jsp.py:22: SyntaxWarning: invalid escape sequence '\ '
+  / ____\ \    / /  ____|  |__ \ / _ \/_ |____  |   /_ |__ \ / //_ |____  |
+/root/./rce_jsp.py:121: SyntaxWarning: invalid escape sequence '\ '
+  / ____\ \    / /  ____|  |__ \ / _ \/_ |____  |   /_ |__ \ / //_ |____  |
+
+
+
+   _______      ________    ___   ___  __ ______     __ ___   __ __ ______
+  / ____\ \    / /  ____|  |__ \ / _ \/_ |____  |   /_ |__ \ / //_ |____  |
+ | |     \ \  / /| |__ ______ ) | | | || |   / /_____| |  ) / /_ | |   / /
+ | |      \ \/ / |  __|______/ /| | | || |  / /______| | / / '_ \| |  / /
+ | |____   \  /  | |____    / /_| |_| || | / /       | |/ /| (_) | | / /
+  \_____|   \/   |______|  |____|\___/ |_|/_/        |_|____\___/|_|/_/
+
+
+
+[@intx0x80]
+
+
+Poc Filename  Poc.jsp
+Not Vulnerable to CVE-2017-12617 
+```
