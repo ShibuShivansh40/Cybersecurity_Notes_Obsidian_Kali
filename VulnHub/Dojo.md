@@ -48,8 +48,6 @@ Nmap done: 1 IP address (1 host up) scanned in 39.88 seconds
 
 I found that it was using TomCat 6.x, so I tried searchploit and found something and then it didn't work : 
 ```
-
-
 ┌──(root㉿kali)-[~]
 └─# ./rce_jsp.py -u http://10.0.2.15:8080/   
 /root/./rce_jsp.py:22: SyntaxWarning: invalid escape sequence '\ '
