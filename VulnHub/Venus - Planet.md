@@ -61,9 +61,14 @@ So, I'll try to put the cookies now as `admin:rot13<admin>`
 ## User Enumeration
 ![[Pasted image 20251203131221.png]]
 
-So now we know that in the Login Panel Cookie is is built using a particular and way and also we know that we have 3 users in total : guest, venus, megllan. We'll try to use these to get using SSH
+So now we know that in the Login Panel Cookie is is built using a particular and way and also we know that we have 3 users in total : guest, venus, magellan. We'll try to use these to get using SSH
 
 When I tried to use to login into Venus using the cookie values as : `base64<venus:thrgf>` i.e and then I got the correct one as given below :
 ![[Pasted image 20251203131936.png]]
 
 Cookie sent by server is : `dmVudXM6aXJhaGY=` and on decoding it we get the password as : 
+
+And now when I used to login into the Magellan, then I got the answer as : 
+![[Pasted image 20251203132413.png]]
+And on decoding it I get : `magellan:irahfvnatrbybtl1989` So I would be trying to ROT13 Decrypt it and use that as the password for the SSH i.e `venusiangeology1989` and I got logged into the SSH.
+![[Pasted image 20251203132945.png]]
