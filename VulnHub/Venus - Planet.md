@@ -42,4 +42,16 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 217.08 seconds
 ```
 
+After a lot of tries, I reached in here.
+![[Pasted image 20251203111412.png]]
+Then after logging into this I found the request packet at Burp to look like this with the cookies authorization : 
+![[Pasted image 20251203111941.png]]
 
+
+```
+┌──(kali㉿kali)-[~]
+└─$ echo "Z3Vlc3Q6dGhyZmc=" |base64 -d                                         
+guest:thrfg   
+```
+
+This was the actual cookie present where `guest` is the login id but `thrfg` is something unique
