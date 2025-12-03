@@ -58,3 +58,6 @@ This was the actual cookie present where `guest` is the login id but `thrfg` is 
 
 So, I'll try to put the cookies now as `admin:rot13<admin>`
 
+## User Enumeration
+![[Pasted image 20251203131221.png]]
+
