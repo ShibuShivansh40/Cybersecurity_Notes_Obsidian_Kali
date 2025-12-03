@@ -54,4 +54,7 @@ Then after logging into this I found the request packet at Burp to look like thi
 guest:thrfg   
 ```
 
-This was the actual cookie present where `guest` is the login id but `thrfg` is something unique
+This was the actual cookie present where `guest` is the login id but `thrfg` is something unique. And when I looked into it basically `thrfg` is the ROT13 Encryption of the username itself.
+
+So, I'll try to put the cookies now as `admin:rot13<admin>`
+
