@@ -72,3 +72,6 @@ And now when I used to login into the Magellan, then I got the answer as :
 ![[Pasted image 20251203132413.png]]
 And on decoding it I get : `magellan:irahfvnatrbybtl1989` So I would be trying to ROT13 Decrypt it and use that as the password for the SSH i.e `venusiangeology1989` and I got logged into the SSH.
 ![[Pasted image 20251203132945.png]]
+
+
+
