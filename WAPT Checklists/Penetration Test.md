@@ -46,8 +46,8 @@ For Recon :
 		 [ ] - Check for DistanceMatrix API : `curl "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Delhi&destinations=Bangalore&key=<exposed-apikey>"`
 		 [ ] - Check for Places API : `curl "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Goa&key=<exposed-apikey>"`
 		 [ ] - Create an HTML Page and try to use the key and get the services running : Go check out the Google MAP API Key Exploitation Page
-	[ ] - OpenAI API Key - 
-		[ ] - Use this command to check for the authenticity : `curl -i -s -H "Authorization: Bearer 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" -H "Accept: application/json"  "https://api.openai.com/v1/chat/completions" -X GET`
+	[ ] - OpenAI API Exploitation with Key - 
+		[ ] - Use this command to check for the authenticity : `curl -i -s -H "Authorization: Bearer sk-proj-*" -H "Accept: application/json"  "https://api.openai.com/v1/chat/completions" -X GET`
 		
 `
 [ ] - Authentication Attacks : 

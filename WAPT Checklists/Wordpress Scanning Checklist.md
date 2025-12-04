@@ -1,5 +1,5 @@
 ✓ ✗ ✔ ✘ ✅
-API Token :  4c8SSanMPgBTRC2hU15g5yFYmQOtzeFqKJECshNg4OU
+API Token :  `4c8SSanMPgBTRC2hU15g5yFYmQOtzeFqKJECshNg4OU`
 [ ] - Enumeration : `wpscan --url http://ip:port --enumerate --api-token <api-token>`
 [ ] - Enumerate Plugins : `wpscann --url https://domain.com/ --enumerate p`
 [ ] - Authentication Attacks : 
