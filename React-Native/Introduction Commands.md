@@ -57,7 +57,7 @@ Ok to proceed? (y) y
 In your react native project root, run:
 ```
 cd android 
-./gradlew assembleRelease`
+./gradlew assembleRelease
 ```
 
 This will generate an unsigned APK in:
