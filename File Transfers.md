@@ -12,3 +12,8 @@ The `Astaroth attack` generally followed these steps:
 >(The WMI command-line (WMIC) utility provides a command-line interface for Windows Management Instrumentation (WMI). WMIC is compatible with existing shells and utility commands.)
 
 3. The JavaScript code, in turn, downloads payloads by abusing the [Bitsadmin tool](https://docs.microsoft.com/en-us/windows/win32/bits/bitsadmin-tool).
+
+>[Dynamic Link Libraries (DLLs)](https://www.lenovo.com/in/en/glossary/dynamic-link-library/) are shared files in Windows and OS/2 containing code, data, or resources that multiple applications can use simultaneously
+
+![[Pasted image 20260126000424.png]]
+
