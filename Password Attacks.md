@@ -227,3 +227,12 @@ Session completed.
 ```
 
 ### Hashcat
+The general syntax to run hashcat : `hashcat -a 0 -m 0 <hashes> [wordlist, rule, mask, ...]`
+
+In the command above:
+
+- `-a` is used to specify the `attack mode`
+- `-m` is used to specify the `hash type`
+- `<hashes>` is a either a hash string, or a file containing one or more password hashes of the same type
+- `[wordlist, rule, mask, ...]` is a placeholder for additional arguments that depend on the attack mode
+
