@@ -538,3 +538,23 @@ $ john pdf.hash --show
 PDF.pdf:1234
 ```
 
+
+Exercise : 
+```
+┌──(shibushivansh㉿shibu)-[~]
+└─$ office2john Confidential.xlsx > confidential-xlsx.hash
+      
+┌──(shibushivansh㉿shibu)-[~]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt confidential-xlsx.hash    
+Using default input encoding: UTF-8
+Loaded 1 password hash (Office, 2007/2010/2013 [SHA1 512/512 AVX512BW 16x / SHA512 512/512 AVX512BW 8x AES])
+Cost 1 (MS Office version) is 2013 for all loaded hashes
+Cost 2 (iteration count) is 100000 for all loaded hashes
+Will run 8 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+beethoven        (Confidential.xlsx)     
+1g 0:00:00:08 DONE (2026-01-26 23:41) 0.1132g/s 768.2p/s 768.2c/s 768.2C/s 98765432..random1
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+
