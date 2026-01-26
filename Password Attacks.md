@@ -236,3 +236,43 @@ In the command above:
 - `<hashes>` is a either a hash string, or a file containing one or more password hashes of the same type
 - `[wordlist, rule, mask, ...]` is a placeholder for additional arguments that depend on the attack mode
 
+[hashID](https://github.com/psypanda/hashID) can be used to quickly identify the hashcat hash type by specifying the `-m` argument.
+```shell-session
+ShibuShivansh@htb[/htb]$ hashid -m '$1$FNr44XZC$wQxY6HHLrgrGX0e1195k.1'
+
+Analyzing '$1$FNr44XZC$wQxY6HHLrgrGX0e1195k.1'
+[+] MD5 Crypt [Hashcat Mode: 500]
+[+] Cisco-IOS(MD5) [Hashcat Mode: 500]
+[+] FreeBSD MD5 [Hashcat Mode: 500]
+```
+
+Attack Modes :  `dictionary`, `mask`, `combinator`, and `association`
+
+**Dictionary Attack :** 
+```
+hashcat -a 0 -m 0 e3e3ec5831ad5e7288241960e5d4fdb8 /usr/share/wordlists/rockyou.txt
+
+...SNIP...               
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 0 (MD5)
+Hash.Target......: e3e3ec5831ad5e7288241960e5d4fdb8
+Time.Started.....: Sat Apr 19 08:58:44 2025 (0 secs)
+Time.Estimated...: Sat Apr 19 08:58:44 2025 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:  1706.6 kH/s (0.14ms) @ Accel:512 Loops:1 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 28672/14344385 (0.20%)
+Rejected.........: 0/28672 (0.00%)
+Restore.Point....: 27648/14344385 (0.19%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: 010292 -> spongebob9
+Hardware.Mon.#1..: Util: 40%
+
+Started: Sat Apr 19 08:58:43 2025
+Stopped: Sat Apr 19 08:58:46 2025
+```
