@@ -17,3 +17,7 @@ The `Astaroth attack` generally followed these steps:
 
 ![[Pasted image 20260126000424.png]]
 
+### Powershell Base64 Encode & Decode
+An essential step in using this method is to ensure the file you encode and decode is correct. We can use [md5sum](https://man7.org/linux/man-pages/man1/md5sum.1.html), a program that calculates and verifies 128-bit MD5 checksums. The MD5 hash functions as a compact digital fingerprint of a file, meaning a file should have the same MD5 hash everywhere.
+
+
