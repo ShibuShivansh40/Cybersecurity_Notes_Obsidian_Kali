@@ -189,3 +189,41 @@ Some of the tools included with JtR are:
 | `hccap2john`            | Converts WPA/WPA2 handshake captures for John |
 | `office2john`           | Converts MS Office documents for John         |
 | `wpa2john`              | Converts WPA/WPA2 handshakes for John         |
+
+```
+┌──(shibushivansh㉿shibu)-[~/Downloads]
+└─$ hashid -j 193069ceb0461e1d40d216e32c79c704
+Analyzing '193069ceb0461e1d40d216e32c79c704'
+[+] MD2 [JtR Format: md2]
+[+] MD5 [JtR Format: raw-md5]
+[+] MD4 [JtR Format: raw-md4]
+[+] Double MD5 
+[+] LM [JtR Format: lm]
+[+] RIPEMD-128 [JtR Format: ripemd-128]
+[+] Haval-128 [JtR Format: haval-128-4]
+[+] Tiger-128 
+[+] Skein-256(128) 
+[+] Skein-512(128) 
+[+] Lotus Notes/Domino 5 [JtR Format: lotus5]
+[+] Skype 
+[+] Snefru-128 [JtR Format: snefru-128]
+[+] NTLM [JtR Format: nt]
+[+] Domain Cached Credentials [JtR Format: mscach]
+[+] Domain Cached Credentials 2 [JtR Format: mscach2]
+[+] DNSSEC(NSEC3) 
+[+] RAdmin v2.x [JtR Format: radmin]
+
+┌──(shibushivansh㉿shibu)-[~/Downloads]
+└─$ john --wordlist=/usr/share/wordlists/rockyou.txt --format=ripemd-128 passwd 
+Using default input encoding: UTF-8
+Loaded 1 password hash (ripemd-128, RIPEMD 128 [32/64])
+Warning: no OpenMP support for this hash type, consider --fork=8
+Press 'q' or Ctrl-C to abort, almost any other key for status
+50cent           (?)     
+1g 0:00:00:00 DONE (2026-01-26 21:18) 33.33g/s 10666p/s 10666c/s 10666C/s angelo..101010
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+
+```
+
+### Hashcat
