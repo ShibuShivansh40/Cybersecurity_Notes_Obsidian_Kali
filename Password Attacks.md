@@ -352,5 +352,85 @@ Stopped: Sat Apr 19 09:43:08 2025
 ┌──(shibushivansh㉿shibu)-[~]
 └─$ hashcat -a 0 -m 0 e3e3ec5831ad5e7288241960e5d4fdb8  /usr/share/wordlists/rockyou.txt --show
 e3e3ec5831ad5e7288241960e5d4fdb8:crazy!
+```
 
 ```
+┌──(shibushivansh㉿shibu)-[~]
+└─$ hashcat -a 0 -m 0 1b0556a75770563578569ae21392630c /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --show
+1b0556a75770563578569ae21392630c:c0wb0ys1
+```
+
+```
+┌──(shibushivansh㉿shibu)-[~]
+└─$ hashcat -a 3 -m 0 1e293d6912d074c0fd15844d803400dd '?u?l?l?l?l?d?s'       
+hashcat (v7.1.2) starting
+
+OpenCL API (OpenCL 3.0 PoCL 6.0+debian  Linux, None+Asserts, RELOC, SPIR-V, LLVM 18.1.8, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================================
+* Device #01: cpu-skylake-avx512-11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz, 6824/13649 MB (2048 MB allocatable), 8MCU
+
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+
+Optimizers applied:
+* Zero-Byte
+* Early-Skip
+* Not-Salted
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+* Brute-Force
+* Raw-Hash
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory allocated for this attack: 514 MB (7414 MB free)
+
+1e293d6912d074c0fd15844d803400dd:Mouse5!                  
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 0 (MD5)
+Hash.Target......: 1e293d6912d074c0fd15844d803400dd
+Time.Started.....: Mon Jan 26 22:29:06 2026 (1 sec)
+Time.Estimated...: Mon Jan 26 22:29:07 2026 (0 secs)
+Kernel.Feature...: Pure Kernel (password length 0-256 bytes)
+Guess.Mask.......: ?u?l?l?l?l?d?s [7]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#01........:   379.1 MH/s (17.25ms) @ Accel:919 Loops:1024 Thr:1 Vec:16
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 432826944/3920854080 (11.04%)
+Rejected.........: 0/432826944 (0.00%)
+Restore.Point....: 22056/223080 (9.89%)
+Restore.Sub.#01..: Salt:0 Amplifier:5120-6144 Iteration:0-1024
+Candidate.Engine.: Device Generator
+Candidates.#01...: Uayog0_ -> Dikig3@
+Hardware.Mon.#01.: Temp: 72c Util: 97%
+
+Started: Mon Jan 26 22:28:55 2026
+Stopped: Mon Jan 26 22:29:08 2026
+    
+┌──(shibushivansh㉿shibu)-[~]
+└─$ hashcat -a 3 -m 0 1e293d6912d074c0fd15844d803400dd '?u?l?l?l?l?d?s' --show
+1e293d6912d074c0fd15844d803400dd:Mouse5!
+
+```
+
+## Writing Custom Wordlists and Rules
+
+|**Function**|**Description**|
+|---|---|
+|`:`|Do nothing|
+|`l`|Lowercase all letters|
+|`u`|Uppercase all letters|
+|`c`|Capitalize the first letter and lowercase others|
+|`sXY`|Replace all instances of X with Y|
+|`$!`|Add the exclamation character at the end|
