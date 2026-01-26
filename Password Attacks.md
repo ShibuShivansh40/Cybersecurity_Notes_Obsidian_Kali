@@ -558,3 +558,95 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed.
 ```
 
+```
+┌──(shibushivansh㉿shibu)-[~/Downloads]
+└─$ hashcat -a 0 -m 22100 '$bitlocker$0$16$b3c105c7ab7faaf544e84d712810da65$1048576$12$b020fe18bbb1db0103000000$60$e9c6b548788aeff190e517b0d85ada5daad7a0a3f40c4467307011ac17f79f8c99768419903025fd7072ee78b15a729afcf54b8c2e3af05bb18d4ba0' /usr/share/wordlists/rockyou.txt 
+hashcat (v7.1.2) starting
+
+OpenCL API (OpenCL 3.0 PoCL 6.0+debian  Linux, None+Asserts, RELOC, SPIR-V, LLVM 18.1.8, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================================
+* Device #01: cpu-skylake-avx512-11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz, 6824/13649 MB (2048 MB allocatable), 8MCU
+
+Minimum password length supported by kernel: 6
+Maximum password length supported by kernel: 256
+Minimum salt length supported by kernel: 0
+Maximum salt length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Single-Hash
+* Single-Salt
+* Slow-Hash-SIMD-LOOP
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory allocated for this attack: 514 MB (10663 MB free)
+
+Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+Cracking performance lower than expected?                 
+
+* Append -w 3 to the commandline.
+  This can cause your screen to lag.
+
+* Append -S to the commandline.
+  This has a drastic speed impact but can be better for specific attacks.
+  Typical scenarios are a small wordlist but a large ruleset.
+
+* Update your backend API runtime / driver the right way:
+  https://hashcat.net/faq/wrongdriver
+
+* Create more work items to make use of your parallelization power:
+  https://hashcat.net/faq/morework
+
+[s]tatus [p]ause [b]ypass [c]heckpoint [f]inish [q]uit => s
+
+Session..........: hashcat
+Status...........: Running
+Hash.Mode........: 22100 (BitLocker)
+Hash.Target......: $bitlocker$0$16$b3c105c7ab7faaf544e84d712810da65$10...8d4ba0
+Time.Started.....: Tue Jan 27 00:04:56 2026 (15 secs)
+Time.Estimated...: Wed Jan 28 11:32:54 2026 (1 day, 11 hours)
+Kernel.Feature...: Pure Kernel (password length 6-256 bytes)
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#01........:      112 H/s (15.33ms) @ Accel:232 Loops:1024 Thr:1 Vec:16
+Recovered........: 0/1 (0.00%) Digests (total), 0/1 (0.00%) Digests (new)
+Progress.........: 175/14344385 (0.00%)
+Rejected.........: 175/175 (100.00%)
+Restore.Point....: 0/14344385 (0.00%)
+Restore.Sub.#01..: Salt:0 Amplifier:0-1 Iteration:933888-934912
+Candidate.Engine.: Device Generator
+Candidates.#01...: 123456 -> rommel
+Hardware.Mon.#01.: Temp: 89c Util: 94%
+
+$bitlocker$0$16$b3c105c7ab7faaf544e84d712810da65$1048576$12$b020fe18bbb1db0103000000$60$e9c6b548788aeff190e517b0d85ada5daad7a0a3f40c4467307011ac17f79f8c99768419903025fd7072ee78b15a729afcf54b8c2e3af05bb18d4ba0:francisco
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 22100 (BitLocker)
+Hash.Target......: $bitlocker$0$16$b3c105c7ab7faaf544e84d712810da65$10...8d4ba0
+Time.Started.....: Tue Jan 27 00:04:56 2026 (17 secs)
+Time.Estimated...: Tue Jan 27 00:05:13 2026 (0 secs)
+Kernel.Feature...: Pure Kernel (password length 6-256 bytes)
+Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#01........:      114 H/s (13.82ms) @ Accel:232 Loops:1024 Thr:1 Vec:16
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 2031/14344385 (0.01%)
+Rejected.........: 175/2031 (8.62%)
+Restore.Point....: 0/14344385 (0.00%)
+Restore.Sub.#01..: Salt:0 Amplifier:0-1 Iteration:1047552-1048576
+Candidate.Engine.: Device Generator
+Candidates.#01...: 123456 -> rommel
+Hardware.Mon.#01.: Temp: 90c Util: 96%
+
+```
+
