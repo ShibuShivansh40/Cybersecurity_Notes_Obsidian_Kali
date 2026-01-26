@@ -434,3 +434,26 @@ Stopped: Mon Jan 26 22:29:08 2026
 |`c`|Capitalize the first letter and lowercase others|
 |`sXY`|Replace all instances of X with Y|
 |`$!`|Add the exclamation character at the end|
+**Writing Custom Wordlists and Rules :** 
+```
+ShibuShivansh@htb[/htb]$ cat custom.rule
+
+:
+c
+so0
+c so0
+sa@
+c sa@
+c sa@ so0
+$!
+$! c
+$! so0
+$! sa@
+$! c so0
+$! c sa@
+$! so0 sa@
+$! c so0 sa@
+```
+Creating wordlist : 
+`ShibuShivansh@htb[/htb]$ hashcat --force password.list -r custom.rule --stdout | sort -u > mut_password.list`
+
