@@ -317,4 +317,6 @@ Stopped: Mon Jan 26 21:58:57 2026
 
 Directory : `ls -l /usr/share/hashcat/rules`
 
-Rule based 
+Rule based dictionary attack :  `hashcat -a 0 -m 0 1b0556a75770563578569ae21392630c /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule`
+
+
