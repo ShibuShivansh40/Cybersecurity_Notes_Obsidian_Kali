@@ -319,4 +319,38 @@ Directory : `ls -l /usr/share/hashcat/rules`
 
 Rule based dictionary attack :  `hashcat -a 0 -m 0 1b0556a75770563578569ae21392630c /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule`
 
+Let's say that we specifically want to try passwords which start with an uppercase letter, continue with four lowercase letters, a digit, and then a symbol. The resulting hashcat mask would be `?u?l?l?l?l?d?s`.
+```shell-session
+ShibuShivansh@htb[/htb]$ hashcat -a 3 -m 0 1e293d6912d074c0fd15844d803400dd '?u?l?l?l?l?d?s'
 
+...SNIP...
+
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 0 (MD5)
+Hash.Target......: 1e293d6912d074c0fd15844d803400dd
+Time.Started.....: Sat Apr 19 09:43:02 2025 (4 secs)
+Time.Estimated...: Sat Apr 19 09:43:06 2025 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Mask.......: ?u?l?l?l?l?d?s [7]
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   101.6 MH/s (9.29ms) @ Accel:512 Loops:1024 Thr:1 Vec:8
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 456237056/3920854080 (11.64%)
+Rejected.........: 0/456237056 (0.00%)
+Restore.Point....: 25600/223080 (11.48%)
+Restore.Sub.#1...: Salt:0 Amplifier:5120-6144 Iteration:0-1024
+Candidate.Engine.: Device Generator
+Candidates.#1....: Uayvf7- -> Dikqn5!
+Hardware.Mon.#1..: Util: 98%
+
+Started: Sat Apr 19 09:42:46 2025
+Stopped: Sat Apr 19 09:43:08 2025
+```
+
+```
+┌──(shibushivansh㉿shibu)-[~]
+└─$ hashcat -a 0 -m 0 e3e3ec5831ad5e7288241960e5d4fdb8  /usr/share/wordlists/rockyou.txt --show
+e3e3ec5831ad5e7288241960e5d4fdb8:crazy!
+
+```
