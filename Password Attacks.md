@@ -250,29 +250,71 @@ Attack Modes :  `dictionary`, `mask`, `combinator`, and `association`
 
 **Dictionary Attack :** 
 ```
-hashcat -a 0 -m 0 e3e3ec5831ad5e7288241960e5d4fdb8 /usr/share/wordlists/rockyou.txt
+ ─(shibushivansh㉿shibu)-[~/Downloads]
+└─$ hashcat -a 0 -m 0 e3e3ec5831ad5e7288241960e5d4fdb8 /usr/share/wordlists/rockyou.txt
+hashcat (v7.1.2) starting
 
-...SNIP...               
+OpenCL API (OpenCL 3.0 PoCL 6.0+debian  Linux, None+Asserts, RELOC, SPIR-V, LLVM 18.1.8, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
+====================================================================================================================================================
+* Device #01: cpu-skylake-avx512-11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz, 6824/13649 MB (2048 MB allocatable), 8MCU
 
+Minimum password length supported by kernel: 0
+Maximum password length supported by kernel: 256
+
+Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Early-Skip
+* Not-Salted
+* Not-Iterated
+* Single-Hash
+* Single-Salt
+* Raw-Hash
+
+ATTENTION! Pure (unoptimized) backend kernels selected.
+Pure kernels can crack longer passwords, but drastically reduce performance.
+If you want to switch to optimized kernels, append -O to your commandline.
+See the above message to find out about the exact limits.
+
+Watchdog: Temperature abort trigger set to 90c
+
+Host memory allocated for this attack: 514 MB (7023 MB free)
+
+Dictionary cache built:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344392
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+* Runtime...: 1 sec
+
+e3e3ec5831ad5e7288241960e5d4fdb8:crazy!                   
+                                                          
 Session..........: hashcat
 Status...........: Cracked
 Hash.Mode........: 0 (MD5)
 Hash.Target......: e3e3ec5831ad5e7288241960e5d4fdb8
-Time.Started.....: Sat Apr 19 08:58:44 2025 (0 secs)
-Time.Estimated...: Sat Apr 19 08:58:44 2025 (0 secs)
-Kernel.Feature...: Pure Kernel
+Time.Started.....: Mon Jan 26 21:58:56 2026 (0 secs)
+Time.Estimated...: Mon Jan 26 21:58:56 2026 (0 secs)
+Kernel.Feature...: Pure Kernel (password length 0-256 bytes)
 Guess.Base.......: File (/usr/share/wordlists/rockyou.txt)
 Guess.Queue......: 1/1 (100.00%)
-Speed.#1.........:  1706.6 kH/s (0.14ms) @ Accel:512 Loops:1 Thr:1 Vec:8
+Speed.#01........:   817.6 kH/s (0.23ms) @ Accel:1024 Loops:1 Thr:1 Vec:16
 Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
-Progress.........: 28672/14344385 (0.20%)
-Rejected.........: 0/28672 (0.00%)
-Restore.Point....: 27648/14344385 (0.19%)
-Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Progress.........: 32768/14344385 (0.23%)
+Rejected.........: 0/32768 (0.00%)
+Restore.Point....: 24576/14344385 (0.17%)
+Restore.Sub.#01..: Salt:0 Amplifier:0-1 Iteration:0-1
 Candidate.Engine.: Device Generator
-Candidates.#1....: 010292 -> spongebob9
-Hardware.Mon.#1..: Util: 40%
+Candidates.#01...: 280690 -> eatme1
+Hardware.Mon.#01.: Temp: 57c Util: 12%
 
-Started: Sat Apr 19 08:58:43 2025
-Stopped: Sat Apr 19 08:58:46 2025
+Started: Mon Jan 26 21:58:38 2026
+Stopped: Mon Jan 26 21:58:57 2026
 ```
+
+Directory : `ls -l /usr/share/hashcat/rules`
+
+Rule based 
