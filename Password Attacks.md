@@ -859,5 +859,25 @@ msf6 auxiliary(scanner/smb/smb_login) > run
 ```
 
 Now we can use `NetExec` again to view the available shares and what privileges we have for them.
+```shell-session
+ShibuShivansh@htb[/htb]$ netexec smb 10.129.42.197 -u "user" -p "password" --shares
+```
 
+Using SMBClient then we can connect using these shares:
+```shell-session
+ShibuShivansh@htb[/htb]$ smbclient -U user \\\\10.129.42.197\\SHARENAME
+
+Enter WORKGROUP\user's password: *******
+
+Try "help" to get a list of possible commands.
+
+
+smb: \> ls
+  .                                  DR        0  Thu Jan  6 18:48:47 2022
+  ..                                 DR        0  Thu Jan  6 18:48:47 2022
+  desktop.ini                       AHS      282  Thu Jan  6 15:44:52 2022
+
+                10328063 blocks of size 4096. 6074274 blocks available
+smb: \> 
+```
 
