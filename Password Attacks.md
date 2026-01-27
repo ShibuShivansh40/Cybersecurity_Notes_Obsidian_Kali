@@ -881,3 +881,11 @@ smb: \> ls
 smb: \> 
 ```
 
+Exercise :
+```
+[msf](Jobs:0 Agents:0) auxiliary(scanner/smb/smb_login) >> cat my_credentials.txt
+[*] exec: cat my_credentials.txt
+
+Username: htb-ac-1132492
+Password: Q9k66DeV
+```
