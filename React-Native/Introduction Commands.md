@@ -1,4 +1,4 @@
-`npx @react-native-community/cli@latest init NATE_App` ->  To start or initialise the react-native application
+[`npx @react-native-community/cli@latest init NATE_App` ->  To start or initialise the react-native application
 > Output must be like this after this command : 
 > 
 ```
