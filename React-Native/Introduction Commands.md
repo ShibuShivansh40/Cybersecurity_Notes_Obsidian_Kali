@@ -71,3 +71,13 @@ Sorting the Icons using this  :
 For Android, add the following line in your `android/app/build.gradle` under `dependencies` section if fonts are not bundled properly:
 `apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"`
 Then rebuild the app.
+
+
+Error : `./gradlew assembleRelase` Error
+
+Solution : 
+```
+Stop-Process -Name "node" -Force
+Remove-Item -Recurse -Force "C:\Users\seths\AppData\Local\Temp\metro-cache"
+./gradlew assembleRelease --no-daemon  
+```
