@@ -73,6 +73,50 @@ Binding a host port to a container port creates a **forwarding rule** so exter
 |`-p 80`|Docker picks a random ephemeral host port automatically [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
 |`-p 127.0.0.1:8080:80`|Host port `8080` only accessible from localhost [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
 
+
+## Docker vs Virtual Machine (VM)
+
+## What Is a VM?
+
+A **Virtual Machine** is a **complete virtualized computer** with its own guest OS, virtualized hardware, and kernel. It runs on a hypervisor (like VirtualBox, VMware, Hyper-V).[](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)
+
+## What Is Docker?
+
+**Docker** uses **containers**, which are lightweight, isolated environments that share the **host OS kernel** but have isolated processes, filesystem, and networking.[](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)
+
+## Key Differences
+
+|Aspect|Docker (Container)|Virtual Machine|
+|---|---|---|
+|**OS**|Shares host OS kernel|Runs separate guest OS [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|**Size**|MBs (10–100 MB)|GBs (1–50 GB) [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|**Startup**|Seconds or less|Minutes [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|**Performance**|Near-native (no hardware virtualization)|Overhead from hypervisor [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|**Isolation**|Process-level (less isolated)|Full hardware-level (more isolated) [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|**Portability**|High (images are small, portable)|Lower (large images, OS-dependent) [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|**Resource Usage**|Low overhead|High overhead (CPU, RAM, disk) [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+
+
+## When to Use Each
+
+## Use Docker When:
+
+- You need **fast startup** and scaling    
+- You want **microservices architecture
+- You need **lightweight, portable apps
+- You're doing **DevOps, CI/CD, cloud-native
+
+## Use VM When:
+
+- You need **full OS isolation** (different OS per app)
+- You're running **legacy apps** that need specific OS    
+- You need **stronger security boundaries**
+- You're running workloads that require **kernel-level access**
+
+## Workflow for Dockers
+
+![[Pasted image 20260518034927.png]]
+
 ## Commands Used
 
 - `docker run <iamge>:version` - This directly creates the Docker Container and if there that version of Docker Container is not present locally it will `pull` or download it from DockerHub.
