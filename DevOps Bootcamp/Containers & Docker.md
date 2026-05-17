@@ -130,4 +130,6 @@ A **Virtual Machine** is a **complete virtualized computer** with its own gu
 - `docker logs <NAMES>` - This give us the whole logs of what happened with the Docker Container.
 - `docker run -d -p6001:6279 ==name <conatiner-name> <image>` - This gives a customized name to the Docker Container.
 - `dcoker exec -it <container_id>or<container-name> /bin/bash` - This provides the shell for the Container.
+- `docker network ls` - To list all the Docker Networks present
+- `docker network create <network-name>` - This creates a new Docker Network
 - 
