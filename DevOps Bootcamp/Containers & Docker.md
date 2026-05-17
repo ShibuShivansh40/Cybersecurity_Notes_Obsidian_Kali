@@ -57,4 +57,7 @@ So, basically all these are the bifurcation of layers being used to develop/depl
 - `docker pull <image>:version` -  This pulls or downloads the version of that container locally.
 - `docker ps` - To get information about all the running containers on the system.
 - `docker run -d <image>` - This runs the Docker container in a detached mode i.e. the terminal gets freed of the buffer which Container is going to push
+- `docker stop <docker-container-id>` - This stops the container running.
+- `docker start <docker-container-id>` - This starts the container.
+- `docker ps -a` - This gives the list of all the containers running or stopped.
 - 
