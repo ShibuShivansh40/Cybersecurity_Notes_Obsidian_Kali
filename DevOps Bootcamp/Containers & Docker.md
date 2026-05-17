@@ -75,12 +75,15 @@ Binding a host port to a container port creates a **forwarding rule** so exter
 
 ## Commands Used
 
-- `docker run <iamge>:version` - This directly runs the Docker Container and if there that version of Docker Container is not present locally it will `pull` or download it from DockerHub.
+- `docker run <iamge>:version` - This directly creates the Docker Container and if there that version of Docker Container is not present locally it will `pull` or download it from DockerHub.
 - `docker pull <image>:version` -  This pulls or downloads the version of that container locally.
 - `docker ps` - To get information about all the running containers on the system.
 - `docker run -d <image>` - This runs the Docker container in a detached mode i.e. the terminal gets freed of the buffer which Container is going to push
 - `docker stop <docker-container-id>` - This stops the container running.
 - `docker start <docker-container-id>` - This starts the container.
 - `docker ps -a` - This gives the list of all the containers running or stopped.
-- `docker run -p<host_port>:<container_port>` - Now this binds the Host Port to the Container's Port
+- `docker run -p<host_port>:<container_port> <image>` - Now this binds the Host Port to the Container's Port
+- `docker logs <NAMES>` - This give us the whole logs of what happened with the Docker Container.
+- `docker run -d -p6001:6279 ==name <conatiner-name> <image>` - This gives a customized name to the Docker Container.
+- `dcoker exec -it <container_id>or<container-name> /bin/bash` - This provides the shell for the Container.
 - 
