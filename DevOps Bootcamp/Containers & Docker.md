@@ -51,6 +51,28 @@ A Docker image is a **read-only template** that contains the app code, runtime
 
 So, basically all these are the bifurcation of layers being used to develop/deploy the container.
 
+
+## Container Port vs Host Port Binding (Port Mapping)
+
+## Container Port
+
+A **container port** is the port **inside the container** that your application listens on. The container is isolated, so traffic **cannot reach** this port from outside unless you publish it.
+
+## Host Port
+
+A **host port** is the port **on your machine** (your computer) that receives incoming traffic. Docker forwards traffic from this port into the container's port.
+
+## Port Binding (Port Mapping)
+
+Binding a host port to a container port creates a **forwarding rule** so external traffic can reach your containerized app.
+
+|Format|Meaning|
+|---|---|
+|`-p 8080:80`|Host port `8080` → Container port `80`|
+|`-p 3000:3000`|Host port `3000` → Container port `3000` [](https://medium.com/@ppran234/why-do-we-bind-ports-in-docker-4f2a62ea2e69)|
+|`-p 80`|Docker picks a random ephemeral host port automatically [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+|`-p 127.0.0.1:8080:80`|Host port `8080` only accessible from localhost [](https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/)|
+
 ## Commands Used
 
 - `docker run <iamge>:version` - This directly runs the Docker Container and if there that version of Docker Container is not present locally it will `pull` or download it from DockerHub.
@@ -60,4 +82,5 @@ So, basically all these are the bifurcation of layers being used to develop/depl
 - `docker stop <docker-container-id>` - This stops the container running.
 - `docker start <docker-container-id>` - This starts the container.
 - `docker ps -a` - This gives the list of all the containers running or stopped.
+- `docker run -p<host_port>:<container_port>` - Now this binds the Host Port to the Container's Port
 - 
