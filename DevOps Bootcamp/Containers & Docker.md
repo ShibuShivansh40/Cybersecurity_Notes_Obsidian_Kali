@@ -132,4 +132,5 @@ A **Virtual Machine** is a **complete virtualized computer** with its own gu
 - `dcoker exec -it <container_id>or<container-name> /bin/bash` - This provides the shell for the Container.
 - `docker network ls` - To list all the Docker Networks present
 - `docker network create <network-name>` - This creates a new Docker Network
+- `docker run -p 27017:27017 -e <env_var> --name <new-name> --net <network-name> <image-name>` - This creates the Docker Container with specified Environment Variables, Names and Network.
 - 
