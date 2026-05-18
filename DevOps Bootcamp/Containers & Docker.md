@@ -117,6 +117,9 @@ A **Virtual Machine** is a **complete virtualized computer** with its own gu
 
 ![[Pasted image 20260518034927.png]]
 
+
+![[Pasted image 20260518043638.png]]
+
 ## Commands Used
 
 - `docker run <iamge>:version` - This directly creates the Docker Container and if there that version of Docker Container is not present locally it will `pull` or download it from DockerHub.
