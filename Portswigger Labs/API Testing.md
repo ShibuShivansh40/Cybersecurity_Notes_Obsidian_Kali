@@ -134,3 +134,14 @@ To secure APIs against Server-Side Parameter Pollution:
 Aim - Log in as `administrator` and delete `carlos`
 Solution - 
 The only query string found was in Product Query, so I'll be trying to exploit that. Tried a lot of things, hence had to see the solution to understand that.
+
+I tried to follow the solution, but it was confusing. So, while I was doing the recon part I saw something like `reset_token`, so I thought there must be something around that. But we needed that Token, so I started to follow the solution.
+
+So I used an Intruder Attack to get onto something and I used a simple tactic present that was to add up a field into the request and then just use the Sniper Attack to find the valid fields. 
+![[Pasted image 20260817045843.png]]
+
+So, on running the attack it simply gave us `email` as the field and then we inserted that as well. But as there as something related to that reset_token, so I added that on to the field and found the below response.
+![[Pasted image 20260817045249.png]]
+
+Then I went to the browser to get to somewhere where I could log in into the Admin Dashboard, so according to the Web Application, whenever there is a Email sent for Password reset, we receive a link with reset tokens, so I inserted that reset_token into the endpoint as `/forgot-password?reset_token=token` and hence I got a way to enter a new password for the Administrator and then I logged in with the new Password and then I just deleted Carlos' Account.
+
