@@ -97,6 +97,39 @@ And then I started to exploit the Headers and finding a way to get the exact res
 ![[Pasted image 20260817004402.png]]And hence I just had to manipulate the Discount to 100% and then I just got the Jacket for free and solved  :
 ![[Pasted image 20260817005136.png]]
 
+
+# Server-Side Parameter Pollution in APIs
+*A concise overview based on PortSwigger's Web Security Academy.*
+
+## 1. Concept Overview
+**Server-Side Parameter Pollution (SSPP)** occurs when a web application processes user input and embeds it into a server-side request (such as communicating with an internal API or backend service) without proper validation or encoding. This allows an attacker to manipulate the parameters sent to the internal API, potentially bypassing access controls, altering application logic, or accessing unauthorized data.
+
+## 2. Testing the Query String
+To test for SSPP, you need to observe how the server handles unexpected characters or parameters injected into the input. 
+
+* **Truncating Query Strings:** You can attempt to cut off the rest of the intended backend request by injecting a URL-encoded fragment identifier (`#`, encoded as `%23`). If the application drops subsequent parameters, it indicates the input is being appended directly to an internal request.
+* **Injecting Invalid Parameters:** Add dummy parameters (e.g., `&foo=bar`) to a request. If the application's response changes or throws a detailed error, it may indicate that the internal API is attempting to process the injected parameter.
+* **Injecting Valid Parameters:** If you discover hidden parameters during your API reconnaissance, you can inject them to see if you can manipulate the internal logic (e.g., appending `&admin=true`).
+* **Overriding Existing Parameters (HPP):** Send multiple parameters with the exact same name (e.g., `?username=victim&username=attacker`). Different backend technologies process duplicate parameters differently:
+    * **PHP/Apache:** Usually takes the *last* parameter.
+    * **ASP.NET:** Usually concatenates them with a comma (`victim,attacker`).
+    * **Node.js/Express:** Usually creates an array (`[victim, attacker]`) or takes the first parameter depending on configuration.
+
+## 3. Testing REST Paths
+APIs often place parameter values directly into the REST URL path (e.g., `/api/users/{username}`). You can test these by injecting URL-encoded path traversal sequences or query delimiters.
+* **Path Traversal:** Injecting `%2f` (encoded `/`) or `%2e%2e%2f` (encoded `../`) might allow you to traverse the backend API's directory structure if the frontend server decodes it before forwarding the request.
+* **Query Injection:** Injecting a URL-encoded `?` (`%3f`) might trick the backend into treating the rest of the intended URL path as a query string.
+
+## 4. Testing Structured Data Formats
+Parameter pollution isn't limited to query strings; it can also occur in structured data like JSON or XML.
+* **JSON Parameter Pollution:** Injecting duplicate keys into a JSON payload (e.g., `{"userid": 1, "userid": 2}`). Similar to query strings, the JSON parser's behavior determines which value is processed (often the last one).
+
+## 5. Prevention Strategies
+To secure APIs against Server-Side Parameter Pollution:
+* **Apply Strict URL Encoding:** Ensure all user input is properly URL-encoded before it is embedded into any server-side HTTP request.
+* **Input Validation:** Implement strict allowlists for all user input. Validate the expected format, type, and length of the data.
+* **Safe API Clients:** Use built-in libraries or SDKs that automatically handle parameter binding and encoding safely, rather than manually concatenating strings to build internal API requests.
+* **Consistent Parsing:** Ensure that the frontend gateway and backend internal APIs handle duplicate parameters in the exact same way to prevent logic discrepancies.
 ## Lab - Exploiting Server-Side Parameter Pollution in a Query String
 Aim - Log in as `administrator` and delete `carlos`
 Solution - 
