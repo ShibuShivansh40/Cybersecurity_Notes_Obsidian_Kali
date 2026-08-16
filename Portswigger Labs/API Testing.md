@@ -86,3 +86,12 @@ And hence I was able to change the price :
 ![[Pasted image 20260816233156.png]]
 ![[Pasted image 20260816233243.png]]
 
+
+## Lab - Exploiting Mass Assignment Vulnerability
+Aim - Buy a Leather Jacket exploiting vulnerability
+Solution -
+While checking the Target, I found only one endpoint that is going to use `api` and hence I got the direction to start with the exploitation.
+![[Pasted image 20260817004526.png]]
+And then I started to exploit the Headers and finding a way to get the exact response and get the Price equal to zero, so that I could check out easily.
+![[Pasted image 20260817004402.png]]And hence I just had to manipulate the Discount to 100% and then I just got the Jacket for free and solved the Lab :
+![[Pasted image 20260817005136.png]]
