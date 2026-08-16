@@ -56,13 +56,14 @@ API endpoints often expect data in a specific format. They may therefore behave 
 - Trigger errors that disclose useful information.
 - Bypass flawed defenses.
 - Take advantage of differences in processing logic. For example, an API may be secure when handling JSON data but susceptible to injection attacks when dealing with XML.
-
+To change the content type, modify the `Content-Type` header, then reformat the request body accordingly.
 
 # Key Learnings
 - To start API testing, you first need to find out as much information about the API as possible, to discover its attack surface.
 - You should identify API endpoints.
 - Look for patterns that suggest API endpoints in the URL structure, such as `/api/`
-To change the content type, modify the `Content-Type` header, then reformat the request body accordingly.
+- ***URL Parameter Pollution*** : PHP parses the last parameter only. ASP.NET combines both parameters. Node.js / Express parses the first parameter only.
+
 
 ## Lab - Exploiting an API Endpoint
 Aim : Delete the user named "Carlos"
@@ -93,5 +94,10 @@ Solution -
 While checking the Target, I found only one endpoint that is going to use `api` and hence I got the direction to start with the exploitation.
 ![[Pasted image 20260817004526.png]]
 And then I started to exploit the Headers and finding a way to get the exact response and get the Price equal to zero, so that I could check out easily.
-![[Pasted image 20260817004402.png]]And hence I just had to manipulate the Discount to 100% and then I just got the Jacket for free and solved the Lab :
+![[Pasted image 20260817004402.png]]And hence I just had to manipulate the Discount to 100% and then I just got the Jacket for free and solved  :
 ![[Pasted image 20260817005136.png]]
+
+## Lab - Exploiting Server-Side Parameter Pollution in a Query String
+Aim - Log in as `administrator` and delete `carlos`
+Solution - 
+The only query string found was in Product Query, so I'll be trying to exploit that. Tried a lot of things, hence had to see the solution to understand that.
