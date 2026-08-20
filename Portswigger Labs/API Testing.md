@@ -127,7 +127,7 @@ Parameter pollution isn't limited to query strings; it can also occur in structu
 ## 5. Prevention Strategies
 To secure APIs against Server-Side Parameter Pollution:
 * **Apply Strict URL Encoding:** Ensure all user input is properly URL-encoded before it is embedded into any server-side HTTP request.
-* **Input Validation:** Implement strict allowlists for all user input. Validate the expected format, type, and length of the data.
+* **Input Validation:** Implement strict allow-lists for all user input. Validate the expected format, type, and length of the data.
 * **Safe API Clients:** Use built-in libraries or SDKs that automatically handle parameter binding and encoding safely, rather than manually concatenating strings to build internal API requests.
 * **Consistent Parsing:** Ensure that the frontend gateway and backend internal APIs handle duplicate parameters in the exact same way to prevent logic discrepancies.
 ## Lab - Exploiting Server-Side Parameter Pollution in a Query String
